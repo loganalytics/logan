@@ -143,7 +143,7 @@
             <value n="custom" v="false"/>
             <value n="javaOptions" v="-javaagent:/scratch/teli/Oracle/Middleware/Oracle_Home/jdeveloper/../oracle_common/modules/oracle.toplink_12.1.2/eclipselink.jar"/>
             <value n="name" v="EclipseLink JPA Client"/>
-            <url n="runDirectoryURL" path="../../../Oracle/Middleware/Oracle_Home/jdeveloper/"/>
+            <url n="runDirectoryURL" path="../../../../../Oracle/Middleware/Oracle_Home/jdeveloper/"/>
             <value n="VMName" v="client"/>
          </hash>
       </hash>
