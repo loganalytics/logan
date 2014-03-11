@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
         xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-    <af:document title="test" id="d1">
+    <af:document title="test111" id="d1">
         <af:form id="f1">
             <af:panelSplitter orientation="horizontal" splitterPosition="100" id="ps1">
                 <f:facet name="first"/>
