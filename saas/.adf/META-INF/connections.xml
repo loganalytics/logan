@@ -13,7 +13,7 @@
         <Contents>26120</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="hostname">
-        <Contents>localhost</Contents>
+        <Contents>slc04qsm.us.oracle.com</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="user">
         <Contents>sysman</Contents>
@@ -25,4 +25,6 @@
     </RefAddresses>
   </Reference>
 </References>
+
+
 
