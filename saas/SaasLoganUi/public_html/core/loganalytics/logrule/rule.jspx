@@ -13,24 +13,120 @@
                             <f:facet name="first">
                             </f:facet>
                             <f:facet name="second">
-                                <!--<af:table 
-                                    value="#{viewScope.ParserListBean.loganParserList}"
-                                    var="row" rowBandingInterval="0" id="t1">
-                                        <af:column sortable="false" headerText="col1" id="c1">
-                                            <af:outputText value="#{row.parserIname}" id="ot1"/>
+                                <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                        featuresOff="detach viewMenu">
+                                    <af:table value="#{viewScope.RuleListBean.loganRuleList}" 
+                                              var="row" rowBandingInterval="0" id="t1"
+                                              rowSelection="single"
+                                              columnStretching="multiple"
+                                              styleClass="AFStretchWidth">
+                                        <af:column id="c0" width="10" rowHeader="true"/>
+                                        <af:column sortProperty="ruleDname" sortable="true"  rowHeader="unstyled"
+                                                   headerText="Rule"
+                                                   id="c1" width="20%">
+                                          <af:outputText value="#{row.ruleDname}" id="ot1"/>
                                         </af:column>
-                                        <af:column sortable="false" headerText="col2" id="c2">
-                                            <af:outputText value="#{row.parserContent}" id="ot2"/>
+                                        <af:column sortProperty="ruleDescription"
+                                                   sortable="true"
+                                                   headerText="Description"
+                                                   id="c2" width="35%">
+                                          <af:outputText value="#{row.ruleDescription}"
+                                                         id="ot2"/>
                                         </af:column>
-                                </af:table>-->
-                                <af:table value="#{viewScope.RuleListBean.loganRuleList}" var="row" rowBandingInterval="0" id="t1">
-                                    <af:column sortable="false" headerText="Rule" id="c1">
-                                        <af:outputText value="#{row.ruleDname}" id="ot1"/>
-                                    </af:column>
-                                    <af:column sortable="false" headerText="Description" id="c2">
-                                        <af:outputText value="#{row.ruleDescription}" id="ot2"/>
-                                    </af:column>
-                                </af:table>
+                                        <af:column sortProperty="ruleTargetType"
+                                                   sortable="true"
+                                                   headerText="Applicable To"
+                                                   id="c3" width="10%">
+                                          <af:outputText value="#{row.ruleTargetType}"
+                                                         id="ot3"/>
+                                        </af:column>
+                                        <af:column sortProperty="ruleAuthor" sortable="true"
+                                                   headerText="Author"
+                                                   id="c4" width="10%">
+                                          <af:outputText value="#{row.ruleAuthor}" id="ot4"/>
+                                        </af:column>
+                                        <af:column 
+                                                   sortable="true"
+                                                   headerText="Association Count"
+                                                   id="c5" width="10%">
+                                          <af:outputText value=""
+                                                         id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="ruleLastUpdatedDate"
+                                                   sortable="true"
+                                                   headerText="Last Updated Date"
+                                                   id="c6" width="15%">
+                                          <af:outputText value="#{row.ruleLastUpdatedDate}"
+                                                         id="ot6">
+                                            <af:convertDateTime type="both" dateStyle="medium"
+                                                                timeStyle="medium"/>
+                                          </af:outputText>
+                                        </af:column>
+                                    </af:table>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2">
+                                            <af:commandToolbarButton text="Create"
+                                                                   icon="/images/new_ena.png"
+                                                                   id="ctb1"
+                                                                   action="goto_log-rule-wizard-flow-definition">
+                                          </af:commandToolbarButton>
+                                          <af:commandToolbarButton text="Create Like"
+                                                                   icon="/images/createlike_ena.png"
+                                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.createLikeDisabled}"
+                                                                   disabledIcon="/images/createlike_dis.png"
+                                                                   id="ctb2"
+                                                                   action="goto_log-rule-wizard-flow-definition">
+                                            <!--<af:showPopupBehavior popupId="p8"/>-->
+                                          </af:commandToolbarButton>
+                                          <af:commandToolbarButton text="Show Details"
+                                                                   icon="/images/view_ena.png"
+                                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.showDetailsDisabled}"
+                                                                   disabledIcon="/images/view_dis.png"
+                                                                   id="ctb3"
+                                                                   action="goto_log-rule-wizard-flow-definition">
+                                            <!--<af:setPropertyListener from="VIEW" type="action"
+                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
+                                                                    type="action"
+                                                                    to="#{sdk_ipmbean.params.ruleId}"/>-->
+                                          </af:commandToolbarButton>
+                                          <af:commandToolbarButton text="Edit"
+                                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.editDisabled}"
+                                                                   icon="/images/edit_ena.png"
+                                                                   disabledIcon="/images/update_dis.png"
+                                                                   id="ctb4"
+                                                                   action="goto_log-rule-wizard-flow-definition">
+                                            <!--<af:setPropertyListener from="EDIT" type="action"
+                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
+                                                                    type="action"
+                                                                    to="#{sdk_ipmbean.params.ruleId}"/>-->
+                                          </af:commandToolbarButton>
+                                          <af:commandToolbarButton text="Remove"
+                                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.deleteDisabled}"
+                                                                   icon="/images/delete_ena.png"
+                                                                   disabledIcon="/images/delete_dis.png"
+                                                                   id="ctb5">
+                                            <!--<af:showPopupBehavior popupId="::dp2"/>-->
+                                          </af:commandToolbarButton>
+                                          <af:commandToolbarButton text="Associated Targets"
+                                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.assocTargetsDisabled}"
+                                                                   id="ctb6"
+                                                                   icon="/images/emskin/fusionfx/em_gn_targets.png"
+                                                                   disabledIcon="/images/emskin/fusionfx/em_gn_targets.png"
+                                                                   action="goto_core-log-rule-target-assoc2">
+                                            <!--<af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
+                                                                    type="action"
+                                                                    to="#{sdk_ipmbean.params.ruleId}"/>                               
+                                            <af:setPropertyListener from="#{bindings.EmLoganRuleVO.currentRow.ruleDname}"
+                                                                    type="action"                          
+                                                                    to="#{sdk_ipmbean.params.ruleName}"/>-->
+                
+                                          </af:commandToolbarButton>   
+                                        </af:toolbar>
+                                        
+                                    </f:facet>
+                                </af:panelCollection>
                             </f:facet>
                         </af:panelSplitter>
                     </f:facet>

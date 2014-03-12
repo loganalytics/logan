@@ -13,16 +13,16 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">226.53711</property>
+         name="y">230.57422</property>
       <property
-         name="x">275.5</property>
+         name="x">109.5</property>
    </View>
    <View
       id="View3">
       <property
          name="activityId">rule</property>
       <property
-         name="page">/library/rule/rule.jspx</property>
+         name="page">/core/loganalytics/logrule/rule.jspx</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>rule&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
@@ -32,4 +32,52 @@
       <property
          name="x">275.5</property>
    </View>
+   <MethodCall
+      id="MethodCall7">
+      <property
+         name="activityId">refreshLoganTransferStatus</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>refreshLoganTransferStatus&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">226.14844</property>
+      <property
+         name="x">543.0</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="View3"
+      to="MethodCall7">
+      <property
+         name="fromOutcome">goto_core-log-rule-target-assoc2</property>
+      <property
+         name="sdm:polyPoints">R54,316.5,83.61621,502.0,226.16699,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View9">
+      <property
+         name="activityId">log-rule-wizard-flow-detail</property>
+      <property
+         name="page">/core/loganalytics/logrule/log-rule-wizard-flow-detail.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>log-rule-wizard-flow-detail&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">73.61133</property>
+      <property
+         name="x">651.04004</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="View3"
+      to="View9">
+      <property
+         name="fromOutcome">goto_log-rule-wizard-flow-definition</property>
+      <property
+         name="sdm:polyPoints">R46,316.5,76.61621,610.04004,73.62988,L50</property>
+   </ControlFlowCase>
 </SDM>

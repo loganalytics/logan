@@ -4,8 +4,25 @@
     <page>/library/parser/parserList.jsf</page>
   </view>
   <view id="rule">
-    <page>/library/rule/rule.jspx</page>
+    <page>/core/loganalytics/logrule/rule.jspx</page>
   </view>
+  <method-call id="refreshLoganTransferStatus">
+    <method>#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.forceRefresh}</method>
+  </method-call>
+  <view id="log-rule-wizard-flow-detail">
+    <page>/core/loganalytics/logrule/log-rule-wizard-flow-detail.jspx</page>
+  </view>
+  <control-flow-rule id="__2">
+    <from-activity-id>rule</from-activity-id>
+    <control-flow-case id="__7">
+      <from-outcome>goto_core-log-rule-target-assoc2</from-outcome>
+      <to-activity-id>refreshLoganTransferStatus</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>goto_log-rule-wizard-flow-definition</from-outcome>
+      <to-activity-id>log-rule-wizard-flow-detail</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
   <managed-bean id="__1">
     <managed-bean-name>ParserListBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.parser.ParserListBean</managed-bean-class>
@@ -14,6 +31,21 @@
   <managed-bean id="__5">
     <managed-bean-name>RuleListBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.rule.RuleListBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__4">
+    <managed-bean-name>core_loganalytics_ui_loganLibRulesBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.LoganLibRulesBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__6">
+    <managed-bean-name>core_loganalytics_ui_logRuleTargetAssocBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.rule.LoganRuleTargetAssocBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>ruleDetailView</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.rule.LoganRuleDetailsBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
 </adfc-config>
