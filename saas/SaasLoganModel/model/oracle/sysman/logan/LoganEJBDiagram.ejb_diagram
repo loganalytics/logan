@@ -235,7 +235,6 @@
       <waypoint xmi:type='DI:Point' x='884.9999389648438' y='673.692138671875'/>
     </contained>
     <contained xmi:type='DI:GraphNode' xmi:id='id5fb2deb4-6448-41f6-bc59-41f225e200fb'>
-      <anchorage xmi:type='DI:GraphConnector' xmi:id='id004a5994-56e9-437d-a096-5e03aa9d91c3' graphEdge='id506d74d9-ddee-4ec8-81b8-d2f3d13d320f'/>
       <contained xmi:type='DI:GraphNode' xmi:id='idb3100a5a-ae16-42c2-ab24-04620e7a1e93'>
         <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
         <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
@@ -270,7 +269,6 @@
       <size xmi:type='DI:Dimension' height='342.94970703125' width='200.0'/>
     </contained>
     <contained xmi:type='DI:GraphNode' xmi:id='id14e75f41-cc80-4519-b8ef-200b58e50bab'>
-      <anchorage xmi:type='DI:GraphConnector' xmi:id='ide89cfbe1-5d19-4b7f-beca-53d0d4f5cfc6' graphEdge='id506d74d9-ddee-4ec8-81b8-d2f3d13d320f'/>
       <contained xmi:type='DI:GraphNode' xmi:id='id1647485e-1516-425c-ac53-17004620c6d9'>
         <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
         <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
@@ -304,25 +302,95 @@
       <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:SessionBeanEJB~src/oracle/saas/logan/model/session/rule/LoganRuleSessionBean.java' presentation='SYMBOLIC'/>
       <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
     </contained>
-    <contained xmi:type='DI:GraphEdge' xmi:id='id506d74d9-ddee-4ec8-81b8-d2f3d13d320f' anchor='ide89cfbe1-5d19-4b7f-beca-53d0d4f5cfc6 id004a5994-56e9-437d-a096-5e03aa9d91c3'>
-      <contained xmi:type='DI:GraphNode' xmi:id='idb38c74ed-91d1-4fdf-98a2-11c8e3b53df6'>
+    <contained xmi:type='DI:GraphNode' xmi:id='idd9d2bc88-d185-4188-8184-b7d8658620af'>
+      <anchorage xmi:type='DI:GraphConnector' xmi:id='id8176294f-c9a8-433a-920a-d9ff0358f9e2' graphEdge='id4f67fa89-ae93-42ff-aaaf-c47d971f9af6'/>
+      <contained xmi:type='DI:GraphNode' xmi:id='id46acc20b-303d-4964-b275-16eaadc89834'>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
+        <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
+      </contained>
+      <contained xmi:type='DI:GraphNode' xmi:id='id3c502a1f-bc13-449d-b828-f350cfede662'>
+        <contained xmi:type='DI:GraphNode' xmi:id='idd36fa621-bb86-43f2-bb6d-456a8ca788e7'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='FieldCompartment'/>
+          <size xmi:type='DI:Dimension' height='0.8053777813911438' width='0.0'/>
+        </contained>
+        <contained xmi:type='DI:GraphNode' xmi:id='id94771a00-9a28-4e88-8bd4-d7e70c8aa348'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='MethodCompartment'/>
+          <size xmi:type='DI:Dimension' height='1.194622278213501' width='0.0'/>
+        </contained>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='SYMBOLIC'/>
+        <size xmi:type='DI:Dimension' height='198.18896484375' width='200.0'/>
+      </contained>
+      <position xmi:type='DI:Point' x='39.0' y='292.0'/>
+      <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+      <property xmi:type='DI:Property' key='showOperations' value='true'/>
+      <property xmi:type='DI:Property' key='excludeAttrFilter' value=''/>
+      <property xmi:type='DI:Property' key='showAttributes' value='true'/>
+      <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+      <property xmi:type='DI:Property' key='showPackage' value='true'/>
+      <property xmi:type='DI:Property' key='lineColor' value='#a5a5a5'/>
+      <property xmi:type='DI:Property' key='fillColor' value='#efd6ff'/>
+      <property xmi:type='DI:Property' key='sortAttributesAlpha' value='true'/>
+      <property xmi:type='DI:Property' key='showAttributeType' value='true'/>
+      <property xmi:type='DI:Property' key='showStereotype' value='true'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:EntityEJB~src/oracle/saas/logan/model/persistance/EmLoganMetaOperator.java' presentation='SYMBOLIC'/>
+      <size xmi:type='DI:Dimension' height='198.18896484375' width='200.0'/>
+    </contained>
+    <contained xmi:type='DI:GraphNode' xmi:id='id53af4bcc-8cad-431a-b1f4-0a9a7dc4c00a'>
+      <anchorage xmi:type='DI:GraphConnector' xmi:id='idcf396af7-e3c8-433f-b652-cc550ca522dc' graphEdge='id4f67fa89-ae93-42ff-aaaf-c47d971f9af6'/>
+      <contained xmi:type='DI:GraphNode' xmi:id='id65db9be2-0901-43e4-a98f-097322318719'>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
+        <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
+      </contained>
+      <contained xmi:type='DI:GraphNode' xmi:id='id939737f4-e62c-48d8-b350-4b947c7b0d82'>
+        <contained xmi:type='DI:GraphNode' xmi:id='id844370de-1c3e-4896-b623-c9dad8570c59'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='FieldCompartment'/>
+          <size xmi:type='DI:Dimension' height='0.6107555031776428' width='0.0'/>
+        </contained>
+        <contained xmi:type='DI:GraphNode' xmi:id='idb21a4d47-7d71-44fa-9266-d09b1bfddff3'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='MethodCompartment'/>
+          <size xmi:type='DI:Dimension' height='1.3892444372177124' width='0.0'/>
+        </contained>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='SYMBOLIC'/>
+        <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
+      </contained>
+      <position xmi:type='DI:Point' x='330.0' y='300.0'/>
+      <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+      <property xmi:type='DI:Property' key='showOperations' value='true'/>
+      <property xmi:type='DI:Property' key='excludeAttrFilter' value=''/>
+      <property xmi:type='DI:Property' key='showAttributes' value='true'/>
+      <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+      <property xmi:type='DI:Property' key='showPackage' value='true'/>
+      <property xmi:type='DI:Property' key='lineColor' value='#a5a5a5'/>
+      <property xmi:type='DI:Property' key='fillColor' value='#efd6ff'/>
+      <property xmi:type='DI:Property' key='sortAttributesAlpha' value='true'/>
+      <property xmi:type='DI:Property' key='showAttributeType' value='true'/>
+      <property xmi:type='DI:Property' key='showStereotype' value='true'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:SessionBeanEJB~src/oracle/saas/logan/model/session/operator/LoganOperatorSessionBeanBean.java' presentation='SYMBOLIC'/>
+      <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
+    </contained>
+    <contained xmi:type='DI:GraphEdge' xmi:id='id4f67fa89-ae93-42ff-aaaf-c47d971f9af6' anchor='idcf396af7-e3c8-433f-b652-cc550ca522dc id8176294f-c9a8-433a-920a-d9ff0358f9e2'>
+      <contained xmi:type='DI:GraphNode' xmi:id='id28c7d658-d1a9-4373-be64-781d6ca69c1c'>
         <position xmi:type='DI:Point' x='4.0' y='-25.47607421875'/>
         <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='stereotype'/>
       </contained>
-      <contained xmi:type='DI:GraphNode' xmi:id='id29a3fddb-3ba0-45b8-80b7-828a81e965e2'>
+      <contained xmi:type='DI:GraphNode' xmi:id='id8723a2d9-cde9-4a5e-a8e3-3645b7ee8d2d'>
         <position xmi:type='DI:Point' x='4.0' y='4.0'/>
         <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='name'/>
       </contained>
-      <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+      <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
       <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+      <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+      <property xmi:type='DI:Property' key='EdgeType' value='1'/>
+      <property xmi:type='DI:Property' key='showAssocName' value='false'/>
       <property xmi:type='DI:Property' key='lineColor' value='#646464'/>
       <property xmi:type='DI:Property' key='showStereotype' value='false'/>
-      <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-      <property xmi:type='DI:Property' key='showAssocName' value='false'/>
-      <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
-      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:SessionFacadeEdge~src/oracle/saas/logan/model/session/rule/LoganRuleSessionBean.java@src/oracle/saas/logan/model/persistance/rule/EmLoganRule.java'/>
-      <waypoint xmi:type='DI:Point' x='810.0' y='-68.525146484375'/>
-      <waypoint xmi:type='DI:Point' x='575.0' y='-68.525146484375'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:SessionFacadeEdge~src/oracle/saas/logan/model/session/operator/LoganOperatorSessionBeanBean.java@src/oracle/saas/logan/model/persistance/EmLoganMetaOperator.java'/>
+      <waypoint xmi:type='DI:Point' x='330.0' y='356.0'/>
+      <waypoint xmi:type='DI:Point' x='239.0' y='356.0'/>
     </contained>
     <property xmi:type='DI:Property' key='minLayoutDistance' value='100'/>
     <property xmi:type='DI:Property' key='maxEntriesInShape' value='10'/>

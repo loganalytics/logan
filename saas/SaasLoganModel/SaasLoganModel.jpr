@@ -75,6 +75,7 @@
          <url path="src/oracle/saas/logan/model/LoganParserSessionBeanClient.java"/>
          <url path="src/oracle/saas/logan/model/client/LoganOperatorSessionBeanClient.java"/>
          <url path="src/oracle/saas/logan/model/client/LoganParserSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganOperatorSessionBeanClient.java"/>
       </list>
       <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>
