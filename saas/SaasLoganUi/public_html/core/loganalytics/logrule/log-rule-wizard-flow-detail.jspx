@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Create Log Monitoring Rule" id="d1"></af:document>
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <f:attribute name="renderPanelGroupLayout" value="hide"/>
+            <f:facet name="stretchContent">
+                <af:group id="g1">
+                    <af:spacer height="4" id="s1"/>
+                    <af:panelGroupLayout id="pgl1" layout="horizontal">
+                        <af:spacer width="10" id="s2"/>
+                        <af:outputText value="Set basic properties for the Log Monitoring Rule" id="ot4"/>
+                    </af:panelGroupLayout>
+                    <af:spacer height="2" id="sq1"/>
+                    
+                    <af:spacer height="10" id="spa1"/>
+              <af:panelFormLayout id="pfl1">
+                <af:inputText id="it2" value="#{viewScope.detailsView.dname}"
+                              maximumLength="128"
+                              label="#{coreloganalyticsuiBundle.RULE}"
+                              required="#{!pageFlowScope.trainBean.readEditMode}"
+                              readOnly="#{pageFlowScope.trainBean.readEditMode}"
+                              validator="#{viewScope.detailsView.logRuleNameValidator}"/>
+                <af:inputText value="#{viewScope.detailsView.author}" id="ot2"
+                              label="#{coreloganalyticsuiBundle.AUTHOR}"
+                              readOnly="true"/>
+                <af:inputText value="#{viewScope.detailsView.severityDisplay}"
+                              label="#{coreloganalyticsuiBundle.SEVERITY}"
+                              rendered="#{pageFlowScope.trainBean.readEditMode}"
+                              id="ot34" readOnly="true"/>
+                <af:selectOneChoice value="#{viewScope.detailsView.severity}"
+                                    shortDesc="#{coreloganalyticsuiBundle.SEVERITY}"
+                                    id="soc5"
+                                    rendered="#{!pageFlowScope.trainBean.readEditMode}"
+                                    label="#{coreloganalyticsuiBundle.SEVERITY}"
+                                    valueChangeListener="#{viewScope.detailsView.severityValueChanged}"
+                                    required="true">
+                  <f:selectItems value="#{pageFlowScope.trainBean.ruleSeverityList}"
+                                 id="si1214"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{viewScope.detailsView.logTypeDisplayName}"
+                              label="#{coreloganalyticsuiBundle.LOG_TYPE}"
+                              rendered="#{pageFlowScope.trainBean.readEditMode}"
+                              id="ot349" readOnly="true"/>
+                <af:selectOneChoice value="#{viewScope.detailsView.logType}"
+                                    label="#{coreloganalyticsuiBundle.LOG_TYPE}"
+                                    rendered="#{!pageFlowScope.trainBean.readEditMode}"
+                                    shortDesc="#{coreloganalyticsuiBundle.LOG_TYPE}"
+                                    id="soc59"
+                                    valueChangeListener="#{viewScope.detailsView.logTypeValueChanged}"
+                                    required="true">
+                  <f:selectItems value="#{pageFlowScope.trainBean.ruleLogTypesList}"
+                                 id="si12149"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{viewScope.detailsView.targetTypeDisplayName}"
+                              label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                              rendered="#{pageFlowScope.trainBean.readEditMode}"
+                              id="ot3" readOnly="true"/>
+                <af:selectOneChoice value="#{viewScope.detailsView.targetType}"
+                                    label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                    rendered="#{!pageFlowScope.trainBean.readEditMode}"
+                                    shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                    id="soc3"
+                                    valueChangeListener="#{viewScope.detailsView.targetTypeValueChanged}"
+                                    required="true">
+                  <f:selectItems value="#{pageFlowScope.trainBean.ruleTargetTypesList}"
+                                 id="si121"/>
+                </af:selectOneChoice>
+                <af:inputText id="it1"
+                              label="#{coreloganalyticsuiBundle.DESCRIPTION}"
+                              value="#{viewScope.detailsView.description}"
+                              rows="2" columns="100"
+                              readOnly="#{pageFlowScope.trainBean.readOnlyMode}"/>
+                <af:inputText id="it17"
+                              label="#{coreloganalyticsuiBundle.RATIONALE}"
+                              value="#{viewScope.detailsView.rationale}"
+                              rows="2" columns="100"
+                              readOnly="#{pageFlowScope.trainBean.readOnlyMode}"/>
+              </af:panelFormLayout>
+                </af:group>
+            </f:facet>
+        </af:form>
+    </f:view>
+</jsp:root>
