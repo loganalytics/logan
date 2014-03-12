@@ -17,4 +17,19 @@
       <property
          name="x">275.5</property>
    </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">rule</property>
+      <property
+         name="page">/library/rule/rule.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>rule&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">80.09766</property>
+      <property
+         name="x">275.5</property>
+   </View>
 </SDM>
