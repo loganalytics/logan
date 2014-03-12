@@ -8,6 +8,7 @@
     <class>oracle.saas.logan.model.persistance.EmLoganCommonFields</class>
     <class>oracle.saas.logan.model.persistance.EmLoganParser</class>
     <class>oracle.saas.logan.model.persistance.EmLoganParserFieldMap</class>
+    <class>oracle.saas.logan.model.persistance.EmLoganMetaOperator</class>
     <properties>
       <property name="eclipselink.target-server" value="WebLogic_10"/>
       <property name="javax.persistence.jtaDataSource" value="java:/app/jdbc/jdbc/SaasReposDS"/>
