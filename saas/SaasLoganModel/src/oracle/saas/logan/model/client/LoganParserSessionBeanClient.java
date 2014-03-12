@@ -15,6 +15,7 @@ import oracle.saas.logan.model.session.parser.LoganParserSessionBean;
 
 public class LoganParserSessionBeanClient {
     public static void main(String[] args) {
+
         try {
             final Context context = getInitialContext();
             LoganParserSessionBean loganParserSessionBean =
