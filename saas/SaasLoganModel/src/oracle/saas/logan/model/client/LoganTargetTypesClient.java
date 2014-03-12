@@ -5,14 +5,13 @@ import java.util.Hashtable;
 import javax.naming.CommunicationException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-
 import javax.naming.NamingException;
 
 import oracle.saas.logan.model.session.util.LoganTargetTypes;
 
 public class LoganTargetTypesClient {
     public static void main(String[] args) {
-        try {
+        try { 
             final Context context = getInitialContext();
             LoganTargetTypes loganTargetTypes =
                 (LoganTargetTypes)context.lookup("saas-SaasLoganModel-LoganTargetTypes#oracle.saas.logan.model.session.util.LoganTargetTypes");
