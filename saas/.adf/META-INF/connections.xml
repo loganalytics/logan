@@ -4,16 +4,16 @@
     <Factory className="oracle.jdevimpl.db.adapter.DatabaseProviderFactory1212"/>
     <RefAddresses>
       <StringRefAddr addrType="sid">
-        <Contents>sst4083</Contents>
+        <Contents>sanjpa1</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="subtype">
         <Contents>oraJDBC</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="port">
-        <Contents>26120</Contents>
+        <Contents>16120</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="hostname">
-        <Contents>slc04qsm.us.oracle.com</Contents>
+        <Contents>slc04qsk.us.oracle.com</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="user">
         <Contents>sysman</Contents>
@@ -25,6 +25,8 @@
     </RefAddresses>
   </Reference>
 </References>
+
+
 
 
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="oracle.saas.logan.view" ClientType="Generic">
+  <pageMap>
+    <page path="/core/loganalytics/logsource/log-source-details.jspx"
+          usageId="oracle_saas_logan_view_log_source_detailsPageDef"/>
+    <page path="/core/loganalytics/log-analytics-library.jspx"
+          usageId="oracle_saas_logan_view_log_analytics_libraryPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="oracle_saas_logan_view_log_source_detailsPageDef"
+          path="core.loganalytics.logsource.log_source_detailsPageDef"/>
+    <page id="oracle_saas_logan_view_log_analytics_libraryPageDef"
+          path="core.loganalytics.log_analytics_libraryPageDef"/>
+  </pageDefinitionUsages>
+</Application>

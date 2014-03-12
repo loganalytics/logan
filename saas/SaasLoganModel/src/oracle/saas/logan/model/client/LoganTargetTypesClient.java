@@ -1,12 +1,14 @@
 package oracle.saas.logan.model.client;
 
 import java.util.Hashtable;
+import java.util.List;
 
 import javax.naming.CommunicationException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import oracle.saas.logan.model.persistance.EmTargetTypes;
 import oracle.saas.logan.model.session.util.LoganTargetTypes;
 
 public class LoganTargetTypesClient {
@@ -15,6 +17,11 @@ public class LoganTargetTypesClient {
             final Context context = getInitialContext();
             LoganTargetTypes loganTargetTypes =
                 (LoganTargetTypes)context.lookup("saas-SaasLoganModel-LoganTargetTypes#oracle.saas.logan.model.session.util.LoganTargetTypes");
+            
+            for (EmTargetTypes emTargetTypes : (List<EmTargetTypes>) loganTargetTypes.getEmTargetTypesFindAll()) {
+                printEmTargetTypes(emTargetTypes);
+            }
+            
         } catch (CommunicationException ex) {
             System.out.println(ex.getClass().getName());
             System.out.println(ex.getRootCause().getLocalizedMessage());
@@ -23,6 +30,13 @@ public class LoganTargetTypesClient {
             ex.printStackTrace();
         }
     }
+    
+    private static void printEmTargetTypes(EmTargetTypes emTargetTypes) {
+        System.out.println("targetType = " + emTargetTypes.getTargetType());
+        System.out.println("typeDisplayName = " + emTargetTypes.getTypeDisplayName());
+    }
+
+
 
     private static Context getInitialContext() throws NamingException {
         Hashtable env = new Hashtable();

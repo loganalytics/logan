@@ -7,7 +7,7 @@
     <stateless-session-descriptor/>
   </weblogic-enterprise-bean>
   <weblogic-enterprise-bean>
-    <ejb-name>LoganOperatorSessionBean</ejb-name>
+    <ejb-name>LoganTargetTypes</ejb-name>
     <stateless-session-descriptor/>
   </weblogic-enterprise-bean>
 </weblogic-ejb-jar>

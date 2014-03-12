@@ -3,7 +3,7 @@
   <documentation exporter='Oracle JDeveloper' exporterVersion='12.1.2.0.0'/>
   <DI:Diagram xmi:type='DI:Diagram' xmi:id='id2c06c58a-3a9b-4efa-bc9b-99a77dbfadd4' zoom='0.0'>
     <contained xmi:type='DI:GraphNode' xmi:id='idb4e73248-973c-43f0-8f8a-ec5ed3c8574b'>
-      <position xmi:type='DI:Point' x='100.0' y='100.0'/>
+      <position xmi:type='DI:Point' x='-75.0' y='-75.0'/>
       <property xmi:type='DI:Property' key='text' value='This diagram is&#xa;associated with&#xa;Persistence Unit&#xa;SaasLoganModel'/>
       <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
       <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
@@ -233,6 +233,74 @@
       <waypoint xmi:type='DI:Point' x='827.25' y='653.77880859375'/>
       <waypoint xmi:type='DI:Point' x='827.25' y='673.692138671875'/>
       <waypoint xmi:type='DI:Point' x='884.9999389648438' y='673.692138671875'/>
+    </contained>
+    <contained xmi:type='DI:GraphNode' xmi:id='idc031a207-56ce-4540-8a2e-a9186144f6a8'>
+      <contained xmi:type='DI:GraphNode' xmi:id='idbee55357-0400-448e-9a56-332e6aff2c72'>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
+        <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
+      </contained>
+      <contained xmi:type='DI:GraphNode' xmi:id='id9936c72c-1254-4fc8-b4a9-e5a76cbe9c10'>
+        <contained xmi:type='DI:GraphNode' xmi:id='id2df2e29b-de24-41b1-a5eb-777925165332'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='FieldCompartment'/>
+          <size xmi:type='DI:Dimension' height='1.0' width='0.0'/>
+        </contained>
+        <contained xmi:type='DI:GraphNode' xmi:id='id91b88d43-1b76-4778-9ca7-0a5d11cbbf88'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='MethodCompartment'/>
+          <size xmi:type='DI:Dimension' height='1.0' width='0.0'/>
+        </contained>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='SYMBOLIC'/>
+        <size xmi:type='DI:Dimension' height='342.94970703125' width='200.0'/>
+      </contained>
+      <position xmi:type='DI:Point' x='105.0' y='60.0'/>
+      <property xmi:type='DI:Property' key='showPackage' value='true'/>
+      <property xmi:type='DI:Property' key='lineColor' value='#a5a5a5'/>
+      <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+      <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+      <property xmi:type='DI:Property' key='fillColor' value='#efd6ff'/>
+      <property xmi:type='DI:Property' key='sortAttributesAlpha' value='true'/>
+      <property xmi:type='DI:Property' key='showAttributes' value='true'/>
+      <property xmi:type='DI:Property' key='showOperations' value='true'/>
+      <property xmi:type='DI:Property' key='showAttributeType' value='true'/>
+      <property xmi:type='DI:Property' key='excludeAttrFilter' value=''/>
+      <property xmi:type='DI:Property' key='showStereotype' value='true'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:EntityEJB~src/oracle/saas/logan/model/persistance/EmTargetTypes.java' presentation='SYMBOLIC'/>
+      <size xmi:type='DI:Dimension' height='342.94970703125' width='200.0'/>
+    </contained>
+    <contained xmi:type='DI:GraphNode' xmi:id='id9b8c15ea-2375-4a5f-b994-469e1cb3cbd3'>
+      <contained xmi:type='DI:GraphNode' xmi:id='id581b91bb-9950-44ac-b681-9c1ca995fbc5'>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='COMPACT'/>
+        <size xmi:type='DI:Dimension' height='100.0' width='100.0'/>
+      </contained>
+      <contained xmi:type='DI:GraphNode' xmi:id='ided6c9ec2-0253-433d-8568-42359f477b76'>
+        <contained xmi:type='DI:GraphNode' xmi:id='idf209317f-9a89-4b5b-ad9e-a00572694618'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='FieldCompartment'/>
+          <size xmi:type='DI:Dimension' height='0.8625678420066833' width='0.0'/>
+        </contained>
+        <contained xmi:type='DI:GraphNode' xmi:id='idab984b48-b445-4b73-91a2-22032ef320c4'>
+          <property xmi:type='DI:Property' key='FirstVisibleIndex' value='0'/>
+          <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='MethodCompartment'/>
+          <size xmi:type='DI:Dimension' height='1.1374320983886719' width='0.0'/>
+        </contained>
+        <semanticModel xmi:type='DI:SimpleSemanticModelBridge' typeInfo='SYMBOLIC'/>
+        <size xmi:type='DI:Dimension' height='195.0' width='225.0'/>
+      </contained>
+      <position xmi:type='DI:Point' x='330.0' y='60.0'/>
+      <property xmi:type='DI:Property' key='showPackage' value='true'/>
+      <property xmi:type='DI:Property' key='lineColor' value='#a5a5a5'/>
+      <property xmi:type='DI:Property' key='fontColor' value='#0'/>
+      <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
+      <property xmi:type='DI:Property' key='fillColor' value='#efd6ff'/>
+      <property xmi:type='DI:Property' key='sortAttributesAlpha' value='true'/>
+      <property xmi:type='DI:Property' key='showAttributes' value='true'/>
+      <property xmi:type='DI:Property' key='showOperations' value='true'/>
+      <property xmi:type='DI:Property' key='showAttributeType' value='true'/>
+      <property xmi:type='DI:Property' key='excludeAttrFilter' value=''/>
+      <property xmi:type='DI:Property' key='showStereotype' value='true'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='EJB:SessionBeanEJB~src/oracle/saas/logan/model/session/util/LoganTargetTypesBean.java' presentation='SYMBOLIC'/>
+      <size xmi:type='DI:Dimension' height='195.0' width='225.0'/>
     </contained>
     <property xmi:type='DI:Property' key='minLayoutDistance' value='100'/>
     <property xmi:type='DI:Property' key='maxEntriesInShape' value='10'/>

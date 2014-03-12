@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -33,6 +34,7 @@ public class EmTargetTypes implements Serializable {
     private String pluginId;
     @Column(name = "PRODUCT_ID", length = 64)
     private String productId;
+    @Id
     @Column(name = "TARGET_TYPE", nullable = false, length = 64)
     private String targetType;
     @Column(name = "TARGET_TYPE_GUID", nullable = false)
@@ -69,6 +71,7 @@ public class EmTargetTypes implements Serializable {
         this.typeRelationship = typeRelationship;
         this.typeResourceBundle = typeResourceBundle;
     }
+    
 
     public String getComponentParentType() {
         return componentParentType;

@@ -4,7 +4,7 @@
                   xmlns="http://xmlns.oracle.com/weblogic/jdbc-data-source">
     <name>SaasRepos</name>
     <jdbc-driver-params>
-        <url>jdbc:oracle:thin:@localhost:26120:sst4083</url>
+        <url>jdbc:oracle:thin:@slc04qsk.us.oracle.com:16120:sanjpa1</url>
         <driver-name>oracle.jdbc.OracleDriver</driver-name>
         <properties>
             <property>
