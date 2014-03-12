@@ -73,6 +73,8 @@
       <value n="ejbVersionMinor" v="0.1"/>
       <list n="toplinkJpaClientUrls">
          <url path="src/oracle/saas/logan/model/LoganParserSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganOperatorSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganParserSessionBeanClient.java"/>
       </list>
       <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>
@@ -141,14 +143,14 @@
       <hash n="runConfigurationDefinitions">
          <hash n="EclipseLink JPA Client">
             <value n="custom" v="false"/>
-            <value n="javaOptions" v="-javaagent:/scratch/teli/Oracle/Middleware/Oracle_Home/jdeveloper/../oracle_common/modules/oracle.toplink_12.1.2/eclipselink.jar"/>
+            <value n="javaOptions" v=""/>
             <value n="name" v="EclipseLink JPA Client"/>
             <url n="runDirectoryURL" path="../../../../../Oracle/Middleware/Oracle_Home/jdeveloper/"/>
-            <value n="VMName" v="client"/>
+            <value n="targetURL"/>
+            <value n="VMName" v="server"/>
          </hash>
       </hash>
       <list n="runConfigurationList">
-         <string v="Default"/>
          <string v="EclipseLink JPA Client"/>
       </list>
    </hash>
