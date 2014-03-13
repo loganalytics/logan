@@ -3,22 +3,7 @@
    <OverallProperties
       id="OverallProperties1"/>
    <View
-      id="View2">
-      <property
-         name="activityId">parserList</property>
-      <property
-         name="page">/library/parser/parserList.jsf</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>parserList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">121.83594</property>
-      <property
-         name="x">116.5</property>
-   </View>
-   <View
-      id="View3">
+      id="View8">
       <property
          name="activityId">rule</property>
       <property
@@ -28,12 +13,12 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">4.3964844</property>
+         name="y">71.79883</property>
       <property
-         name="x">111.5</property>
+         name="x">55.5</property>
    </View>
    <View
-      id="View4">
+      id="View9">
       <property
          name="activityId">log-rule-details</property>
       <property
@@ -43,22 +28,12 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">79.396484</property>
+         name="y">173.79883</property>
       <property
-         name="x">672.35156</property>
+         name="x">64.35156</property>
    </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase5"
-      from="View6"
-      to="View4">
-      <property
-         name="fromOutcome">goto_core-logan-rule-view</property>
-      <property
-         name="sdm:polyPoints">R50,364.68262,81.74707,631.35156,79.0459,L50</property>
-   </ControlFlowCase>
    <View
-      id="View6">
+      id="View10">
       <property
          name="activityId">log-analytics-library</property>
       <property
@@ -68,8 +43,33 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">82.09766</property>
+         name="y">275.79883</property>
       <property
-         name="x">323.68262</property>
+         name="x">76.68262</property>
    </View>
+   <View
+      id="View11">
+      <property
+         name="activityId">parserList</property>
+      <property
+         name="page">/library/parser/parserList.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>parserList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">377.79883</property>
+      <property
+         name="x">55.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View10"
+      to="View9">
+      <property
+         name="fromOutcome">goto_core-logan-rule-view</property>
+      <property
+         name="sdm:polyPoints">L50,35.682617,275.44824,23.351562,173.44824,L50</property>
+   </ControlFlowCase>
 </SDM>

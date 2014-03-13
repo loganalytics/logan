@@ -56,7 +56,6 @@
    </list>
    <value n="defaultPackage" v="oracle.saas.logan.model"/>
    <hash n="ejbModuleContainer">
-      <value n="dbConnection" v="SaasRepos"/>
       <hash n="ejbDiagramToPuMap">
          <hash n="model">
             <hash n="oracle">
@@ -77,6 +76,8 @@
          <url path="../saas.jws"/>
          <url path="src/oracle/saas/logan/model/client/LoganOperatorSessionBeanClient.java"/>
          <url path="src/oracle/saas/logan/model/client/LoganParserSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganSourceSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganRuleSourceMapSessionBeanClient.java"/>
       </list>
       <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>
@@ -222,7 +223,7 @@
             <value n="custom" v="false"/>
             <value n="javaOptions" v="-javaagent:C:\Oracle12\Middleware\Oracle_Home\oracle_common\modules\oracle.toplink_12.1.2\eclipselink.jar"/>
             <value n="name" v="EclipseLink JPA Client"/>
-            <url n="runDirectoryURL" protocol="file" path="/C:/Oracle12/Middleware/Oracle_Home/jdeveloper/"/>
+            <url n="runDirectoryURL" protocol="file" path="/C:/Oracle/Middleware/Oracle_Home/jdeveloper/"/>
             <value n="targetURL"/>
             <value n="VMName" v="client"/>
          </hash>

@@ -1,0 +1,100 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="pageTemplateAttrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>templateDef for common EM pages</display-name>
+        <facet>
+          <description>Page content area</description>
+          <facet-name>emContent</facet-name>
+        </facet>
+        <attribute>
+          <description>Sets the functional header text for a non-target page.</description>
+          <attribute-name>functionHeaderText</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+          <required>false</required>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelStretchLayout id="outerPanel" topHeight="2.5em" bottomHeight="0px">
+      <f:facet name="top">
+        <af:panelGroupLayout theme="dark" layout="vertical" styleClass="AFBrandingBar"
+                   id="menuBar_toolbar_panelGroup">
+          <af:toolbox id="tbr1" styleClass="AFBrandingBarItem" inlineStyle="padding-top:2px">
+            <af:group id="tbr1grp">
+              <af:toolbar inlineStyle="padding:4px 0px 0px 10px" flex="1" id="gntb1">
+                <af:panelGroupLayout id="pg_branding" layout="horizontal">
+                  <af:image source="#{resource['images:blank.gif']}" styleClass="AFBrandingBarLogo"
+                        inlineStyle="border:0; width:104px; height:14px" id="eqei1"/>
+                  <af:panelGroupLayout layout="horizontal" id="eqei2pgl1" valign="bottom">
+                    <af:commandLink text="Enterprise Manager 12c" id="eqei2" immediate="true"
+                            styleClass="em_Brand_ProdName">
+                      <af:checkUncommittedDataBehavior/>
+                    </af:commandLink>
+                    <af:commandLink text="Log Analytics" id="eqei3"
+                            action="goto_core-log-analytics-lib" immediate="true"
+                            styleClass="em_Brand_SubProdName">
+                      <af:checkUncommittedDataBehavior/>
+                    </af:commandLink>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </af:toolbar>
+              <af:menuBar id="menuBar" inlineStyle="padding-right:5px;padding-left:5px">
+                <af:menu id="pref" icon="#{resource['images:em_loggedin_dark.png']}"/>
+                <af:spacer width="5" id="gNBspsi"/>
+              </af:menuBar>
+            </af:group>
+          </af:toolbox>
+        </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="center">
+        <af:decorativeBox id="dbx1" theme="contentBody">
+          <f:facet name="center">
+            <af:panelStretchLayout id="ptps11" topHeight="auto">
+              <f:facet name="center">
+                <af:decorativeBox theme="light" id="dboxlt">
+                  <f:facet name="top">
+                    <af:panelGroupLayout layout="vertical" valign="middle" id="sxzpgl1">
+                      <af:panelBorderLayout id="ch_line1">
+                        <f:facet name="left">
+                          <af:panelGroupLayout halign="left" layout="horizontal"
+                                     valign="middle" id="ch_pb">
+                            <af:outputText value="#{pageTemplateAttrs.functionHeaderText}" id="hdrtxtatr1"
+                                     rendered="#{!(empty pageTemplateAttrs.functionHeaderText)}"
+                                           inlineStyle="font-size:medium;"/>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelBorderLayout>
+                      <af:separator id="sep"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="center">
+                    <af:panelStretchLayout id="inmpl">
+                      <!-- Page content area -->
+                      <f:facet name="center">
+                        <af:panelStretchLayout topHeight="auto" bottomHeight="16" startWidth="5"
+                                     id="emTpslcent">
+                          <f:facet name="start">
+                            <af:spacer id="startspacer" height="5" width="5"/>
+                          </f:facet>
+                          <f:facet name="center">
+                            <af:panelStretchLayout id="ptpsl2">
+                              <f:facet name="center">
+                                <af:facetRef facetName="emContent"/>
+                              </f:facet>
+                            </af:panelStretchLayout>
+                          </f:facet>
+                        </af:panelStretchLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:decorativeBox>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:pageTemplateDef>
+</jsp:root>
