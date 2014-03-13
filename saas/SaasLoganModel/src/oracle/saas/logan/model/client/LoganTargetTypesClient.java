@@ -32,8 +32,8 @@ public class LoganTargetTypesClient {
     }
     
     private static void printEmTargetTypes(EmTargetTypes emTargetTypes) {
-        System.out.println("targetType = " + emTargetTypes.getTargetType());
-        System.out.println("typeDisplayName = " + emTargetTypes.getTypeDisplayName());
+        System.out.println(" targetType = " + emTargetTypes.getTargetType());
+        System.out.println(" typeDisplayName = " + emTargetTypes.getTypeDisplayName());
     }
 
 
