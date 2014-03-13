@@ -65,5 +65,4 @@ public class LoganLibUiUtil {
         return targetTypeList;
     }
 
-
 }
