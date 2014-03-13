@@ -13,9 +13,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">226.53711</property>
+         name="y">121.83594</property>
       <property
-         name="x">275.5</property>
+         name="x">116.5</property>
    </View>
    <View
       id="View3">
@@ -28,8 +28,48 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">80.09766</property>
+         name="y">4.3964844</property>
       <property
-         name="x">275.5</property>
+         name="x">111.5</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">log-rule-details</property>
+      <property
+         name="page">/core/loganalytics/logrule/log-rule-details.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>log-rule-details&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">79.396484</property>
+      <property
+         name="x">672.35156</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View6"
+      to="View4">
+      <property
+         name="fromOutcome">goto_core-logan-rule-view</property>
+      <property
+         name="sdm:polyPoints">R50,364.68262,81.74707,631.35156,79.0459,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View6">
+      <property
+         name="activityId">log-analytics-library</property>
+      <property
+         name="page">/core/loganalytics/log-analytics-library.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>log-analytics-library&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">82.09766</property>
+      <property
+         name="x">323.68262</property>
    </View>
 </SDM>

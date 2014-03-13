@@ -15,7 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "EmLoganRule.findAll", query = "select o from EmLoganRule o") })
+@NamedQueries({ 
+        @NamedQuery(name = "EmLoganRule.findAll", query = "select o from EmLoganRule o"),
+        @NamedQuery(name = "EmLoganRule.findByRuleId",  query = "select o from EmLoganRule o where o.ruleId = :ruleId")})
 @Table(name = "EM_LOGAN_RULE")
 @IdClass(EmLoganRulePK.class)
 public class EmLoganRule implements Serializable {

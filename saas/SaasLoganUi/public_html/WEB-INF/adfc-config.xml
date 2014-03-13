@@ -6,14 +6,37 @@
   <view id="rule">
     <page>/library/rule/rule.jspx</page>
   </view>
+  <view id="log-rule-details">
+    <page>/core/loganalytics/logrule/log-rule-details.jspx</page>
+  </view>
+  <view id="log-analytics-library">
+    <page>/core/loganalytics/log-analytics-library.jspx</page>
+  </view>
+  <control-flow-rule id="__6">
+    <from-activity-id>log-analytics-library</from-activity-id>
+    <control-flow-case id="__7">
+      <from-outcome>goto_core-logan-rule-view</from-outcome>
+      <to-activity-id>log-rule-details</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
   <managed-bean id="__1">
     <managed-bean-name>ParserListBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.parser.ParserListBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>libSourcesBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.source.LoganLibSourcesBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
   <managed-bean id="__5">
-    <managed-bean-name>RuleListBean</managed-bean-name>
-    <managed-bean-class>oracle.saas.logan.view.rule.RuleListBean</managed-bean-class>
+    <managed-bean-name>core_loganalytics_ui_loganLibRuleBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.rule.LoganLibRulesBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>core_loganalytics_ui_logRuleViewBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.rule.LogRuleViewBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
 </adfc-config>

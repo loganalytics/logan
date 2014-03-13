@@ -1,5 +1,6 @@
 package oracle.saas.logan.model.session.rule;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import oracle.saas.logan.model.persistance.EmLoganParser;
 import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 import oracle.saas.logan.model.persistance.rule.EmLoganRulePK;
 
@@ -49,8 +51,21 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
     }
 
     public EmLoganRule persistEmLoganRule(EmLoganRule emLoganRule) {
+        
+        emLoganRule.setRuleIname(emLoganRule.getRuleDname());
+        emLoganRule.setRuleId(10005);
+        emLoganRule.setRuleIsSystem(0);
+        emLoganRule.setRuleActionCentralized(0);
+        emLoganRule.setRuleActionEvent(1);
+        emLoganRule.setRuleActionEventBundle(1);
+        emLoganRule.setRuleActionEventBundletime(10);
+        emLoganRule.setRuleActionObservation(1);
+        emLoganRule.setRuleActionRulemetric(1);
+        emLoganRule.setRuleEditVersion(0);
+        
+        
         em.persist(emLoganRule);
-        return emLoganRule;
+        return emLoganRule; 
     }
 
     public EmLoganRule mergeEmLoganRule(EmLoganRule emLoganRule) {
@@ -70,4 +85,13 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
     public List<EmLoganRule> getEmLoganRuleFindAll() {
         return em.createNamedQuery("EmLoganRule.findAll", EmLoganRule.class).getResultList();
     }
+    
+    /** <code>select o from EmLoganRule o where o.ruleId = :rule</code> */
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    public List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId)
+    {
+        return em.createNamedQuery("EmLoganRule.findByRuleId", EmLoganRule.class).setParameter("ruleId",
+                                                                                                     ruleId).getResultList();
+    }
+
 }
