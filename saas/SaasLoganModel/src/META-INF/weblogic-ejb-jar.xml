@@ -14,4 +14,8 @@
     <ejb-name>LoganRuleSession</ejb-name>
     <stateless-session-descriptor/>
   </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>LoganOperatorSessionBean</ejb-name>
+    <stateless-session-descriptor/>
+  </weblogic-enterprise-bean>
 </weblogic-ejb-jar>

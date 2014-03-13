@@ -16,7 +16,7 @@ public class LoganOperatorSessionBeanClient {
     public static void main(String[] args) {
         try {
             final Context context = getInitialContext();
-            LoganOperatorSessionBeanClient loganOperatorSessionBean =
+            LoganOperatorSessionBean loganOperatorSessionBean =
                 (LoganOperatorSessionBean) context.lookup("saas-SaasLoganModel-LoganOperatorSessionBean#oracle.saas.logan.model.session.operator.LoganOperatorSessionBean");
             for (EmLoganMetaOperator emloganmetaoperator :
                  (List<EmLoganMetaOperator>) loganOperatorSessionBean.getEmLoganMetaOperatorFindAll()) {
@@ -42,6 +42,6 @@ public class LoganOperatorSessionBeanClient {
         // WebLogic Server 10.x/12.x connection details
         env.put(Context.INITIAL_CONTEXT_FACTORY, "weblogic.jndi.WLInitialContextFactory");
         env.put(Context.PROVIDER_URL, "t3://127.0.0.1:7101");
-        return new InitialContext(env);
+        return new InitialContext(env); 
     }
 }
