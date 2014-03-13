@@ -107,9 +107,15 @@
     <filter-class>org.apache.myfaces.trinidad.webapp.TrinidadFilter</filter-class>
   </filter>
   <filter>
+    <filter-name>ServletADFFilter</filter-name>
+    <filter-class>oracle.adf.share.http.ServletADFFilter</filter-class>
+  </filter>
+  <!--  weblogic start error for this setting,so comment it out for now
+  <filter>
     <filter-name>adfBindings</filter-name>
     <filter-class>oracle.adf.model.servlet.ADFBindingFilter</filter-class>
   </filter>
+  -->
   <filter-mapping>
     <filter-name>trinidad</filter-name>
     <servlet-name>Faces Servlet</servlet-name>
@@ -117,8 +123,16 @@
     <dispatcher>REQUEST</dispatcher>
     <dispatcher>ERROR</dispatcher>
   </filter-mapping>
+    <!-- 
   <filter-mapping>
     <filter-name>adfBindings</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  -->
+    <filter-mapping>
+    <filter-name>ServletADFFilter</filter-name>
     <servlet-name>Faces Servlet</servlet-name>
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
