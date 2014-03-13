@@ -9,6 +9,7 @@
     <class>oracle.saas.logan.model.persistance.EmLoganParser</class>
     <class>oracle.saas.logan.model.persistance.EmLoganParserFieldMap</class>
     <class>oracle.saas.logan.model.persistance.EmTargetTypes</class>
+    <class>oracle.saas.logan.model.persistance.rule.EmLoganRule</class>
     <properties>
       <property name="eclipselink.target-server" value="WebLogic_10"/>
       <property name="javax.persistence.jtaDataSource" value="java:/app/jdbc/jdbc/SaasReposDS"/>

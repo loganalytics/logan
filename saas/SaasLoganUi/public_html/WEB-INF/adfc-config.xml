@@ -3,6 +3,9 @@
   <view id="parserList">
     <page>/library/parser/parserList.jsf</page>
   </view>
+  <view id="rule">
+    <page>/library/rule/rule.jspx</page>
+  </view>
   <managed-bean id="__1">
     <managed-bean-name>ParserListBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.parser.ParserListBean</managed-bean-class>
@@ -11,6 +14,10 @@
   <managed-bean id="__2">
     <managed-bean-name>libSourcesBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.source.LoganLibSourcesBean</managed-bean-class>
+    </managed-bean>
+  <managed-bean id="__5">
+    <managed-bean-name>RuleListBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.rule.RuleListBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
 </adfc-config>

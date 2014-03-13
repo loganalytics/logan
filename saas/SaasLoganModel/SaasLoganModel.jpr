@@ -73,8 +73,13 @@
       <value n="ejbVersionMinor" v="0.1"/>
       <list n="toplinkJpaClientUrls">
          <url path="src/oracle/saas/logan/model/LoganParserSessionBeanClient.java"/>
+<<<<<<< HEAD
          <url path="src/oracle/saas/logan/model/client/LoganTargetTypesClient.java"/>
          <url path="../saas.jws"/>
+=======
+         <url path="src/oracle/saas/logan/model/client/LoganOperatorSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganParserSessionBeanClient.java"/>
+>>>>>>> branch 'master' of https://github.com/loganalytics/logan
       </list>
       <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>
@@ -147,6 +152,7 @@
             <value n="name" v="EclipseLink JPA Client"/>
             <url n="runDirectoryURL" protocol="file" path="/C:/Oracle12/Middleware/Oracle_Home/jdeveloper/"/>
             <value n="VMName" v="client"/>
+            <value n="targetURL"/>
          </hash>
       </hash>
       <list n="runConfigurationList">
