@@ -5,6 +5,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
         <af:document title="log-rule-detail" id="d1">
+        <af:pageTemplate viewId="/core/loganalytics/templateDef.jspx" value="#{bindings.pageTemplateBinding}"
+                             id="emT">
+                <f:facet name="emContent">
             <af:form id="f1">
                 <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps1">
                     <f:facet name="first"/>
@@ -79,6 +82,8 @@
                     </f:facet>
                 </af:panelSplitter>
             </af:form>
+            </f:facet>
+            </af:pageTemplate>
         </af:document>
     </f:view>
 </jsp:root>
