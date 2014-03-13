@@ -24,7 +24,7 @@ import oracle.saas.logan.view.AbstractLoganLibBean;
 import org.apache.myfaces.trinidad.event.SelectionEvent;
 
 public class LoganLibRulesBean extends AbstractLoganLibBean{
-    private static final String ruleTable_Id = "pc1:t1";
+    private static final String ruleTable_Id = "emT:pc1:t1";
     
     private EmLoganRule loganRule;
     private List<LoganRuleBean> allRules= null;
