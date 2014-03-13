@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="oracle.saas.logan.view" ClientType="Generic">
+  <pageMap>
+    <page path="/core/loganalytics/logrule/log-rule-wizard-flow-detail.jspx"
+          usageId="oracle_saas_logan_view_log_rule_wizard_flow_detailPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="oracle_saas_logan_view_log_rule_wizard_flow_detailPageDef"
+          path="core.loganalytics.logrule.log_rule_wizard_flow_detailPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="LoganRuleSessionBean" path="oracle.saas.logan.model.LoganRuleSessionBean"/>
+  </dataControlUsages>
+</Application>

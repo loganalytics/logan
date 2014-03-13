@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="log_rule_wizard_flow_detailPageDef" Package="core.loganalytics.logrule">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="queryLoganRuleFindAll.result" DataControl="LoganRuleSessionBean" RangeSize="25"
+                    BeanClass="oracle.saas.logan.model.persistance.rule.EmLoganRule"
+                    id="queryLoganRuleFindAllIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <methodAction id="queryLoganRuleFindAll" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="queryLoganRuleFindAll" IsViewObjectMethod="false" DataControl="LoganRuleSessionBean"
+                  InstanceName="data.LoganRuleSessionBean.dataProvider"
+                  ReturnName="data.LoganRuleSessionBean.methodResults.queryLoganRuleFindAll_LoganRuleSessionBean_dataProvider_queryLoganRuleFindAll_result"/>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleDname">
+      <AttrNames>
+        <Item Value="ruleDname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleAuthor">
+      <AttrNames>
+        <Item Value="ruleAuthor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleSeverity">
+      <AttrNames>
+        <Item Value="ruleSeverity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleSrctypeIname">
+      <AttrNames>
+        <Item Value="ruleSrctypeIname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleTargetType">
+      <AttrNames>
+        <Item Value="ruleTargetType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleDescription">
+      <AttrNames>
+        <Item Value="ruleDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="queryLoganRuleFindAllIterator" id="ruleRationale">
+      <AttrNames>
+        <Item Value="ruleRationale"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="queryLoganRuleFindAllIterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="queryLoganRuleFindAllIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="queryLoganRuleFindAllIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="queryLoganRuleFindAllIterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <action IterBinding="queryLoganRuleFindAllIterator" id="Create" RequiresUpdateModel="true" Action="createRow"/>
+    <methodAction id="mergeEntity" RequiresUpdateModel="true" Action="invokeMethod" MethodName="mergeEntity"
+                  IsViewObjectMethod="false" DataControl="LoganRuleSessionBean"
+                  InstanceName="data.LoganRuleSessionBean.dataProvider"
+                  ReturnName="data.LoganRuleSessionBean.methodResults.mergeEntity_LoganRuleSessionBean_dataProvider_mergeEntity_result">
+      <NamedData NDName="entity" NDValue="#{bindings.queryLoganRuleFindAllIterator.currentRow.dataProvider}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+    <methodAction id="persistEmLoganRule" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="persistEmLoganRule" IsViewObjectMethod="false" DataControl="LoganRuleSessionBean"
+                  InstanceName="data.LoganRuleSessionBean.dataProvider"
+                  ReturnName="data.LoganRuleSessionBean.methodResults.persistEmLoganRule_LoganRuleSessionBean_dataProvider_persistEmLoganRule_result">
+      <NamedData NDName="emLoganRule" NDValue="#{bindings.queryLoganRuleFindAllIterator.currentRow.dataProvider}"
+                 NDType="oracle.saas.logan.model.persistance.rule.EmLoganRule"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

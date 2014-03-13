@@ -21,4 +21,6 @@ public interface LoganRuleSessionLocal {
     void removeEmLoganRule(EmLoganRule emLoganRule);
 
     List<EmLoganRule> getEmLoganRuleFindAll();
+    
+    List<EmLoganRule> queryLoganRuleFindAll();
 }

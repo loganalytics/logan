@@ -1,5 +1,6 @@
 package oracle.saas.logan.model.session.rule;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -49,8 +50,21 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
     }
 
     public EmLoganRule persistEmLoganRule(EmLoganRule emLoganRule) {
+        
+        emLoganRule.setRuleIname(emLoganRule.getRuleDname());
+        emLoganRule.setRuleId(10003);
+        emLoganRule.setRuleIsSystem(0);
+        emLoganRule.setRuleActionCentralized(0);
+        emLoganRule.setRuleActionEvent(1);
+        emLoganRule.setRuleActionEventBundle(1);
+        emLoganRule.setRuleActionEventBundletime(10);
+        emLoganRule.setRuleActionObservation(1);
+        emLoganRule.setRuleActionRulemetric(1);
+        emLoganRule.setRuleEditVersion(0);
+        
+        
         em.persist(emLoganRule);
-        return emLoganRule;
+        return emLoganRule; 
     }
 
     public EmLoganRule mergeEmLoganRule(EmLoganRule emLoganRule) {
@@ -68,6 +82,10 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
     /** <code>select o from EmLoganRule o</code> */
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<EmLoganRule> getEmLoganRuleFindAll() {
+        return em.createNamedQuery("EmLoganRule.findAll", EmLoganRule.class).getResultList();
+    }
+    
+    public List<EmLoganRule> queryLoganRuleFindAll() {
         return em.createNamedQuery("EmLoganRule.findAll", EmLoganRule.class).getResultList();
     }
 }
