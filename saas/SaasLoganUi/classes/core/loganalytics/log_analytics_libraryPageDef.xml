@@ -4,6 +4,8 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
+      <page path="sdk.core.uifwk.template.templateDefPageDef"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
   </executables>
   <bindings/>
 </pageDefinition>

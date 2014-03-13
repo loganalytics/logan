@@ -1,11 +1,17 @@
 package oracle.saas.logan.view.source;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
+import oracle.saas.logan.model.client.LoganSessionBeanProxy;
+import oracle.saas.logan.model.persistance.EmLoganMetaSourceType;
+import oracle.saas.logan.model.persistance.EmLoganRuleSourceMap;
+import oracle.saas.logan.model.persistance.EmLoganSource;
+import oracle.saas.logan.model.persistance.EmTargetTypes;
 import oracle.saas.logan.util.LoganLibUiUtil;
 
 import org.apache.myfaces.trinidad.event.DisclosureEvent;
@@ -20,21 +26,65 @@ public class LoganLibSourcesBean {
     protected String selectedtargetType;
 
     protected List<SelectItem> targetTypesList;
+    private List<LoganLibSourcePojo> sources;
 
-
+    private List<EmLoganRuleSourceMap> rsmaps;
+        
     public LoganLibSourcesBean() {
         super();
     }
     
-    
+    /**
+     * Using JPA query to initlize the table
+     * 
+     * */
     public void logSourcesTabDisclosed(DisclosureEvent disclosureEvent)
     {
-        //TODO initilize table -facade
-//        LoganAMImpl am = LoganLibUiUtil.getAppModule();
-//        EmLoganSourceVOImpl vo = am.getEmLoganSourceVO();
-//        vo.executeQuery();
-//        if(vo.hasNext())
-//            vo.first();
+        List<Object[]> entities = LoganSessionBeanProxy.getEmLoganSourceFindSources();
+        if(entities!= null && entities.size()>0)
+        {
+            if(rsmaps == null)
+            {
+                rsmaps = LoganSessionBeanProxy.getEmLoganRuleSourceMap();
+            }
+            sources = null;//force refresh 
+            if(sources == null)
+            {
+                sources = new ArrayList<LoganLibSourcePojo>();
+                
+                for( Object[] objs:  entities)
+                {
+                    EmLoganSource emLoganSource = (EmLoganSource)objs[0];
+                    EmLoganMetaSourceType emLoganMetaSourceType = (EmLoganMetaSourceType)objs[1];
+                    EmTargetTypes emTargetTypes = (EmTargetTypes)objs[2];
+                    
+                    LoganLibSourcePojo source = new LoganLibSourcePojo();
+                    source.setSourceAuthor(emLoganSource.getSourceAuthor());
+                    source.setSourceDescription(emLoganSource.getSourceDescription());
+                    source.setSourceDname(emLoganSource.getSourceDname());
+                    source.setSourceIsSystem(emLoganSource.getSourceIsSystem());
+                    source.setSourceLastUpdatedDate(emLoganSource.getSourceLastUpdatedDate());
+                    source.setSrcTargetTypeDisplayNls(emLoganSource.getSourceDescriptionNlsid());
+                    source.setSrctypeDname(emLoganMetaSourceType.getSrctypeDname());
+                    Integer sourceId = emLoganSource.getSourceId();
+                    int count  = 0;
+                    if(sourceId != null && rsmaps.size() > 0 )
+                    {
+                        for(EmLoganRuleSourceMap rsmap :rsmaps)
+                        {
+                            if(rsmap.getRsSourceId() != null && rsmap.getRsSourceId().equals(sourceId))
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                    source.setRulesUsing(count);
+                    
+                    sources.add(source);
+                }  
+                
+            }
+        }
     }
     
     
@@ -143,6 +193,18 @@ public class LoganLibSourcesBean {
 
     public String getSelectedtargetType() {
         return selectedtargetType;
+    }
+    
+    public void setSources(List<LoganLibSourcePojo> sources) {
+        this.sources = sources;
+    }
+
+    public List<LoganLibSourcePojo> getSources() {
+        if(sources == null)
+        {
+            logSourcesTabDisclosed(null);
+        }
+        return sources;
     }
     
     

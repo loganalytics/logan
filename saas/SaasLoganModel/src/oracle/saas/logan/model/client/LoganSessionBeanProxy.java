@@ -8,7 +8,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import oracle.saas.logan.model.persistance.EmLoganRuleSourceMap;
 import oracle.saas.logan.model.persistance.EmTargetTypes;
+import oracle.saas.logan.model.session.source.LoganRuleSourceMapSessionBean;
+import oracle.saas.logan.model.session.source.LoganSourceSessionBean;
 import oracle.saas.logan.model.session.util.LoganTargetTypes;
 
 public class LoganSessionBeanProxy {
@@ -42,14 +45,51 @@ public class LoganSessionBeanProxy {
             list = loganTargetTypesFacade.getEmTargetTypesFindAll();
             return  list;
         }
-    
     }
+    
+    
+    public static List<Object[]> getEmLoganSourceFindSources()
+    {
+        List<Object[]> list =  new ArrayList<Object[]>();
+        LoganSourceSessionBean loganSourceSessionBean = null;
+        try {
+             loganSourceSessionBean =
+                (LoganSourceSessionBean)context.lookup("saas-SaasLoganModel-LoganSourceSessionBean#oracle.saas.logan.model.session.source.LoganSourceSessionBean");
+            
+        } catch (NamingException e) {
+            //TODO log
+        }
+        if(loganSourceSessionBean == null)
+        {
+            return list;
+        } else{
+            list = loganSourceSessionBean.getEmLoganSourceFindSources();
+            return  list;
+        }
+    }
+    
+    
+    public static List<EmLoganRuleSourceMap> getEmLoganRuleSourceMap()
+    {
+        List<EmLoganRuleSourceMap> list =  new ArrayList<EmLoganRuleSourceMap>();
+         LoganRuleSourceMapSessionBean  loganRuleSourceMapSessionBean= null;
+        try {
+             loganRuleSourceMapSessionBean =
+                (LoganRuleSourceMapSessionBean)context.lookup("saas-SaasLoganModel-LoganRuleSourceMapSessionBean#oracle.saas.logan.model.session.source.LoganRuleSourceMapSessionBean");
+        } catch (NamingException e) {
+            //TODO log
+        }
+        if(loganRuleSourceMapSessionBean == null)
+        {
+            return list;
+        } else{
+            list = loganRuleSourceMapSessionBean.getEmLoganRuleSourceMapFindAll();
+            return  list;
+        }
+    }
+    
+    
 
-    
-    
-    
-    
-    
     
     //TODO replace the hard coded way
     private static Context getContext() throws NamingException {

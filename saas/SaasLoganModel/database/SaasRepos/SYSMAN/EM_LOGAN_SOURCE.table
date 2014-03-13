@@ -1,44 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>EM_LOGAN_RULE</name>
+  <name>EM_LOGAN_SOURCE</name>
   <columns>
     <column>
-      <name>RULE_INAME</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">128</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.Oracle9i</providerClass>
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_INAME</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ID</name>
+      <name>SOURCE_ID</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -60,10 +25,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ID</name>
+            <name>SOURCE_ID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -73,7 +38,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_SRCTYPE_INAME</name>
+      <name>SOURCE_INAME</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -95,10 +60,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_SRCTYPE_INAME</name>
+            <name>SOURCE_INAME</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -108,42 +73,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_TARGET_TYPE</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">64</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.Oracle9i</providerClass>
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_TARGET_TYPE</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_DNAME</name>
+      <name>SOURCE_SRCTYPE_INAME</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -165,10 +95,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_DNAME</name>
+            <name>SOURCE_SRCTYPE_INAME</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -178,7 +108,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_DNAME_NLSID</name>
+      <name>SOURCE_TARGET_TYPE</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -195,15 +125,15 @@
           <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <notNull>false</notNull>
+      <notNull>true</notNull>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_DNAME_NLSID</name>
+            <name>SOURCE_TARGET_TYPE</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -213,82 +143,12 @@
       </properties>
     </column>
     <column>
-      <name>RULE_DESCRIPTION</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">4000</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.Oracle9i</providerClass>
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_DESCRIPTION</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_DESCRIPTION_NLSID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">64</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.Oracle9i</providerClass>
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_DESCRIPTION_NLSID</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_SEVERITY</name>
+      <name>SOURCE_IS_SYSTEM</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">2</value>
+            <value class="java.lang.String">1</value>
           </entry>
           <entry>
             <key>scale</key>
@@ -300,15 +160,16 @@
           <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
+      <default class="java.lang.String">0</default>
       <notNull>true</notNull>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_SEVERITY</name>
+            <name>SOURCE_IS_SYSTEM</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -318,12 +179,12 @@
       </properties>
     </column>
     <column>
-      <name>RULE_RATIONALE</name>
+      <name>SOURCE_DNAME</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">4000</value>
+            <value class="java.lang.Long">128</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -335,15 +196,15 @@
           <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <notNull>false</notNull>
+      <notNull>true</notNull>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_RATIONALE</name>
+            <name>SOURCE_DNAME</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -353,7 +214,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_RATIONALE_NLSID</name>
+      <name>SOURCE_DNAME_NLSID</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -375,10 +236,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_RATIONALE_NLSID</name>
+            <name>SOURCE_DNAME_NLSID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -388,7 +249,77 @@
       </properties>
     </column>
     <column>
-      <name>RULE_OWNER</name>
+      <name>SOURCE_DESCRIPTION</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">4000</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">BYTE</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.Oracle9i</providerClass>
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>SOURCE_DESCRIPTION</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
+              <schemaName>SYSMAN</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>SOURCE_DESCRIPTION_NLSID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">64</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">BYTE</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.ora.Oracle9i</providerClass>
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>SOURCE_DESCRIPTION_NLSID</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
+              <schemaName>SYSMAN</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>SOURCE_AUTHOR</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -410,10 +341,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_OWNER</name>
+            <name>SOURCE_AUTHOR</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -423,7 +354,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_AUTHOR</name>
+      <name>SOURCE_OWNER</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -445,10 +376,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_AUTHOR</name>
+            <name>SOURCE_OWNER</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -458,7 +389,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_LAST_UPDATED_DATE</name>
+      <name>SOURCE_LAST_UPDATED_DATE</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
@@ -470,10 +401,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_LAST_UPDATED_DATE</name>
+            <name>SOURCE_LAST_UPDATED_DATE</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -483,7 +414,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_LAST_UPDATED_BY</name>
+      <name>SOURCE_LAST_UPDATED_BY</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -505,10 +436,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_LAST_UPDATED_BY</name>
+            <name>SOURCE_LAST_UPDATED_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -518,7 +449,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_EDIT_VERSION</name>
+      <name>SOURCE_EDIT_VERSION</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -540,10 +471,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_EDIT_VERSION</name>
+            <name>SOURCE_EDIT_VERSION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -553,7 +484,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_CRITICAL_EDIT_VERSION</name>
+      <name>SOURCE_CRITICAL_EDIT_VERSION</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -575,10 +506,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_CRITICAL_EDIT_VERSION</name>
+            <name>SOURCE_CRITICAL_EDIT_VERSION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -588,7 +519,7 @@
       </properties>
     </column>
     <column>
-      <name>RULE_IS_SYSTEM</name>
+      <name>SOURCE_IS_SECURE_CONTENT</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -611,226 +542,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_IS_SYSTEM</name>
+            <name>SOURCE_IS_SECURE_CONTENT</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ACTION_OBSERVATION</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">1</value>
-          </entry>
-          <entry>
-            <key>scale</key>
-            <value class="java.lang.Long">0</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <default class="java.lang.String">0</default>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ACTION_OBSERVATION</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ACTION_EVENT</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">1</value>
-          </entry>
-          <entry>
-            <key>scale</key>
-            <value class="java.lang.Long">0</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <default class="java.lang.String">0</default>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ACTION_EVENT</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ACTION_RULEMETRIC</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">1</value>
-          </entry>
-          <entry>
-            <key>scale</key>
-            <value class="java.lang.Long">0</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <default class="java.lang.String">0</default>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ACTION_RULEMETRIC</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ACTION_CENTRALIZED</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">1</value>
-          </entry>
-          <entry>
-            <key>scale</key>
-            <value class="java.lang.Long">0</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <default class="java.lang.String">0</default>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ACTION_CENTRALIZED</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ACTION_EVENT_BUNDLE</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">1</value>
-          </entry>
-          <entry>
-            <key>scale</key>
-            <value class="java.lang.Long">0</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <default class="java.lang.String">1</default>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ACTION_EVENT_BUNDLE</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RULE_ACTION_EVENT_BUNDLETIME</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">3</value>
-          </entry>
-          <entry>
-            <key>scale</key>
-            <value class="java.lang.Long">0</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <providerClass>oracle.javatools.db.ora.OracleDatabaseImpl</providerClass>
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <default class="java.lang.String">10</default>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>RULE_ACTION_EVENT_BUNDLETIME</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -842,17 +557,17 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>EM_LOGAN_RULE_CH1</name>
-      <checkCondition>RULE_IS_SYSTEM between 0 and 1</checkCondition>
+      <name>EM_LOGAN_SOURCE_CH1</name>
+      <checkCondition>SOURCE_IS_SECURE_CONTENT between 0 and 1</checkCondition>
       <enabled>true</enabled>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_CH1</name>
+            <name>EM_LOGAN_SOURCE_CH1</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -863,101 +578,17 @@
       </properties>
     </constraint>
     <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>EM_LOGAN_RULE_CH2</name>
-      <checkCondition>RULE_ACTION_OBSERVATION between 0 and 1</checkCondition>
+      <name>EM_LOGAN_SOURCE_CH2</name>
+      <checkCondition>SOURCE_IS_SYSTEM between 0 and 1</checkCondition>
       <enabled>true</enabled>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_CH2</name>
+            <name>EM_LOGAN_SOURCE_CH2</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>CheckConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>EM_LOGAN_RULE_CH3</name>
-      <checkCondition>RULE_ACTION_EVENT between 0 and 1</checkCondition>
-      <enabled>true</enabled>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_CH3</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>CheckConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>EM_LOGAN_RULE_CH4</name>
-      <checkCondition>RULE_ACTION_RULEMETRIC between 0 and 1</checkCondition>
-      <enabled>true</enabled>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_CH4</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>CheckConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>EM_LOGAN_RULE_CH5</name>
-      <checkCondition>RULE_ACTION_CENTRALIZED between 0 and 1</checkCondition>
-      <enabled>true</enabled>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_CH5</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
-              <schemaName>SYSMAN</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>CheckConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>EM_LOGAN_RULE_CH6</name>
-      <checkCondition>RULE_ACTION_EVENT_BUNDLE between 0 and 1</checkCondition>
-      <enabled>true</enabled>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_CH6</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -968,12 +599,12 @@
       </properties>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>EM_LOGAN_RULE_FK1</name>
+      <name>EM_LOGAN_SOURCE_FK1</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RULE_SRCTYPE_INAME</name>
+          <name>SOURCE_SRCTYPE_INAME</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>EM_LOGAN_RULE</name>
+            <name>EM_LOGAN_SOURCE</name>
             <schemaName>SYSMAN</schemaName>
             <type>TABLE</type>
           </parent>
@@ -987,13 +618,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_FK1</name>
+            <name>EM_LOGAN_SOURCE_FK1</name>
             <childObjectNames>
-              <childObjectName>RULE_SRCTYPE_INAME</childObjectName>
+              <childObjectName>SOURCE_SRCTYPE_INAME</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -1014,12 +645,12 @@
       </referenceID>
     </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>EM_LOGAN_RULE_PK</name>
+      <name>EM_LOGAN_SOURCE_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RULE_SRCTYPE_INAME</name>
+          <name>SOURCE_TARGET_TYPE</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>EM_LOGAN_RULE</name>
+            <name>EM_LOGAN_SOURCE</name>
             <schemaName>SYSMAN</schemaName>
             <type>TABLE</type>
           </parent>
@@ -1027,9 +658,9 @@
           <type>COLUMN</type>
         </columnID>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RULE_TARGET_TYPE</name>
+          <name>SOURCE_SRCTYPE_INAME</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>EM_LOGAN_RULE</name>
+            <name>EM_LOGAN_SOURCE</name>
             <schemaName>SYSMAN</schemaName>
             <type>TABLE</type>
           </parent>
@@ -1037,9 +668,9 @@
           <type>COLUMN</type>
         </columnID>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RULE_INAME</name>
+          <name>SOURCE_INAME</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>EM_LOGAN_RULE</name>
+            <name>EM_LOGAN_SOURCE</name>
             <schemaName>SYSMAN</schemaName>
             <type>TABLE</type>
           </parent>
@@ -1049,9 +680,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>EM_LOGAN_RULE_PK</name>
+        <name>EM_LOGAN_SOURCE_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>EM_LOGAN_RULE</name>
+          <name>EM_LOGAN_SOURCE</name>
           <schemaName>SYSMAN</schemaName>
           <type>TABLE</type>
         </parent>
@@ -1062,15 +693,15 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_PK</name>
+            <name>EM_LOGAN_SOURCE_PK</name>
             <childObjectNames>
-              <childObjectName>RULE_SRCTYPE_INAME</childObjectName>
-              <childObjectName>RULE_TARGET_TYPE</childObjectName>
-              <childObjectName>RULE_INAME</childObjectName>
+              <childObjectName>SOURCE_TARGET_TYPE</childObjectName>
+              <childObjectName>SOURCE_SRCTYPE_INAME</childObjectName>
+              <childObjectName>SOURCE_INAME</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -1081,12 +712,12 @@
       </properties>
     </constraint>
     <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>EM_LOGAN_RULE_U1</name>
+      <name>EM_LOGAN_SOURCE_U1</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RULE_ID</name>
+          <name>SOURCE_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>EM_LOGAN_RULE</name>
+            <name>EM_LOGAN_SOURCE</name>
             <schemaName>SYSMAN</schemaName>
             <type>TABLE</type>
           </parent>
@@ -1096,9 +727,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>EM_LOGAN_RULE_U1</name>
+        <name>EM_LOGAN_SOURCE_U1</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>EM_LOGAN_RULE</name>
+          <name>EM_LOGAN_SOURCE</name>
           <schemaName>SYSMAN</schemaName>
           <type>TABLE</type>
         </parent>
@@ -1109,13 +740,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_U1</name>
+            <name>EM_LOGAN_SOURCE_U1</name>
             <childObjectNames>
-              <childObjectName>RULE_ID</childObjectName>
+              <childObjectName>SOURCE_ID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -1128,18 +759,18 @@
   </constraints>
   <indexes>
     <indexe>
-      <name>EM_LOGAN_RULE_PK</name>
+      <name>EM_LOGAN_SOURCE_PK</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>RULE_SRCTYPE_INAME</expressionSource>
+          <expressionSource>SOURCE_TARGET_TYPE</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
         <columnExpression>
-          <expressionSource>RULE_TARGET_TYPE</expressionSource>
+          <expressionSource>SOURCE_SRCTYPE_INAME</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
         <columnExpression>
-          <expressionSource>RULE_INAME</expressionSource>
+          <expressionSource>SOURCE_INAME</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
@@ -1149,11 +780,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_PK</name>
-            <identifier class="java.math.BigDecimal">70426</identifier>
+            <name>EM_LOGAN_SOURCE_PK</name>
+            <identifier class="java.math.BigDecimal">70386</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -1165,8 +796,12 @@
           <key>OracleStorageProperties</key>
           <value class="oracle.javatools.db.ora.OracleStorageProperties">
             <bufferMode>DEFAULT</bufferMode>
+            <initialExtent>65536</initialExtent>
             <initrans>2</initrans>
             <logging>true</logging>
+            <maxExtent>0</maxExtent>
+            <minExtent>1</minExtent>
+            <nextExtent>1048576</nextExtent>
             <percentFree>10</percentFree>
             <tablespaceID class="oracle.javatools.db.ReferenceID">
               <name>MGMT_TABLESPACE</name>
@@ -1181,10 +816,10 @@
       <systemGenerated>true</systemGenerated>
     </indexe>
     <indexe>
-      <name>EM_LOGAN_RULE_U1</name>
+      <name>EM_LOGAN_SOURCE_U1</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>RULE_ID</expressionSource>
+          <expressionSource>SOURCE_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
@@ -1194,11 +829,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>EM_LOGAN_RULE_U1</name>
-            <identifier class="java.math.BigDecimal">70427</identifier>
+            <name>EM_LOGAN_SOURCE_U1</name>
+            <identifier class="java.math.BigDecimal">70387</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>EM_LOGAN_RULE</name>
-              <identifier class="java.math.BigDecimal">70425</identifier>
+              <name>EM_LOGAN_SOURCE</name>
+              <identifier class="java.math.BigDecimal">70385</identifier>
               <schemaName>SYSMAN</schemaName>
               <type>TABLE</type>
             </parent>
@@ -1210,8 +845,12 @@
           <key>OracleStorageProperties</key>
           <value class="oracle.javatools.db.ora.OracleStorageProperties">
             <bufferMode>DEFAULT</bufferMode>
+            <initialExtent>65536</initialExtent>
             <initrans>2</initrans>
             <logging>true</logging>
+            <maxExtent>0</maxExtent>
+            <minExtent>1</minExtent>
+            <nextExtent>1048576</nextExtent>
             <percentFree>10</percentFree>
             <tablespaceID class="oracle.javatools.db.ReferenceID">
               <name>MGMT_TABLESPACE</name>
@@ -1228,14 +867,10 @@
   </indexes>
   <properties>
     <entry>
-      <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
-      <value class="java.lang.String">SaasRepos</value>
-    </entry>
-    <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>EM_LOGAN_RULE</name>
-        <identifier class="java.math.BigDecimal">70425</identifier>
+        <name>EM_LOGAN_SOURCE</name>
+        <identifier class="java.math.BigDecimal">70385</identifier>
         <schemaName>SYSMAN</schemaName>
         <type>TABLE</type>
       </value>
@@ -1244,8 +879,12 @@
       <key>OracleStorageProperties</key>
       <value class="oracle.javatools.db.ora.OracleStorageProperties">
         <bufferMode>DEFAULT</bufferMode>
+        <initialExtent>65536</initialExtent>
         <initrans>1</initrans>
         <logging>true</logging>
+        <maxExtent>0</maxExtent>
+        <minExtent>1</minExtent>
+        <nextExtent>1048576</nextExtent>
         <percentFree>10</percentFree>
         <tablespaceID class="oracle.javatools.db.ReferenceID">
           <name>MGMT_TABLESPACE</name>

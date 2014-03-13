@@ -6,6 +6,9 @@
   <view id="rule">
     <page>/library/rule/rule.jspx</page>
   </view>
+  <view id="library">
+    <page>/core/loganalytics/log-analytics-library.jspx</page>
+  </view>
   <managed-bean id="__1">
     <managed-bean-name>ParserListBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.parser.ParserListBean</managed-bean-class>

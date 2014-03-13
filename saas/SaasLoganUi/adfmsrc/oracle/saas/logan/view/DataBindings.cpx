@@ -6,11 +6,15 @@
           usageId="oracle_saas_logan_view_log_source_detailsPageDef"/>
     <page path="/core/loganalytics/log-analytics-library.jspx"
           usageId="oracle_saas_logan_view_log_analytics_libraryPageDef"/>
+    <page path="/core/loganalytics/templateDef.jspx"
+          usageId="oracle_sysman_core_logan_view_templateDefPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="oracle_saas_logan_view_log_source_detailsPageDef"
           path="core.loganalytics.logsource.log_source_detailsPageDef"/>
     <page id="oracle_saas_logan_view_log_analytics_libraryPageDef"
           path="core.loganalytics.log_analytics_libraryPageDef"/>
+    <page id="oracle_sysman_core_logan_view_templateDefPageDef"
+          path="core.loganalytics.templateDefPageDef"/>
   </pageDefinitionUsages>
 </Application>
