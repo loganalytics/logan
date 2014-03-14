@@ -155,62 +155,62 @@
                                                                                            disabledIcon="/images/view_dis.png"
                                                                                            id="ctb3"
                                                                                            action="goto_core-logan-rule-view"> -->
-                                                                  <af:commandToolbarButton text="#{coreloganalyticsuiBundle.SHOW_DETAILS}" id="prctbu3"
-                                                                                           icon="/images/view_ena.png"
-                                                                                           disabled="#{viewScope.core_loganalytics_ui_loganLibParsersBean.showDetailsDisabled}"
-                                                                                           disabledIcon="/images/view_dis.png"
-                                                                                           action="goto_core-logan-rule-view">
-                                                                                      <af:setPropertyListener from="VIEW" type="action"
-                                                                                                  to="#{sdk_ipmbean.params.mode}"/>
-                                                                                      <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRuleBean.selectedRuleId}"
-                                                                                                  type="action" to="#{sdk_ipmbean.params.ruleId}"/>
-                                                                                                  
-                                                                    <!--<af:setPropertyListener from="VIEW" type="action"
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.SHOW_DETAILS}"
+                                                                                                 id="prctbu3"
+                                                                                                 icon="/images/view_ena.png"
+                                                                                                 disabled="#{viewScope.core_loganalytics_ui_loganLibParsersBean.showDetailsDisabled}"
+                                                                                                 disabledIcon="/images/view_dis.png"
+                                                                                                 action="goto_core-logan-rule-view">
+                                                                            <af:setPropertyListener from="VIEW"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRuleBean.selectedRuleId}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.ruleId}"/>
+                                                                            <!--<af:setPropertyListener from="VIEW" type="action"
                                                                                             to="#{sdk_ipmbean.params.mode}"/>
                                                                     <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
                                                                                             type="action"
                                                                                             to="#{sdk_ipmbean.params.ruleId}"/>-->
-                                                                  </af:commandToolbarButton>
-                                                                  <af:commandToolbarButton text="Edit"
-                                                                                           disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.editDisabled}"
-                                                                                           icon="/images/edit_ena.png"
-                                                                                           disabledIcon="/images/update_dis.png"
-                                                                                           id="ctb4"
-                                                                                           action="goto_core-logan-rule-view">
-                                                                    <!--<af:setPropertyListener from="EDIT" type="action"
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="Edit"
+                                                                                                 disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.editDisabled}"
+                                                                                                 icon="/images/edit_ena.png"
+                                                                                                 disabledIcon="/images/update_dis.png"
+                                                                                                 id="ctb4"
+                                                                                                 action="goto_core-logan-rule-view">
+                                                                            <!--<af:setPropertyListener from="EDIT" type="action"
                                                                                             to="#{sdk_ipmbean.params.mode}"/>
                                                                     <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
                                                                                             type="action"
                                                                                             to="#{sdk_ipmbean.params.ruleId}"/>-->
-                                                                  </af:commandToolbarButton>
-                                                                  <af:commandToolbarButton text="Remove"
-                                                                                           disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.deleteDisabled}"
-                                                                                           icon="/images/delete_ena.png"
-                                                                                           disabledIcon="/images/delete_dis.png"
-                                                                                           id="ctb5">
-                                                                    <!--<af:showPopupBehavior popupId="::dp2"/>-->
-                                                                  </af:commandToolbarButton>
-                                                                  <af:commandToolbarButton text="Associated Targets"
-                                                                                           disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.assocTargetsDisabled}"
-                                                                                           id="ctb6"
-                                                                                           icon="/images/emskin/fusionfx/em_gn_targets.png"
-                                                                                           disabledIcon="/images/emskin/fusionfx/em_gn_targets.png"
-                                                                                           action="goto_core-logan-rule-view">
-                                                                    <!--<af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="Remove"
+                                                                                                 disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.deleteDisabled}"
+                                                                                                 icon="/images/delete_ena.png"
+                                                                                                 disabledIcon="/images/delete_dis.png"
+                                                                                                 id="ctb5">
+                                                                            <!--<af:showPopupBehavior popupId="::dp2"/>-->
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="Associated Targets"
+                                                                                                 disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.assocTargetsDisabled}"
+                                                                                                 id="ctb6"
+                                                                                                 icon="/images/emskin/fusionfx/em_gn_targets.png"
+                                                                                                 disabledIcon="/images/emskin/fusionfx/em_gn_targets.png"
+                                                                                                 action="goto_core-logan-rule-view">
+                                                                            <!--<af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
                                                                                             type="action"
                                                                                             to="#{sdk_ipmbean.params.ruleId}"/>                               
                                                                     <af:setPropertyListener from="#{bindings.EmLoganRuleVO.currentRow.ruleDname}"
                                                                                             type="action"                          
                                                                                             to="#{sdk_ipmbean.params.ruleName}"/>-->
-                                        
-                                                                  </af:commandToolbarButton>   
-                                                                </af:toolbar>
-                                                                
-                                                            </f:facet>
-                                                        </af:panelCollection>
-                                                    </f:facet>
-                                                </af:panelStretchLayout>
-                                            </af:showDetailItem>
+                                                                        </af:commandToolbarButton>
+                                                                    </af:toolbar>
+                                                                </f:facet>
+                                                            </af:panelCollection>
+                                                        </f:facet>
+                                                    </af:panelStretchLayout>
+                                                </af:showDetailItem>
                                                 <!-- disclosureListener="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.logSourcesTabDisclosed}" -->
                                                 <af:showDetailItem text="#{coreloganalyticsuiBundle.LOG_SOURCES}"
                                                                    id="sdi2" styleClass="AFStretchWidth"
@@ -279,12 +279,12 @@
                                                                           var="rowsr"
                                                                           emptyText="#{coreloganalyticsuiBundle.NO_LOG_SOURCES_TO_DISPLAY}"
                                                                           rowBandingInterval="1" rowSelection="single"
+                                                                          selectionListener="#{viewScope.libSourcesBean.sourceSelectionListener}"
                                                                           id="srcs" columnStretching="multiple"
                                                                           styleClass="AFStretchWidth"
                                                                           summary="#{coreloganalyticsuiBundle.LOG_SOURCES_TAB_SUMM}"
                                                                           shortDesc="#{coreloganalyticsuiBundle.LOG_SOURCES_TAB_SUMM}"
                                                                           contentDelivery="immediate" immediate="true">
-                                                    
                                                                     <af:column sortProperty="RuleDname" sortable="true"
                                                                                headerText="#{coreloganalyticsuiBundle.BLANK}"
                                                                                id="c14" width="20">
@@ -327,9 +327,7 @@
                                                                                headerText="#{coreloganalyticsuiBundle.RULES_USING}"
                                                                                id="scol6" width="4%">
                                                                         <af:commandLink text="#{rowsr.rulesUsing}"
-                                                                                        id="commandLink1">
-                                
-                                                                        </af:commandLink>
+                                                                                        id="commandLink1"></af:commandLink>
                                                                     </af:column>
                                                                     <af:column sortProperty="SourceDescription"
                                                                                sortable="true"
@@ -364,117 +362,119 @@
                                                                         </af:outputText>
                                                                     </af:column>
                                                                 </af:table>
-                                                            
-                                                            
                                                                 <f:facet name="toolbar">
-                            <af:toolbar id="toolbar1">
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.CREATE}"
-                                                   icon="/images/new_ena.png"
-                                                   id="ctbu1"
-                                                   action = "goto_core-log-source-details">
-                            <af:setPropertyListener from="CREATE" type="action"
-                                                    to="#{sdk_ipmbean.params.mode}"/>
-                          </af:commandToolbarButton>
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.CREATE_LIKE}"
-                                                   id="ctbu2"
-                                                   icon="/images/createlike_ena.png"
-                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.createLikeDisabled}"
-                                                   disabledIcon="/images/createlike_dis.png"
-                                                   action = "goto_core-log-source-details">
-                            <af:showPopupBehavior popupId="sp4"/>
-                          </af:commandToolbarButton>
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.SHOW_DETAILS}"
-                                                   id="ctbu3"
-                                                   icon="/images/view_ena.png"
-                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.showDetailsDisabled}"
-                                                   disabledIcon="/images/view_dis.png"
-                                                   action="goto_core-logan-source-view">
-                            <af:setPropertyListener from="VIEW" type="action"
-                                                    to="#{sdk_ipmbean.params.mode}"/>
-                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceId}"
-                                                    type="action"
-                                                    to="#{sdk_ipmbean.params.sourceId}"/>
-                          </af:commandToolbarButton>
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.EDIT}"
-                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.editDisabled}"
-                                                   id="ctbu4"
-                                                   icon="/images/edit_ena.png"
-                                                   disabledIcon="/images/update_dis.png"
-                                                   action="goto_core-log-source-details">
-                            <af:setPropertyListener from="EDIT" type="action"
-                                                    to="#{sdk_ipmbean.params.mode}"/>
-                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceId}"
-                                                    type="action"
-                                                    to="#{sdk_ipmbean.params.sourceId}"/>
-                          </af:commandToolbarButton>
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.REMOVE}"
-                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.deleteDisabled}"
-                                                   id="ctbu5"
-                                                   icon="/images/delete_ena.png"
-                                                   disabledIcon="/images/delete_dis.png">
-                      
-                          </af:commandToolbarButton>
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.EXTENDED_FIELDS}"
-                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.editDisabled}"
-                                                   id="ctbu6"
-                                                   icon="/core/loganalytics/images/mapping.directToField.png"
-                                                   disabledIcon="/core/loganalytics/images/mapping.directToField_dis.png"
-                                                   action="goto_core-log-source-field-setting">
-                            <af:setPropertyListener from="EDIT" type="action"
-                                                    to="#{sdk_ipmbean.params.mode}"/>
-                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceId}"
-                                                    type="action"
-                                                    to="#{sdk_ipmbean.params.sourceId}"/>
-                          </af:commandToolbarButton>
-                          <af:commandToolbarButton text="#{coreloganalyticsuiBundle.FIELD_REFERENCES}"
-                                                   disabled="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.editDisabled}"
-                                                   id="ctbu7"
-                                                   icon="/core/loganalytics/images/keyflexfield_ena.png"
-                                                   disabledIcon="/core/loganalytics/images/keyflexfield_dis.png"
-                                                   action="goto_core-log-source-field-ref">
-                            <af:setPropertyListener from="EDIT" type="action"
-                                                    to="#{sdk_ipmbean.params.mode}"/>
-                            <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceId}"
-                                                    type="action"
-                                                    to="#{sdk_ipmbean.params.sourceId}"/>
-                          </af:commandToolbarButton>
-                          <af:popup id="sp4" contentDelivery="lazyUncached"
-                                    popupFetchListener="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.createLikePopupFetchListener}">
-                            <af:dialog id="d4" closeIconVisible="false"
-                                       title="#{coreloganalyticsuiBundle.CREATE_LIKE}"
-                                       dialogListener="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.sourceCreateLikeListener}"
-                                       type="cancel" resize="on">
-                              <af:panelFormLayout id="clpfl2"  rows="1"
-                                                    labelWidth="85">
-                                <af:inputText label="#{coreloganalyticsuiBundle.SOURCE_NAME}"
-                                              id="citl3" required="true"
-                                              value="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceName}"
-                                              columns="55"/>
-                              </af:panelFormLayout>
-                              <f:facet name="buttonBar">
-                                <af:panelGroupLayout id="pgl1">
-                                  <af:commandButton text="#{coreloganalyticsuiBundle.CONTINUE}"
-                                                    action = "goto_core-log-source-details"
-                                                    id="cb2">
-                                    <af:setPropertyListener from="CREATE_LIKE"
-                                                            type="action"
-                                                            to="#{sdk_ipmbean.params.mode}"/>
-                                    <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceId}"
-                                                            type="action"
-                                                            to="#{sdk_ipmbean.params.sourceId}"/>
-                                    <af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.selectedSourceName}"
-                                                            type="action"
-                                                            to="#{sdk_ipmbean.params.create_like_logan_source_name}"/>
-                                  </af:commandButton>
-                                </af:panelGroupLayout>
-                              </f:facet>
-                            </af:dialog>
-                          </af:popup>
-                        </af:toolbar>
-                         </f:facet>
+                                                                    <af:toolbar id="toolbar1">
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.CREATE}"
+                                                                                                 icon="/images/new_ena.png"
+                                                                                                 id="ctbu1"
+                                                                                                 action="goto_core-log-source-details">
+                                                                            <af:setPropertyListener from="CREATE"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.CREATE_LIKE}"
+                                                                                                 id="ctbu2"
+                                                                                                 icon="/images/createlike_ena.png"
+                                                                                                 disabled="#{viewScope.libSourcesBean.createLikeDisabled}"
+                                                                                                 disabledIcon="/images/createlike_dis.png"
+                                                                                                 action="goto_core-log-source-details">
+                                                                            <af:showPopupBehavior popupId="sp4"/>
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.SHOW_DETAILS}"
+                                                                                                 id="ctbu3"
+                                                                                                 icon="/images/view_ena.png"
+                                                                                                 disabled="#{viewScope.libSourcesBean.showDetailsDisabled}"
+                                                                                                 disabledIcon="/images/view_dis.png"
+                                                                                                 action="goto_core-logan-source-view">
+                                                                            <af:setPropertyListener from="VIEW"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourceId}"/>
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.EDIT}"
+                                                                                                 disabled="#{viewScope.libSourcesBean.editDisabled}"
+                                                                                                 id="ctbu4"
+                                                                                                 icon="/images/edit_ena.png"
+                                                                                                 disabledIcon="/images/update_dis.png"
+                                                                                                 action="goto_core-log-source-details">
+                                                                            <af:setPropertyListener from="EDIT"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourceId}"/>
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.REMOVE}"
+                                                                                                 disabled="#{viewScope.libSourcesBean.deleteDisabled}"
+                                                                                                 id="ctbu5"
+                                                                                                 icon="/images/delete_ena.png"
+                                                                                                 disabledIcon="/images/delete_dis.png"></af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.EXTENDED_FIELDS}"
+                                                                                                 disabled="#{viewScope.libSourcesBean.editDisabled}"
+                                                                                                 id="ctbu6"
+                                                                                                 icon="/core/loganalytics/images/mapping.directToField.png"
+                                                                                                 disabledIcon="/core/loganalytics/images/mapping.directToField_dis.png"
+                                                                                                 action="goto_core-log-source-field-setting">
+                                                                            <af:setPropertyListener from="EDIT"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourceId}"/>
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.FIELD_REFERENCES}"
+                                                                                                 disabled="#{viewScope.libSourcesBean.editDisabled}"
+                                                                                                 id="ctbu7"
+                                                                                                 icon="/core/loganalytics/images/keyflexfield_ena.png"
+                                                                                                 disabledIcon="/core/loganalytics/images/keyflexfield_dis.png"
+                                                                                                 action="goto_core-log-source-field-ref">
+                                                                            <af:setPropertyListener from="EDIT"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourceId}"/>
+                                                                        </af:commandToolbarButton>
+                                                                        <af:popup id="sp4"
+                                                                                  contentDelivery="lazyUncached"
+                                                                                  popupFetchListener="#{viewScope.libSourcesBean.createLikePopupFetchListener}">
+                                                                            <af:dialog id="d4" closeIconVisible="false"
+                                                                                       title="#{coreloganalyticsuiBundle.CREATE_LIKE}"
+                                                                                       dialogListener="#{viewScope.libSourcesBean.sourceCreateLikeListener}"
+                                                                                       type="cancel" resize="on">
+                                                                                <af:panelFormLayout id="clpfl2" rows="1"
+                                                                                                    labelWidth="85">
+                                                                                    <af:inputText label="#{coreloganalyticsuiBundle.SOURCE_NAME}"
+                                                                                                  id="citl3"
+                                                                                                  required="true"
+                                                                                                  value="#{viewScope.libSourcesBean.selectedSourceName}"
+                                                                                                  columns="55"/>
+                                                                                </af:panelFormLayout>
+                                                                                <f:facet name="buttonBar">
+                                                                                    <af:panelGroupLayout id="pgl12">
+                                                                                        <af:commandButton text="#{coreloganalyticsuiBundle.CONTINUE}"
+                                                                                                          action="goto_core-log-source-details"
+                                                                                                          id="cb2">
+                                                                                            <af:setPropertyListener from="CREATE_LIKE"
+                                                                                                                    type="action"
+                                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
+                                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
+                                                                                                                    type="action"
+                                                                                                                    to="#{sdk_ipmbean.params.sourceId}"/>
+                                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceName}"
+                                                                                                                    type="action"
+                                                                                                                    to="#{sdk_ipmbean.params.create_like_logan_source_name}"/>
+                                                                                        </af:commandButton>
+                                                                                    </af:panelGroupLayout>
+                                                                                </f:facet>
+                                                                            </af:dialog>
+                                                                        </af:popup>
+                                                                    </af:toolbar>
+                                                                </f:facet>
                                                             </af:panelCollection>
                                                         </f:facet>
-
                                                     </af:panelStretchLayout>
                                                 </af:showDetailItem>
                                                 <af:showDetailItem text="#{coreloganalyticsuiBundle.PARSERS}" id="sdi3"

@@ -13,9 +13,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">71.79883</property>
+         name="y">276.39648</property>
       <property
-         name="x">55.5</property>
+         name="x">-337.5</property>
    </View>
    <View
       id="View9">
@@ -28,9 +28,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">173.79883</property>
+         name="y">-17.304688</property>
       <property
-         name="x">64.35156</property>
+         name="x">-26.648438</property>
    </View>
    <View
       id="View10">
@@ -43,9 +43,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">275.79883</property>
+         name="y">66.396484</property>
       <property
-         name="x">76.68262</property>
+         name="x">-364.31738</property>
    </View>
    <View
       id="View11">
@@ -58,9 +58,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">377.79883</property>
+         name="y">273.74707</property>
       <property
-         name="x">55.5</property>
+         name="x">-219.5</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -70,6 +70,31 @@
       <property
          name="fromOutcome">goto_core-logan-rule-view</property>
       <property
-         name="sdm:polyPoints">L50,35.682617,275.44824,23.351562,173.44824,L50</property>
+         name="sdm:polyPoints">R46,-323.31738,62.5459,-67.64844,-17.655273,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View12">
+      <property
+         name="activityId">log-source-details</property>
+      <property
+         name="page">/core/loganalytics/logsource/log-source-details.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>log-source-details&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">91.34473</property>
+      <property
+         name="x">-18.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase14"
+      from="View10"
+      to="View12">
+      <property
+         name="fromOutcome">goto_core-log-source-details</property>
+      <property
+         name="sdm:polyPoints">R54,-323.31738,69.5459,-59.5,90.99414,L50</property>
    </ControlFlowCase>
 </SDM>
