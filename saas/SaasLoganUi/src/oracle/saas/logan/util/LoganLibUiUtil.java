@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 
 import java.util.logging.Logger;
@@ -23,9 +24,12 @@ import javax.naming.NamingException;
 import oracle.adf.view.rich.component.rich.data.RichTable;
 
 import oracle.saas.logan.model.client.LoganSessionBeanProxy;
+import oracle.saas.logan.model.persistance.EmLoganMetaSourceType;
 import oracle.saas.logan.model.persistance.EmTargetTypes;
 
 import oracle.saas.logan.model.session.rule.LoganRuleSession;
+
+import oracle.saas.logan.model.session.util.LoganMetaSourceTypeSession;
 
 import org.apache.myfaces.trinidad.model.RowKeySet;
 
@@ -39,6 +43,9 @@ public class LoganLibUiUtil {
     
     private static final String LOG_RULES_SESS_FACADE_EJB_JNDI_NAME = 
         "saas-SaasLoganModel-LoganRuleSession#oracle.saas.logan.model.session.rule.LoganRuleSession";
+    
+    private static final String LOG_META_SOURCE_TYPE_SESS_FACADE_EJB_JNDI_NAME = 
+        "saas-SaasLoganModel-LoganMetaSourceTypeSession#oracle.saas.logan.model.session.util.LoganMetaSourceTypeSession";
 
     
     public LoganLibUiUtil() {
@@ -188,6 +195,31 @@ public class LoganLibUiUtil {
         return logRulesSessionFacadeEJB;
     }
     
+    /**
+     * The EJB interface for Log Meta Source Type
+     * @return
+     */
+    public static LoganMetaSourceTypeSession getLoganMetaSourceTypeSessionFacadeEJB(){
+        LoganMetaSourceTypeSession loganMetaSourceTypeSession = null;
+        try{
+            final Context context = getInitialContext();
+            loganMetaSourceTypeSession =
+                (LoganMetaSourceTypeSession) context.lookup(LOG_META_SOURCE_TYPE_SESS_FACADE_EJB_JNDI_NAME);
+        }
+        catch (CommunicationException ex){
+            if(s_log.isLoggable(Level.FINE))
+                s_log.logp(Level.FINE,LoganLibUiUtil.class.getName(),"getLoganMetaSourceTypeSessionFacadeEJB",
+                           "*** A CommunicationException was raised. " +
+                            "This typically occurs when the target WebLogic server is not running", ex);
+        }
+        catch (Exception ex){
+            if(s_log.isLoggable(Level.FINE))
+                s_log.logp(Level.FINE,LoganLibUiUtil.class.getName(),"getLoganMetaSourceTypeSessionFacadeEJB",
+                           "*** Error occurred trying to get  getLoganMetaSourceTypeSessionFacadeEJB: ", ex);
+        }
+        return loganMetaSourceTypeSession;
+    }
+    
     private static Context getInitialContext() throws NamingException {
         Hashtable env = new Hashtable();
         // WebLogic Server 10.x/12.x connection details
@@ -255,6 +287,69 @@ public class LoganLibUiUtil {
         return retval;
     }
     
+    /**
+      * Returns the system event severity levels as a list of SelectItems having
+      * levels of INFORMATIONAL, WARNING, CRITICAL.
+      * 
+      * @param loganBundle
+      *            the logan bundle
+      * @return list of SelectItems of the system event severity levels
+      */
+    public static List<SelectItem> getRuleSeverityList(ResourceBundle loganBundle){
+        List<SelectItem> severityList = new ArrayList<SelectItem>();
+        severityList.add(new SelectItem("18",
+                                        UiUtil.getUiString("INFORMATIONAL")));
+        severityList.add(new SelectItem("20",
+                                        UiUtil.getUiString("WARNING")));
+        severityList.add(new SelectItem("25",
+                                        UiUtil.getUiString("CRITICAL")));
+        return severityList;
+    }
+    
+    /**
+     * List of Log Source types as SelectItem with value = SrctypeIname and
+     * label = SrctypeDname.
+     * @return List of Log Source types
+     */
+    public static List<SelectItem> getSourceTypesList()
+    {
+        return getSourceTypesList(false);
+    }
 
+    /**
+      * List of Log Source types as SelectItem with value = SrctypeIname and
+      * label = SrctypeDname. If "includeAll" is true, adds one more option to
+      * the select list "ALL", "All".
+      * 
+      * @param includeAll
+      *            the include all
+      * @return the source types list
+      */
+    public static List<SelectItem> getSourceTypesList(boolean includeAll){
+        List<SelectItem> sourceTypeList = new ArrayList<SelectItem>();
+        List<String> typeDisplayNames = new ArrayList<String>();
+        List<EmLoganMetaSourceType> pojos = getLoganMetaSourceTypeSessionFacadeEJB().getEmLoganMetaSourceTypeFindAll();
 
+        Map<String, String> typDispToType = new HashMap<String, String>();
+
+        if (includeAll) {
+            sourceTypeList.add(new SelectItem("ALL", LoganUiModelUtil.getUiString("ALL")));
+        }
+
+        for (EmLoganMetaSourceType pojo : pojos) {
+
+            String stype = pojo.getSrctypeIname();
+            //TODO use sdk provided nls handling
+            //String tdisplaytype = TargetMetricUtil.getLocalizedTargetTypeLabel(ttype);
+            String sdisplaytype = pojo.getSrctypeDname();
+            typeDisplayNames.add(sdisplaytype);
+            typDispToType.put(sdisplaytype, stype);
+        }
+
+        Collections.sort(typeDisplayNames);
+        for (String sdname : typeDisplayNames) {
+            sourceTypeList.add(new SelectItem(typDispToType.get(sdname), sdname));
+        }
+        return sourceTypeList;
+    }
 }

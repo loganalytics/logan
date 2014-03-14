@@ -47,7 +47,7 @@ public class UiUtil
     protected static int ERRMSG=1;
 
     public static final String S_UI_MSG_CLASS = 
-                                "oracle.sysman.core.loganalytics.ui.CoreLoganalyticsUiMsg";
+                                "oracle.saas.logan.view.SaasLoganUiBundle";
   
   
     public static Locale getBrowserLocale()

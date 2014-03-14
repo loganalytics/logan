@@ -31,7 +31,7 @@
                                             <af:panelTabbed id="pt2" styleClass="AFStretchWidth">
                                                 <af:showDetailItem text="#{coreloganalyticsuiBundle.LOG_MONITORING_RULES}" id="sdi1" 
                                                                styleClass="AFStretchWidth" stretchChildren="first"
-                                                               disclosureListener="#{viewScope.libSourcesBean.logSourcesTabDisclosed}">
+                                                                   disclosed="true">
                                                 <af:panelStretchLayout id="ps1l3" topHeight="auto" bottomHeight="0">
                                                     <f:facet name="top">
                                                         <af:panelGroupLayout>

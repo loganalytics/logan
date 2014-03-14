@@ -20,51 +20,92 @@
                                     <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
                                                                            disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
                                                                            shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}">
-                                        <af:panelFormLayout id="pfl1">
-                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.dname}" 
-                                                          label="#{coreloganalyticsuiBundle.RULE}"
-                                                          rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
-                                                          shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it1"
-                                                          columns="65" readOnly="true">
-                                            </af:inputText>
-                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.iname}" 
-                                                          rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
-                                                          label="#{coreloganalyticsuiBundle.RULE}"
-                                                          shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it2"
-                                                          validator="#{viewScope.core_loganalytics_ui_logRuleViewBean.validateRuleName}"
-                                                          columns="65" required="true" autoTab="true">
-                                            </af:inputText>
-                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.author}" label="#{coreloganalyticsuiBundle.AUTHOR}"
-                                                          columns="65"
-                                                          maximumLength="#{bindings.ruleAuthor.hints.precision}"
-                                                          shortDesc="#{coreloganalyticsuiBundle.AUTHOR}" id="it12"
-                                                          readOnly="true">
-                                            </af:inputText>
-                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.description}" 
-                                                          label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
-                                                          rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
-                                                          shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it11"
-                                                          columns="65" readOnly="true">
-                                            </af:inputText>
-                                            <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType eq '' ? coreloganalyticsuiBundle.ALL  : viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType}"
-                                                                label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
-                                                                shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
-                                                                id="soc13"
-                                                                rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
-                                                                valueChangeListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypeValueChanged}">
-                                                <f:selectItems value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypesList}" id="si1121"/>
-                                            </af:selectOneChoice>
-                                            <af:inputText label="#{coreloganalyticsuiBundle.DESCRIPTION}"
-                                                          value="#{viewScope.core_loganalytics_ui_logRuleViewBean.description}"
-                                                          id="it22"
-                                                          readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}"
-                                                          columns="118" rows="2"/>
-                                            <af:inputText label="#{coreloganalyticsuiBundle.RATIONALE}"
-                                                          value="#{viewScope.core_loganalytics_ui_logRuleViewBean.rationale}"
-                                                          id="it112"
-                                                          readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}"
-                                                          columns="118" rows="2"/>
-                                        </af:panelFormLayout>
+                                        
+                                        <af:group id="d2">
+                                            <af:spacer height="4" id="s1"/>
+                                            <af:panelGroupLayout id="pgl1" layout="horizontal">
+                                                <af:spacer width="10" id="s2"/>
+                                                <af:outputText value="#{coreloganalyticsuiBundle.LOG_RULE_WIZ_DETAILS_DESC}"
+                                                                   id="ot4"/>
+                                            </af:panelGroupLayout>
+                                            <af:spacer height="2" id="sq1"/>
+                                            <af:panelFormLayout id="pfl1">
+                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.dname}" 
+                                                              label="#{coreloganalyticsuiBundle.RULE}"
+                                                              rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it1"
+                                                              columns="65" readOnly="true">
+                                                </af:inputText>
+                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.iname}" 
+                                                              rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              label="#{coreloganalyticsuiBundle.RULE}"
+                                                              shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it2"
+                                                              validator="#{viewScope.core_loganalytics_ui_logRuleViewBean.validateRuleName}"
+                                                              columns="65" required="true" autoTab="true">
+                                                </af:inputText>
+                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.author}" label="#{coreloganalyticsuiBundle.AUTHOR}"
+                                                              columns="65"
+                                                              maximumLength="#{bindings.ruleAuthor.hints.precision}"
+                                                              shortDesc="#{coreloganalyticsuiBundle.AUTHOR}" id="it12"
+                                                              readOnly="true">
+                                                </af:inputText>
+                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.severityDisplay}"
+                                                              label="#{coreloganalyticsuiBundle.SEVERITY}"
+                                                              rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              id="ot34" readOnly="true"/>
+                                                <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_logRuleViewBean.severity}"
+                                                                    shortDesc="#{coreloganalyticsuiBundle.SEVERITY}"
+                                                                    id="soc5"
+                                                                    rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                                    label="#{coreloganalyticsuiBundle.SEVERITY}"
+                                                                    valueChangeListener="#{viewScope.core_loganalytics_ui_logRuleViewBean.severityValueChanged}"
+                                                                    required="true">
+                                                  <f:selectItems value="#{viewScope.core_loganalytics_ui_logRuleViewBean.ruleSeverityList}"
+                                                                 id="si1214"/>
+                                                </af:selectOneChoice>
+                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.logTypeDisplayName}"
+                                                              label="#{coreloganalyticsuiBundle.LOG_TYPE}"
+                                                              rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              id="ot349" readOnly="true"/>
+                                                <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_logRuleViewBean.logType}"
+                                                                    label="#{coreloganalyticsuiBundle.LOG_TYPE}"
+                                                                    rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                                    shortDesc="#{coreloganalyticsuiBundle.LOG_TYPE}"
+                                                                    id="soc59"
+                                                                    valueChangeListener="#{viewScope.core_loganalytics_ui_logRuleViewBean.logTypeValueChanged}"
+                                                                    required="true">
+                                                  <f:selectItems value="#{viewScope.core_loganalytics_ui_logRuleViewBean.ruleLogTypesList}"
+                                                                 id="si12149"/>
+                                                </af:selectOneChoice>
+                                                
+                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.targetTypeDisplayName}"
+                                                              label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                              rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              id="ot3" readOnly="true"/>
+                                                <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_logRuleViewBean.targetType}"
+                                                                    label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                                    rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                                    shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                                    id="soc3"
+                                                                    valueChangeListener="#{viewScope.core_loganalytics_ui_logRuleViewBean.targetTypeValueChanged}"
+                                                                    required="true">
+                                                  <f:selectItems value="#{viewScope.core_loganalytics_ui_logRuleViewBean.ruleTargetTypesList}"
+                                                                 id="si121"/>
+                                                </af:selectOneChoice>
+                                                
+                                                <af:inputText label="#{coreloganalyticsuiBundle.DESCRIPTION}"
+                                                              value="#{viewScope.core_loganalytics_ui_logRuleViewBean.description}"
+                                                              id="it22"
+                                                              readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}"
+                                                              columns="118" rows="2"/>
+                                                <af:inputText label="#{coreloganalyticsuiBundle.RATIONALE}"
+                                                              value="#{viewScope.core_loganalytics_ui_logRuleViewBean.rationale}"
+                                                              id="it112"
+                                                              readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}"
+                                                              columns="118" rows="2"/>
+                                            
+                                            </af:panelFormLayout>
+                                        </af:group>
                                      </af:showDetail>
                                      <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}"
                                                                            disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}"

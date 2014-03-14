@@ -1,5 +1,7 @@
 package oracle.saas.logan.view.rule;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import java.util.logging.Level;
@@ -10,12 +12,16 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.model.SelectItem;
 import javax.faces.validator.ValidatorException;
 
 import oracle.saas.logan.util.InterPageMessageBean;
 import oracle.saas.logan.util.LoganLibUiUtil;
 import oracle.saas.logan.util.UiUtil;
 import oracle.saas.logan.view.LaunchContextModeBean;
+
+import oracle.jbo.domain.Number;
 
 public class LogRuleViewBean {
     private static final Logger s_log =
@@ -40,6 +46,10 @@ public class LogRuleViewBean {
 
 
     private LoganRuleBean ruleBean;
+    
+    private List<SelectItem> ruleSeverityList;
+    private List<SelectItem> ruleLogTypesList;
+    private List<SelectItem> ruleTgtTypesList;
     
     public LogRuleViewBean() {
         Map ipmParams =
@@ -118,48 +128,127 @@ public class LogRuleViewBean {
 //        this.ruleBean.setLogType(logType);
 //    }
 //
-//    public String getLogType()
-//    {
-//        return this.ruleBean.getLogType();
-//    }
+    public String getLogType(){
+        return this.ruleBean.getLogType();
+    }
 
-//    public String getLogTypeDisplayName()
-//    {
-//        String ltDis = getLogType();
+    public String getLogTypeDisplayName(){
+        String ltDis = getLogType();
+        List<SelectItem> ltnd = getRuleLogTypesList();
+        if (ltnd != null){
+            for (SelectItem si: ltnd)
+            {
+                if (si.getValue().equals(ltDis))
+                {
+                    ltDis = si.getLabel();
+                    break;
+                }
+            }
+        }
+        return ltDis;
+        
 //        return getLoganRuleWizTrainBean().getLogTypeDisplayName(ltDis);
-//    }
+    }
+    public List<SelectItem> getRuleLogTypesList(){
+        if (ruleLogTypesList == null)
+        {
+            ruleLogTypesList = LoganLibUiUtil.getSourceTypesList();
+        }
+        return ruleLogTypesList;
+    }
 
-//    public void setTargetType(String targetType)
-//    {
-//        this.detailsBean.setTargetType(targetType);
-//    }
+    public void setTargetType(String targetType)
+    {
+        this.ruleBean.setTargetType(targetType);
+    }
 
-//    public String getTargetType()
-//    {
-//        return this.detailsBean.getTargetType();
-//    }
-//
-//    public String getTargetTypeDisplayName()
-//    {
-//        String tt = getTargetType();
-//        return getLoganRuleWizTrainBean().getTargetTypeDisplayName(tt);
-//    }
-//
-//    public void setSeverity(String severity)
-//    {
-//        this.ruleBean.setSeverity(new Number(new Long(severity)));
-//    }
-//
-//    public String getSeverity()
-//    {
-//        return ""+this.ruleBean.getSeverity();
-//    }
-//
-//    public String getSeverityDisplay()
-//    {
-//        LoganRuleWizTrainBean lrtb = getLoganRuleWizTrainBean();
-//        return lrtb.getSeverityDisplay(detailsBean.getSeverity());
-//    }
+    public String getTargetType()
+    {
+        return this.ruleBean.getTargetType();
+    }
+
+    public String getTargetTypeDisplayName()
+    {
+        String tt = getTargetType();
+        List<SelectItem> ltnd = getRuleTargetTypesList();
+        if (ltnd != null)
+        {
+            for (SelectItem si: ltnd)
+            {
+                if (si.getValue().equals(tt))
+                {
+                    tt = si.getLabel();
+                    break;
+                }
+            }
+        }
+        return tt;
+    }
+    
+    public List<SelectItem> getRuleTargetTypesList()
+    {
+        if (ruleTgtTypesList == null){
+            ruleTgtTypesList = LoganLibUiUtil.getTargetTypesList(false);
+        }
+        return ruleTgtTypesList;
+    }
+    
+    public void targetTypeValueChanged(ValueChangeEvent valueChangeEvent){
+        this.setTargetType(valueChangeEvent.getNewValue().toString());
+//        LoganRuleWizTrainBean lrtb = LoganLibUiUtil.getLogRuleWizTrainBean();
+//        if (!this.getTargetType().equals(lrtb.getRuleDetailsBeanRef().getTargetType()))
+//        {
+//            LoganRuleSourcesBean sourcesBean =
+//                lrtb.getRuleSourcesBeanCurrent();
+//            if (sourcesBean != null)
+//            {
+//                sourcesBean.setSources(new ArrayList<LoganRuleSource>());
+//            }
+//            LoganRuleConditionsBean conditionsBean =
+//                lrtb.getRuleConditionsBeanCurrent();
+//            if (conditionsBean != null)
+//            {
+//                conditionsBean.setConditions(new ArrayList<LoganRuleCondition>());
+//            }
+//        }
+    }
+
+    public void setSeverity(String severity){
+        this.ruleBean.setSeverity(new Number(new Long(severity)));
+    }
+
+    public String getSeverity()
+    {
+        return ""+this.ruleBean.getSeverity();
+    }
+
+    public String getSeverityDisplay()
+    {
+        Number sevN = ruleBean.getSeverity();
+        List<SelectItem> sevDisp = getRuleSeverityList();
+        String sevDisplay = "" + sevN;
+        if (sevDisp != null){
+            for (SelectItem si: sevDisp){
+                if (si.getValue().equals("" + sevN))
+                {
+                    sevDisplay = si.getLabel();
+                    break;
+                }
+            }
+        }
+        return sevDisplay;
+    }
+    
+    public List<SelectItem> getRuleSeverityList(){
+        if (ruleSeverityList == null){
+            ruleSeverityList = LoganLibUiUtil.getRuleSeverityList(UiUtil.getLoganBundle());
+        }
+        return ruleSeverityList;
+    }
+    
+    public void severityValueChanged(ValueChangeEvent valueChangeEvent){
+        this.setSeverity(valueChangeEvent.getNewValue().toString());
+    }
 
     public void setDescription(String description)
     {

@@ -1,6 +1,7 @@
 package oracle.saas.logan.view.rule;
 
 import oracle.saas.logan.model.persistance.rule.EmLoganRule;
+import oracle.jbo.domain.Number;
 
 public class LoganRuleBean {
     public LoganRuleBean() {
@@ -55,13 +56,13 @@ public class LoganRuleBean {
     
     private void initialize(EmLoganRule pRow){
         if(pRow != null){
-            this.ruleId = pRow.getRuleId();
+            this.ruleId = new Number(new Long(pRow.getRuleId()));
             this.iname = pRow.getRuleIname();
             this.dname = pRow.getRuleDname();
             this.author = pRow.getRuleAuthor();
             this.logType = pRow.getRuleSrctypeIname();
             this.targetType = pRow.getRuleTargetType();
-            this.severity = pRow.getRuleSeverity();
+            this.severity = new Number(new Long(pRow.getRuleSeverity()));
             this.description = pRow.getRuleDescription();
             this.rationale = pRow.getRuleRationale();
         }
