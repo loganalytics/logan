@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="coreloganalyticsuiBundle" value="#{adfBundle['oracle.saas.logan.view.SaasLoganUiBundle']}"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="log-rule-detail" id="d1">
+        <af:pageTemplate viewId="/core/loganalytics/templateDef.jspx" value="#{bindings.pageTemplateBinding}"
+                             id="emT">
+                <f:facet name="emContent">
+            <af:form id="f1">
+                <af:panelSplitter orientation="vertical" splitterPosition="50" id="ps1">
+                    <f:facet name="first"/>
+                    <f:facet name="second">
+                        <af:panelStretchLayout id="psl2" topHeight="auto" bottomHeight="0">
+                            <f:facet name="top">
+                            </f:facet>
+                            <f:facet name="center">
+                                <af:panelGroupLayout>
+                                    <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
+                                                                           disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
+                                                                           shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}">
+                                        <af:panelFormLayout id="pfl1">
+                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.dname}" 
+                                                          label="#{coreloganalyticsuiBundle.RULE}"
+                                                          rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                          shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it1"
+                                                          columns="65" readOnly="true">
+                                            </af:inputText>
+                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.iname}" 
+                                                          rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                          label="#{coreloganalyticsuiBundle.RULE}"
+                                                          shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it2"
+                                                          validator="#{viewScope.core_loganalytics_ui_logRuleViewBean.validateRuleName}"
+                                                          columns="65" required="true" autoTab="true">
+                                            </af:inputText>
+                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.author}" label="#{coreloganalyticsuiBundle.AUTHOR}"
+                                                          columns="65"
+                                                          maximumLength="#{bindings.ruleAuthor.hints.precision}"
+                                                          shortDesc="#{coreloganalyticsuiBundle.AUTHOR}" id="it12"
+                                                          readOnly="true">
+                                            </af:inputText>
+                                            <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.description}" 
+                                                          label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                          rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                          shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it11"
+                                                          columns="65" readOnly="true">
+                                            </af:inputText>
+                                            <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType eq '' ? coreloganalyticsuiBundle.ALL  : viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType}"
+                                                                label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                                shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                                id="soc13"
+                                                                rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                                valueChangeListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypeValueChanged}">
+                                                <f:selectItems value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypesList}" id="si1121"/>
+                                            </af:selectOneChoice>
+                                            <af:inputText label="#{coreloganalyticsuiBundle.DESCRIPTION}"
+                                                          value="#{viewScope.core_loganalytics_ui_logRuleViewBean.description}"
+                                                          id="it22"
+                                                          readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}"
+                                                          columns="118" rows="2"/>
+                                            <af:inputText label="#{coreloganalyticsuiBundle.RATIONALE}"
+                                                          value="#{viewScope.core_loganalytics_ui_logRuleViewBean.rationale}"
+                                                          id="it112"
+                                                          readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}"
+                                                          columns="118" rows="2"/>
+                                        </af:panelFormLayout>
+                                     </af:showDetail>
+                                     <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}"
+                                                                           disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}"
+                                                                           shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}">
+                                     </af:showDetail>
+                                     <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_CONDITIONS}"
+                                                                           disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_CONDITIONS}"
+                                                                           shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_CONDITIONS}">
+                                     </af:showDetail>
+                                </af:panelGroupLayout>
+                                 
+                            </f:facet>
+                            
+                        </af:panelStretchLayout>
+                    </f:facet>
+                </af:panelSplitter>
+            </af:form>
+            </f:facet>
+            </af:pageTemplate>
+        </af:document>
+    </f:view>
+</jsp:root>

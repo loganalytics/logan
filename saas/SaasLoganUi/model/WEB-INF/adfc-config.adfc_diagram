@@ -3,22 +3,7 @@
    <OverallProperties
       id="OverallProperties1"/>
    <View
-      id="View2">
-      <property
-         name="activityId">parserList</property>
-      <property
-         name="page">/library/parser/parserList.jsf</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>parserList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">226.53711</property>
-      <property
-         name="x">275.5</property>
-   </View>
-   <View
-      id="View3">
+      id="View8">
       <property
          name="activityId">rule</property>
       <property
@@ -28,23 +13,63 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">80.09766</property>
+         name="y">71.79883</property>
       <property
-         name="x">275.5</property>
+         name="x">55.5</property>
    </View>
    <View
-      id="View5">
+      id="View9">
       <property
-         name="activityId">library</property>
+         name="activityId">log-rule-details</property>
       <property
-         name="page">/core/loganalytics/log-analytics-library.jspx</property>
+         name="page">/core/loganalytics/logrule/log-rule-details.jspx</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>library&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>log-rule-details&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">78.09766</property>
+         name="y">173.79883</property>
       <property
-         name="x">413.5</property>
+         name="x">64.35156</property>
    </View>
+   <View
+      id="View10">
+      <property
+         name="activityId">log-analytics-library</property>
+      <property
+         name="page">/core/loganalytics/log-analytics-library.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>log-analytics-library&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">275.79883</property>
+      <property
+         name="x">76.68262</property>
+   </View>
+   <View
+      id="View11">
+      <property
+         name="activityId">parserList</property>
+      <property
+         name="page">/library/parser/parserList.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>parserList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">377.79883</property>
+      <property
+         name="x">55.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View10"
+      to="View9">
+      <property
+         name="fromOutcome">goto_core-logan-rule-view</property>
+      <property
+         name="sdm:polyPoints">L50,35.682617,275.44824,23.351562,173.44824,L50</property>
+   </ControlFlowCase>
 </SDM>

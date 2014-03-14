@@ -10,7 +10,6 @@
     <class>oracle.saas.logan.model.persistance.EmLoganParserFieldMap</class>
     <class>oracle.saas.logan.model.persistance.EmTargetTypes</class>
     <class>oracle.saas.logan.model.persistance.rule.EmLoganRule</class>
-    <class>oracle.saas.logan.model.persistance.rule.EmLoganRule</class>
     <class>oracle.saas.logan.model.persistance.EmLoganMetaOperator</class>
     <class>oracle.saas.logan.model.persistance.EmLoganMetaSourceType</class>
     <class>oracle.saas.logan.model.persistance.EmLoganRuleSourceMap</class>
