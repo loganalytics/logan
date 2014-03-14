@@ -84,6 +84,7 @@
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="Database"/>
+         <string v="Database-Modeling"/>
          <string v="EJB"/>
          <string v="EJB-Modeling"/>
          <string v="Java"/>
