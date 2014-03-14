@@ -9,6 +9,7 @@ public class LoganLibSourcePojo {
     }
     
     private Integer SourceIsSystem;
+    private Integer SourceId;
     private String SourceDname;
     private String SrctypeDname;
     private Integer RulesUsing;
@@ -17,6 +18,14 @@ public class LoganLibSourcePojo {
     private String SourceAuthor;
     private Date SourceLastUpdatedDate;
 
+
+    public void setSourceId(Integer SourceId) {
+        this.SourceId = SourceId;
+    }
+
+    public Integer getSourceId() {
+        return SourceId;
+    }
 
     public void setSourceIsSystem(Integer SourceIsSystem) {
         this.SourceIsSystem = SourceIsSystem;

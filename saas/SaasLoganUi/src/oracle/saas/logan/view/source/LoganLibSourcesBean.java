@@ -1,20 +1,31 @@
 package oracle.saas.logan.view.source;
 
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
+
+import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.event.DialogEvent;
+import oracle.adf.view.rich.event.PopupFetchEvent;
 
 import oracle.saas.logan.model.client.LoganSessionBeanProxy;
 import oracle.saas.logan.model.persistance.EmLoganMetaSourceType;
 import oracle.saas.logan.model.persistance.EmLoganRuleSourceMap;
 import oracle.saas.logan.model.persistance.EmLoganSource;
 import oracle.saas.logan.model.persistance.EmTargetTypes;
+import oracle.saas.logan.util.AdfUtil;
+import oracle.saas.logan.util.InterPageMessageBean;
 import oracle.saas.logan.util.LoganLibUiUtil;
+import oracle.saas.logan.util.UiUtil;
 
 import org.apache.myfaces.trinidad.event.DisclosureEvent;
+import org.apache.myfaces.trinidad.event.SelectionEvent;
 
 public class LoganLibSourcesBean {
     
@@ -24,12 +35,16 @@ public class LoganLibSourcesBean {
     protected String matchRadioSelectValue = match_ALL;
     
     protected String selectedtargetType;
+    private Number selectedSourceId;
+    private String selectedSourceName;
 
     protected List<SelectItem> targetTypesList;
     private List<LoganLibSourcePojo> sources;
 
     private List<EmLoganRuleSourceMap> rsmaps;
         
+    private static final String sourceTable_Id = "emT:pan1:srcs";
+    
     public LoganLibSourcesBean() {
         super();
     }
@@ -60,6 +75,7 @@ public class LoganLibSourcesBean {
                     
                     LoganLibSourcePojo source = new LoganLibSourcePojo();
                     source.setSourceAuthor(emLoganSource.getSourceAuthor());
+                    source.setSourceId(emLoganSource.getSourceId());
                     source.setSourceDescription(emLoganSource.getSourceDescription());
                     source.setSourceDname(emLoganSource.getSourceDname());
                     source.setSourceIsSystem(emLoganSource.getSourceIsSystem());
@@ -172,13 +188,126 @@ public class LoganLibSourcesBean {
 //        }
     }
     
+    
+    
+    public boolean isCreateLikeDisabled()
+    {
+        // check if table has multiple or no rows selected then disabled is true
+        return LoganLibUiUtil.hasUserSelectedMultipleOrZeroRows(getTabDataTableHandle());
+    }
 
+    /**
+     * @return
+     */
+    public boolean isShowDetailsDisabled()
+    {
+        // check if table has multiple or no rows selected then disabled is true
+        return LoganLibUiUtil.hasUserSelectedMultipleOrZeroRows(getTabDataTableHandle());
+    }
 
+    /**
+     * @return
+     */
+    public boolean isEditDisabled()
+    {
+        // check if table has multiple or no rows selected then disabled is true
+        return LoganLibUiUtil.hasUserSelectedMultipleOrZeroRows(getTabDataTableHandle());
+    }
+
+    /**
+     * @return
+     */
+    public boolean isDeleteDisabled()
+    {
+        // check if table has multiple or no rows selected then disabled is true
+        return LoganLibUiUtil.hasUserSelectedZeroRows(getTabDataTableHandle());
+    }   
     
     
+
+    /**
+     * Get the handle to the Main data table on the tab
+     * @return
+     */
+    public RichTable getTabDataTableHandle()
+    {
+        return (RichTable) AdfUtil.findComponent(sourceTable_Id);
+    }
+    
+    public String getSelectedSourceId()
+    {
+        return selectedSourceId.toString();
+    }
+    
+    public String getSelectedSourceName()
+    {
+        return selectedSourceName;
+    }
     
     
+    public void sourceSelectionListener(SelectionEvent selectionEvent)
+    {
+        RichTable iT = (RichTable) selectionEvent.getSource();
+        setSelectedSourceData( iT );
+    }
     
+    
+    private void setSelectedSourceData()
+    {
+        setSelectedSourceData();
+    }
+    
+    private void setSelectedSourceData( RichTable iT )
+    {   
+        if(iT == null)
+        {
+            iT = getTabDataTableHandle();    
+        }
+        LoganLibSourcePojo data = null;
+        if (iT != null)
+        {
+            org.apache.myfaces.trinidad.model.RowKeySet rowKeySet = iT.getSelectedRowKeys();
+            if (rowKeySet != null)
+            {
+                Iterator iter = rowKeySet.iterator();
+                if (iter != null && iter.hasNext())
+                {
+                    iT.setRowKey(iter.next());
+                    data = (LoganLibSourcePojo) iT.getRowData();
+                    selectedSourceId = data.getSourceId();
+                    selectedSourceName = data.getSourceDname();
+                }
+            }
+        }
+    }
+
+    /**
+     * @param popupFetchEvent
+     */
+    public void createLikePopupFetchListener(PopupFetchEvent popupFetchEvent)
+    {
+        setSelectedSourceData();
+        selectedSourceName = UiUtil.getUiString("COPY_OF") + " " + selectedSourceName;
+    }
+
+    public void deletePopupFetchListener(PopupFetchEvent popupFetchEvent)
+    {
+        setSelectedSourceData();
+    }
+
+    public void sourceCreateLikeListener(DialogEvent dialogEvent)
+    {
+        if (dialogEvent.getOutcome().name().equals("ok"))
+        {
+            Map ipmParams =
+                InterPageMessageBean.getCurrentInstance().getParams();
+            ipmParams.put("create_like_logan_source_name", selectedSourceName);
+            ipmParams.put("mode", "CREATE_LIKE");
+            ipmParams.put("sourceId", selectedSourceId);
+        }    
+    }
+    
+
     public void setMatchRadioSelectValue(String matchRadioSelectValue) {
         this.matchRadioSelectValue = matchRadioSelectValue;
     }
@@ -206,6 +335,7 @@ public class LoganLibSourcesBean {
         }
         return sources;
     }
-    
-    
+
+
+
 }

@@ -10,13 +10,20 @@
     <page>/core/loganalytics/logrule/log-rule-details.jspx</page>
   </view>
   <view id="log-analytics-library">
-    <page>/core/loganalytics/log-analytics-library.jspx</page>
+     <page>/core/loganalytics/log-analytics-library.jspx</page>
+  </view>
+  <view id="log-source-details">
+      <page>/core/loganalytics/logsource/log-source-details.jspx</page>
   </view>
   <control-flow-rule id="__6">
     <from-activity-id>log-analytics-library</from-activity-id>
     <control-flow-case id="__7">
       <from-outcome>goto_core-logan-rule-view</from-outcome>
       <to-activity-id>log-rule-details</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>goto_core-log-source-details</from-outcome>
+      <to-activity-id>log-source-details</to-activity-id>
     </control-flow-case>
   </control-flow-rule>
   <managed-bean id="__1">
