@@ -1,6 +1,9 @@
 package oracle.saas.logan.view.source;
 
 import java.util.Date;
+import java.util.List;
+
+import oracle.saas.logan.model.persistance.EmLoganSourcePattern;
 
 
 public class LoganLibSourcePojo {
@@ -17,6 +20,8 @@ public class LoganLibSourcePojo {
     private String SrcTargetTypeDisplayNls;
     private String SourceAuthor;
     private Date SourceLastUpdatedDate;
+    
+    private List<EmLoganSourcePattern> inclPatts;
 
 
     public void setSourceId(Integer SourceId) {
@@ -90,6 +95,10 @@ public class LoganLibSourcePojo {
     public Date getSourceLastUpdatedDate() {
         return SourceLastUpdatedDate;
     }
+    
+    public int getInclFilePatternsCount(){
+        return this.inclPatts == null? 0: this.inclPatts.size();
+    } 
 
 
 }

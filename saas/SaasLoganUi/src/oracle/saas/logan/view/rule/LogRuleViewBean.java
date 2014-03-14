@@ -1,6 +1,7 @@
 package oracle.saas.logan.view.rule;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +13,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
+import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.faces.validator.ValidatorException;
+
+import oracle.adf.view.faces.bi.event.graph.SelectionEvent;
+import oracle.adf.view.rich.component.rich.data.RichTable;
+
+import oracle.adf.view.rich.event.PopupFetchEvent;
 
 import oracle.saas.logan.util.InterPageMessageBean;
 import oracle.saas.logan.util.LoganLibUiUtil;
@@ -22,6 +29,11 @@ import oracle.saas.logan.util.UiUtil;
 import oracle.saas.logan.view.LaunchContextModeBean;
 
 import oracle.jbo.domain.Number;
+
+import oracle.saas.logan.util.AdfUtil;
+import oracle.saas.logan.view.source.LoganLibSourcePojo;
+
+import org.apache.myfaces.trinidad.model.RowKeySet;
 
 public class LogRuleViewBean {
     private static final Logger s_log =
@@ -43,9 +55,17 @@ public class LogRuleViewBean {
     private String ruleNameOutlineColor = "";
     private String ruleLTypeOutlineColor = "";
     private String ruleTTypeOutlineColor = "";
+    
+
+    private static final String uiSourceTableId = "emT:pc3:t51";
+    private static final String uiRemoveSourceButtonId = "emT:pc3:removeSourceButton";
+    private static final String uiFilteredSourcesTableId = "emT:t55";
 
 
     private LoganRuleBean ruleBean;
+    private LoganRuleSource currSelSourceRow;
+    private List<LoganRuleSource> ruleSources = new ArrayList<LoganRuleSource>();
+    private List<LoganLibSourcePojo> filteredSourceList;
     
     private List<SelectItem> ruleSeverityList;
     private List<SelectItem> ruleLogTypesList;
@@ -67,6 +87,8 @@ public class LogRuleViewBean {
             try
             {
                 ruleBean = LogRuleDAO.getLogRuleRow(ruleId);
+                ruleSources = LogRuleDAO.getLogRuleSourceMapRow(ruleId);
+                
             }
             catch (Exception ew)
             {
@@ -311,5 +333,75 @@ public class LogRuleViewBean {
             throw new ValidatorException(msg);
 
         }
+    }
+    
+    public boolean isSourceDeleteDisabled(){
+        // check if table has multiple or no rows selected then disabled is true
+        List selected = LoganLibUiUtil.getRowSelectedFromUiTable((RichTable)AdfUtil.findComponent(uiSourceTableId));
+        if (selected != null && selected.size() >= 1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    public void removeSource(ActionEvent actionEvent){
+        if (currSelSourceRow != null){
+            List<LoganRuleSource> ip = ruleSources;
+            if (ip != null && ip.size() > 0){
+                ip.remove(currSelSourceRow);
+            }
+        }
+        AdfUtil.addPartialTarget(AdfUtil.findComponent(uiSourceTableId));
+        AdfUtil.addPartialTarget(AdfUtil.findComponent(uiRemoveSourceButtonId));
+    }
+    
+    public void logSourceRowSelected(SelectionEvent selectionEvent){
+        RichTable iT = (RichTable) selectionEvent.getComponent();
+        this.currSelSourceRow = (LoganRuleSource) LoganLibUiUtil.getSelectedIPRowForTable(iT);
+    }
+    
+    public void setSources(List<LoganRuleSource> p){
+        this.ruleSources = p;
+    }
+
+    public List<LoganRuleSource> getSources(){
+        return this.ruleSources;
+    }
+    
+    public void initLogSourceSearch(PopupFetchEvent popupFetchEvent){
+        filteredSourceList = LoganLibUiUtil.getFilteredSourceListForRules(ruleBean.getTargetType(),
+                                                             ruleBean.getLogType(),
+                                                             null, null);
+    }
+    
+    public void handleAddSources(ActionEvent ae){
+        RichTable table = getSourcesTableHandle();
+        if (table != null){
+            RowKeySet rowKeySet = table.getSelectedRowKeys();
+            if (rowKeySet != null)
+            {
+                Iterator iter = rowKeySet.iterator();
+                if (iter != null)
+                {
+                    while (iter.hasNext())
+                    {
+                        table.setRowKey(iter.next());
+                        LoganLibSourcePojo sourceSelected =(LoganLibSourcePojo) table.getRowData();
+                        this.ruleSources.add(new LoganRuleSource(ruleBean.getRuleId(),
+                                                                       sourceSelected));
+                    }
+                }
+            }
+        }
+    }
+
+    public void cancelAddSources(ActionEvent ae)
+    {
+    }
+    
+    private RichTable getSourcesTableHandle(){
+        return (RichTable) AdfUtil.findComponent(uiFilteredSourcesTableId);
     }
 }

@@ -1,5 +1,6 @@
 package oracle.saas.logan.model.session.source;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import javax.persistence.Query;
 
 import oracle.saas.logan.model.persistance.EmLoganRuleSourceMap;
 import oracle.saas.logan.model.persistance.EmLoganRuleSourceMapPK;
+import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 
 @Stateless(name = "LoganRuleSourceMapSessionBean", mappedName = "saas-SaasLoganModel-LoganRuleSourceMapSessionBean")
 public class LoganRuleSourceMapSessionBeanBean implements LoganRuleSourceMapSessionBean,
@@ -71,4 +73,12 @@ public class LoganRuleSourceMapSessionBeanBean implements LoganRuleSourceMapSess
     public List<EmLoganRuleSourceMap> getEmLoganRuleSourceMapFindAll() {
         return em.createNamedQuery("EmLoganRuleSourceMap.findAll", EmLoganRuleSourceMap.class).getResultList();
     }
+
+    @Override
+    public List<EmLoganRuleSourceMap> getEmLoganRuleSourceMapFindByRuleId(int ruleId) {
+        // TODO Implement this method
+        return em.createNamedQuery("EmLoganRuleSourceMap.findByRuleId", EmLoganRuleSourceMap.class).setParameter("ruleId",
+                                                                                                     ruleId).getResultList();
+    }
+
 }

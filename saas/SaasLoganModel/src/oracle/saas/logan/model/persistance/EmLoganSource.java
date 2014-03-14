@@ -4,21 +4,26 @@ import java.io.Serializable;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import oracle.saas.logan.model.persistance.rule.EmLoganRule;
+
 @Entity
 @NamedQueries({ @NamedQuery(name = "EmLoganSource.findAll", query = "select o from EmLoganSource o"),
-//                @NamedQuery(name = "EmLoganSource.findSources", query = "select o.sourceSrctypeIname,t.srctypeIname,m.targetType from EmLoganSource o join EmLoganMetaSourceType t on o.sourceSrctypeIname =t.srctypeIname join  EmTargetTypes m  on o.sourceTargetType=m.targetType")
-                @NamedQuery(name = "EmLoganSource.findSources", query = "select o,t,m  from EmLoganSource o join EmLoganMetaSourceType t on o.sourceSrctypeIname =t.srctypeIname join  EmTargetTypes m  on o.sourceTargetType=m.targetType")
-                })
+//                @NamedQuery(name = "EmLoganSource.findSourcesByPK", query = "select o from EmLoganSource o"),
+                @NamedQuery(name = "EmLoganSource.findSources", query = "select o,t,m  from EmLoganSource o join EmLoganMetaSourceType t on o.sourceSrctypeIname =t.srctypeIname join  EmTargetTypes m  on o.sourceTargetType=m.targetType"),
+                @NamedQuery(name = "EmLoganSource.findBySourceId",  query = "select o from EmLoganSource o where o.sourceId = :sourceId")})
 @Table(name = "EM_LOGAN_SOURCE")
 @IdClass(EmLoganSourcePK.class)
 public class EmLoganSource implements Serializable {
@@ -60,6 +65,7 @@ public class EmLoganSource implements Serializable {
     @Id
     @Column(name = "SOURCE_TARGET_TYPE", nullable = false, length = 64)
     private String sourceTargetType;
+    
     
 //      @Id
 //      @ManyToOne(fetch=FetchType.EAGER)
@@ -224,8 +230,7 @@ public class EmLoganSource implements Serializable {
         this.sourceTargetType = sourceTargetType;
     }
 
-
-//    public void setSourceSrctypeIname(EmLoganMetaSourceType sourceSrctypeIname) {
+    //    public void setSourceSrctypeIname(EmLoganMetaSourceType sourceSrctypeIname) {
 //        this.sourceSrctypeIname = sourceSrctypeIname;
 //    }
 //

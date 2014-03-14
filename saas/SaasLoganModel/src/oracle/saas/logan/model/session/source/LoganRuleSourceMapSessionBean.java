@@ -21,4 +21,6 @@ public interface LoganRuleSourceMapSessionBean {
     void removeEmLoganRuleSourceMap(EmLoganRuleSourceMap emLoganRuleSourceMap);
 
     List<EmLoganRuleSourceMap> getEmLoganRuleSourceMapFindAll();
+    
+    List<EmLoganRuleSourceMap> getEmLoganRuleSourceMapFindByRuleId(int ruleId);
 }

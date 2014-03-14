@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import oracle.saas.logan.model.persistance.EmLoganSource;
+import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 
 @Remote
 public interface LoganSourceSessionBean {
@@ -14,7 +15,11 @@ public interface LoganSourceSessionBean {
 
     <T> T mergeEntity(T entity);
 
+    List<EmLoganSource> getEmLoganSourceFindBySourceId(Integer sourceId);
+    
     List<EmLoganSource> getEmLoganSourceFindAll();
+    
+    List<EmLoganSource> getEmLoganSourceFindByPK(String srcIname, String targetType, String logType);
 
     List<Object[]> getEmLoganSourceFindSources();
 }

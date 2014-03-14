@@ -88,8 +88,7 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
     
     /** <code>select o from EmLoganRule o where o.ruleId = :rule</code> */
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    public List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId)
-    {
+    public List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId){
         return em.createNamedQuery("EmLoganRule.findByRuleId", EmLoganRule.class).setParameter("ruleId",
                                                                                                      ruleId).getResultList();
     }

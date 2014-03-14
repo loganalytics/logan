@@ -6,12 +6,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "EmLoganRuleSourceMap.findAll", query = "select o from EmLoganRuleSourceMap o") })
+@NamedQueries({ 
+        @NamedQuery(name = "EmLoganRuleSourceMap.findAll", query = "select o from EmLoganRuleSourceMap o") ,
+        @NamedQuery(name = "EmLoganRuleSourceMap.findByRuleId", query = "select o from EmLoganRuleSourceMap o where o.rsRuleId = :ruleId") 
+        })
 @Table(name = "EM_LOGAN_RULE_SOURCE_MAP")
 @IdClass(EmLoganRuleSourceMapPK.class)
 public class EmLoganRuleSourceMap implements Serializable {
