@@ -140,6 +140,8 @@
                                                                                            icon="/images/new_ena.png"
                                                                                            id="ctb1"
                                                                                            action="goto_core-logan-rule-view">
+                                                                            <af:setPropertyListener from="CREATE" type="action"
+                                                                                                    to="#{sdk_ipmbean.params.mode}"/>
                                                                   </af:commandToolbarButton>
                                                                   <af:commandToolbarButton text="Create Like"
                                                                                            icon="/images/createlike_ena.png"
@@ -197,7 +199,7 @@
                                                                                                  id="ctb6"
                                                                                                  icon="/images/emskin/fusionfx/em_gn_targets.png"
                                                                                                  disabledIcon="/images/emskin/fusionfx/em_gn_targets.png"
-                                                                                                 action="goto_core-logan-rule-view">
+                                                                                                 action="goto_core-logan-rule-target-assoc2">
                                                                             <!--<af:setPropertyListener from="#{viewScope.core_loganalytics_ui_loganLibRulesBean.selectedRuleId}"
                                                                                             type="action"
                                                                                             to="#{sdk_ipmbean.params.ruleId}"/>                               

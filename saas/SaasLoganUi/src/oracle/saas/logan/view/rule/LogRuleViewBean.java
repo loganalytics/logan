@@ -21,6 +21,7 @@ import javax.faces.validator.ValidatorException;
 import oracle.adf.view.faces.bi.event.graph.SelectionEvent;
 import oracle.adf.view.rich.component.rich.data.RichTable;
 
+import oracle.adf.view.rich.component.rich.input.RichInputText;
 import oracle.adf.view.rich.event.PopupFetchEvent;
 
 import oracle.saas.logan.util.InterPageMessageBean;
@@ -30,6 +31,7 @@ import oracle.saas.logan.view.LaunchContextModeBean;
 
 import oracle.jbo.domain.Number;
 
+import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 import oracle.saas.logan.util.AdfUtil;
 import oracle.saas.logan.view.source.LoganLibSourcePojo;
 
@@ -46,25 +48,24 @@ public class LogRuleViewBean {
     private String author;
     
     private static final String RULE_ID = "ruleId";
-    private static final String CREATE_LIKE_RULE_NAME_CONST =
-        "create_like_logan_rule_name";
+    private static final String CREATE_LIKE_RULE_NAME_CONST = "create_like_logan_rule_name";
 
-    private static final String OutlineColorRed =
-        "border-color:Red; border-style:solid; border-width:medium;";
+    private static final String OutlineColorRed = "border-color:Red; border-style:solid; border-width:medium;";
 
     private String ruleNameOutlineColor = "";
     private String ruleLTypeOutlineColor = "";
     private String ruleTTypeOutlineColor = "";
     
 
-    private static final String uiSourceTableId = "emT:pc3:t51";
-    private static final String uiRemoveSourceButtonId = "emT:pc3:removeSourceButton";
-    private static final String uiFilteredSourcesTableId = "emT:t55";
+    private static final String uiSourceTableId           = "emT:pc3:t51";
+    private static final String uiRemoveSourceButtonId    = "emT:pc3:removeSourceButton";
+    private static final String uiFilteredSourcesTableId  = "emT:t55";
+    private static final String uiFilterSourceNameInputId = "emT:sourceName4Search";
+    private static final String uiFilterSourceDescInputId = "emT:sourceDesc4Search";
 
-
-    private LoganRuleBean ruleBean;
-    private LoganRuleSource currSelSourceRow;
-    private List<LoganRuleSource> ruleSources = new ArrayList<LoganRuleSource>();
+    private LoganRuleBean            ruleBean;
+    private LoganRuleSource          currSelSourceRow;
+    private List<LoganRuleSource>    ruleSources = new ArrayList<LoganRuleSource>();
     private List<LoganLibSourcePojo> filteredSourceList;
     
     private List<SelectItem> ruleSeverityList;
@@ -75,13 +76,15 @@ public class LogRuleViewBean {
         Map ipmParams =
             InterPageMessageBean.getCurrentInstance().getParams();
         launchMode = LoganLibUiUtil.getModeForTrain();
+        System.out.println("launch mode: " + launchMode);
         modeBean = new LaunchContextModeBean(launchMode);
         
-        String rId = String.valueOf(ipmParams.get(RULE_ID)) ;
         
-        if (rId != null) // create_like, Edit or Show Details mode
+        
+        if (ipmParams.get(RULE_ID) != null) // create_like, Edit or Show Details mode
         {
             // create_like, Edit or Show Details mode
+            String rId = String.valueOf(ipmParams.get(RULE_ID)) ;
             
             ruleId = new Integer(Integer.parseInt(rId));
             try
@@ -145,11 +148,11 @@ public class LogRuleViewBean {
         return this.ruleBean.getAuthor();
     }
 
-//    public void setLogType(String logType)
-//    {
-//        this.ruleBean.setLogType(logType);
-//    }
-//
+    public void setLogType(String logType)
+    {
+        this.ruleBean.setLogType(logType);
+    }
+
     public String getLogType(){
         return this.ruleBean.getLogType();
     }
@@ -169,7 +172,6 @@ public class LogRuleViewBean {
         }
         return ltDis;
         
-//        return getLoganRuleWizTrainBean().getLogTypeDisplayName(ltDis);
     }
     public List<SelectItem> getRuleLogTypesList(){
         if (ruleLogTypesList == null)
@@ -403,5 +405,113 @@ public class LogRuleViewBean {
     
     private RichTable getSourcesTableHandle(){
         return (RichTable) AdfUtil.findComponent(uiFilteredSourcesTableId);
+    }
+    
+    public void handleLogSourceSearch(ActionEvent ae){
+        RichInputText sourceName = getSourceInputText();
+        String sNameFilter = (String) sourceName.getValue();
+        if (sNameFilter != null)
+        {
+            sNameFilter = sNameFilter.trim();
+            if (sNameFilter.length() == 0)
+                sNameFilter = null;
+        }
+        RichInputText sourceDesc = getSourceDescInputText();
+        String sDescFilter = (String) sourceDesc.getValue();
+        if (sDescFilter != null)
+        {
+            sDescFilter = sDescFilter.trim();
+            if (sDescFilter.length() == 0)
+                sDescFilter = null;
+        }
+//        LoganRuleWizTrainBean lrtb = LoganLibUiUtil.getLogRuleWizTrainBean();
+//        LoganRuleDetailsBean currentDetailsBean = ruleBean.getRuleDetailsBeanCurrent();
+        filteredSourceList = LoganLibUiUtil.getFilteredSourceListForRules(ruleBean.getTargetType(),
+                                                             ruleBean.getLogType(),
+                                                             sNameFilter,
+                                                             sDescFilter);
+    }
+
+    private RichInputText getSourceInputText(){
+        return (RichInputText) AdfUtil.findComponent(uiFilterSourceNameInputId);
+    }
+
+    private RichInputText getSourceDescInputText(){
+        return (RichInputText) AdfUtil.findComponent(uiFilterSourceDescInputId);
+    }
+    
+    public void logTypeValueChanged(ValueChangeEvent valueChangeEvent){
+        this.setLogType(valueChangeEvent.getNewValue().toString());
+//        LoganRuleWizTrainBean lrtb = LoganLibUiUtil.getLogRuleWizTrainBean();
+        
+        if (!this.getLogType().equals(ruleBean.getLogType()))
+        {
+//            LoganRuleSource sourcesBean = 
+//            if (sourcesBean != null){
+//                sourcesBean.setSources(new ArrayList<LoganRuleSource>());
+//            }
+//            LoganRuleConditionsBean conditionsBean =
+//                lrtb.getRuleConditionsBeanCurrent();
+//            if (conditionsBean != null)
+//            {
+//                conditionsBean.setConditions(new ArrayList<LoganRuleCondition>());
+//            }
+        }
+    }
+    
+    public List<LoganLibSourcePojo> getFilteredSourceList(){
+        if (filteredSourceList == null){
+            filteredSourceList = new ArrayList<LoganLibSourcePojo>();
+        }
+        return filteredSourceList;
+    }
+    
+    public void logRuleNameValidator(FacesContext facesContext,
+                                     UIComponent uIComponent,
+                                     Object object){
+        String rname = object.toString();
+        String errm = this.ruleBean.validateLogRuleName(rname);
+        if (errm != null && errm.trim().length() > 0){
+            FacesMessage msg = new FacesMessage(errm);
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            throw new ValidatorException(msg);
+        }
+    }
+    
+    public String handleInsertOperation(){
+        ruleBean.setIname((ruleBean.getIname()==null||ruleBean.getIname().equals(""))?ruleBean.getDname():ruleBean.getIname());
+        EmLoganRule pojor = new EmLoganRule();
+        
+        pojor.setRuleId(LogRuleDAO.getNextRuleId());
+        pojor.setRuleIsSystem(0);
+        //rule details
+        pojor.setRuleIname(ruleBean.getIname());
+        pojor.setRuleDname(ruleBean.getDname());
+        pojor.setRuleDescription(ruleBean.getDescription());
+        pojor.setRuleRationale(ruleBean.getRationale());
+        pojor.setRuleSrctypeIname(ruleBean.getLogType());
+        pojor.setRuleTargetType(ruleBean.getTargetType());
+        pojor.setRuleSeverity(ruleBean.getSeverity().intValue());
+        pojor.setRuleAuthor(ruleBean.getAuthor());
+        
+        
+        pojor.setRuleActionCentralized(0);
+        pojor.setRuleActionEvent(1);
+        pojor.setRuleActionEventBundle(1);
+        pojor.setRuleActionEventBundletime(10);
+        pojor.setRuleActionObservation(1);
+        pojor.setRuleActionRulemetric(1);
+        pojor.setRuleEditVersion(0);
+        
+        //        emLoganRule.setRuleIsSystem(0);
+        //        emLoganRule.setRuleActionCentralized(0);
+        //        emLoganRule.setRuleActionEvent(1);
+        //        emLoganRule.setRuleActionEventBundle(1);
+        //        emLoganRule.setRuleActionEventBundletime(10);
+        //        emLoganRule.setRuleActionObservation(1);
+        //        emLoganRule.setRuleActionRulemetric(1);
+        //        emLoganRule.setRuleEditVersion(0);
+        LogRuleDAO.insertRule(pojor);
+        return "return_to-logan-lib";
     }
 }

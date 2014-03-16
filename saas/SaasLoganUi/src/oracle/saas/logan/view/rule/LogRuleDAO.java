@@ -44,8 +44,7 @@ public class LogRuleDAO {
                 }
             }
         }
-        catch(Exception e)
-        {
+        catch(Exception e){
             s_log.logp(Level.WARNING,LoganLibUiUtil.class.getName(),"getAllLogParsers",
                        "*** Error occurred trying to get  getLogParserRow: ", e);
         }
@@ -117,4 +116,14 @@ public class LogRuleDAO {
         return ruleSources;
         
     }
+    
+    public static void insertRule( EmLoganRule rule ){
+        LoganLibUiUtil.getLogRulesSessionFacadeEJB().persistEmLoganRule(rule);
+    }
+    
+    public static int  getNextRuleId(){
+        return LoganLibUiUtil.getLogRulesSessionFacadeEJB().getNextRuleId();
+    }
+    
+//    public void
 }

@@ -15,6 +15,15 @@
   <view id="log-source-details">
       <page>/core/loganalytics/logsource/log-source-details.jspx</page>
   </view>
+  <method-call id="refreshLoganTransferStatus">
+    <method>#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.forceRefresh}</method>
+    <outcome>
+      <fixed-outcome>goto_core-log-rule-target_assoc3</fixed-outcome>
+    </outcome>
+  </method-call>
+  <view id="log-rule-target-assoc">
+    <page>/core/loganalytics/logrule/log-rule-target-assoc.jspx</page>
+  </view>
   <control-flow-rule id="__6">
     <from-activity-id>log-analytics-library</from-activity-id>
     <control-flow-case id="__7">
@@ -24,6 +33,31 @@
     <control-flow-case id="__9">
       <from-outcome>goto_core-log-source-details</from-outcome>
       <to-activity-id>log-source-details</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>goto_core-logan-rule-target-assoc2</from-outcome>
+      <to-activity-id>refreshLoganTransferStatus</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__4">
+    <from-activity-id>log-rule-details</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>return_to-logan-lib</from-outcome>
+      <to-activity-id>log-analytics-library</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__12">
+    <from-activity-id>refreshLoganTransferStatus</from-activity-id>
+    <control-flow-case id="__13">
+      <from-outcome>goto_core-log-rule-target_assoc3</from-outcome>
+      <to-activity-id>log-rule-target-assoc</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__14">
+    <from-activity-id>log-rule-target-assoc</from-activity-id>
+    <control-flow-case id="__15">
+      <from-outcome>return-to-logan-lib</from-outcome>
+      <to-activity-id>log-analytics-library</to-activity-id>
     </control-flow-case>
   </control-flow-rule>
   <managed-bean id="__1">
@@ -44,6 +78,11 @@
   <managed-bean id="__3">
     <managed-bean-name>core_loganalytics_ui_logRuleViewBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.rule.LogRuleViewBean</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__10">
+    <managed-bean-name>core_loganalytics_ui_logRuleTargetAssocBean</managed-bean-name>
+    <managed-bean-class>oracle.saas.logan.view.rule.LoganRuleTargetAssocBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
   </managed-bean>
 </adfc-config>

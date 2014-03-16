@@ -67,12 +67,6 @@ public class LoganSourceSessionBeanBean implements LoganSourceSessionBean, Logan
     }
 
     @Override
-    public List<EmLoganSource> getEmLoganSourceFindByPK(String srcIname, String targetType, String logType) {
-        // TODO Implement this method
-        return Collections.emptyList();
-    }
-
-    @Override
     public List<EmLoganSource> getEmLoganSourceFindBySourceId(Integer sourceId) {
         // TODO Implement this method
 //        return Collections.emptyList();
@@ -86,4 +80,13 @@ public class LoganSourceSessionBeanBean implements LoganSourceSessionBean, Logan
 //        return em.createNamedQuery("EmLoganRule.findByRuleId", EmLoganRule.class).setParameter("ruleId",
 //                                                                                                     ruleId).getResultList();
 //    }
+    @Override
+    public List<EmLoganSource> getFilteredSourceList(String targetType, String logType, String dname, String desc) {
+        // TODO Implement this method
+        return em.createNamedQuery("EmLoganSource.filteredSourceList", EmLoganSource.class)
+            .setParameter("srcType",logType)
+            .setParameter("targetType", targetType)
+            .setParameter("name", "%"+dname+"%")
+            .setParameter("desc", "%"+desc+"%").getResultList();
+    }
 }

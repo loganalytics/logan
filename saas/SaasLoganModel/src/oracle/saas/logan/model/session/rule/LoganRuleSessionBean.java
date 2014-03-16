@@ -52,16 +52,16 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
 
     public EmLoganRule persistEmLoganRule(EmLoganRule emLoganRule) {
         
-        emLoganRule.setRuleIname(emLoganRule.getRuleDname());
-        emLoganRule.setRuleId(10005);
-        emLoganRule.setRuleIsSystem(0);
-        emLoganRule.setRuleActionCentralized(0);
-        emLoganRule.setRuleActionEvent(1);
-        emLoganRule.setRuleActionEventBundle(1);
-        emLoganRule.setRuleActionEventBundletime(10);
-        emLoganRule.setRuleActionObservation(1);
-        emLoganRule.setRuleActionRulemetric(1);
-        emLoganRule.setRuleEditVersion(0);
+//        emLoganRule.setRuleIname(emLoganRule.getRuleDname());
+//        emLoganRule.setRuleId(10005);
+//        emLoganRule.setRuleIsSystem(0);
+//        emLoganRule.setRuleActionCentralized(0);
+//        emLoganRule.setRuleActionEvent(1);
+//        emLoganRule.setRuleActionEventBundle(1);
+//        emLoganRule.setRuleActionEventBundletime(10);
+//        emLoganRule.setRuleActionObservation(1);
+//        emLoganRule.setRuleActionRulemetric(1);
+//        emLoganRule.setRuleEditVersion(0);
         
         
         em.persist(emLoganRule);
@@ -93,4 +93,9 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
                                                                                                      ruleId).getResultList();
     }
 
+    @Override
+    public Integer getNextRuleId() {
+        // TODO Implement this method
+        return ((Integer)em.createNamedQuery("EmLoganRule.getMaxId", Integer.class).getSingleResult()) + 1;
+    }
 }

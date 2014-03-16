@@ -21,7 +21,13 @@ import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "EmLoganSource.findAll", query = "select o from EmLoganSource o"),
-//                @NamedQuery(name = "EmLoganSource.findSourcesByPK", query = "select o from EmLoganSource o"),
+                @NamedQuery(name = "EmLoganSource.filteredSourceList", query = "select o  from EmLoganSource o join " +
+                                                                            "                  EmLoganMetaSourceType t on o.sourceSrctypeIname =t.srctypeIname join  " +
+                                                                            "                  EmTargetTypes m  on o.sourceTargetType=m.targetType " +
+                                                                            "             where     o.sourceSrctypeIname = :srcType" + 
+                                                                            "		    and     o.sourceTargetType = :targetType" + 
+                                                                            "		    and     o.sourceDname like :name" + 
+                                                                            "		    and     o.sourceDescription like :desc"),
                 @NamedQuery(name = "EmLoganSource.findSources", query = "select o,t,m  from EmLoganSource o join EmLoganMetaSourceType t on o.sourceSrctypeIname =t.srctypeIname join  EmTargetTypes m  on o.sourceTargetType=m.targetType"),
                 @NamedQuery(name = "EmLoganSource.findBySourceId",  query = "select o from EmLoganSource o where o.sourceId = :sourceId")})
 @Table(name = "EM_LOGAN_SOURCE")

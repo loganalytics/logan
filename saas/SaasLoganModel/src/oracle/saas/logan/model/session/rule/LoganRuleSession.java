@@ -24,4 +24,6 @@ public interface LoganRuleSession {
     List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId);
 
     List<EmLoganRule> getEmLoganRuleFindAll();
+    
+    Integer getNextRuleId();
 }

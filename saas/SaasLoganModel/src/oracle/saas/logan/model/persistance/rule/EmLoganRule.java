@@ -27,7 +27,8 @@ import oracle.saas.logan.model.persistance.EmLoganSource;
 @Entity
 @NamedQueries({ 
         @NamedQuery(name = "EmLoganRule.findAll", query = "select o from EmLoganRule o"),
-        @NamedQuery(name = "EmLoganRule.findByRuleId",  query = "select o from EmLoganRule o where o.ruleId = :ruleId")})
+        @NamedQuery(name = "EmLoganRule.findByRuleId",  query = "select o from EmLoganRule o where o.ruleId = :ruleId"),
+        @NamedQuery(name = "EmLoganRule.getMaxId", query="select max(o.ruleId) from EmLoganRule o")})
 @Table(name = "EM_LOGAN_RULE")
 @IdClass(EmLoganRulePK.class)
 public class EmLoganRule implements Serializable {

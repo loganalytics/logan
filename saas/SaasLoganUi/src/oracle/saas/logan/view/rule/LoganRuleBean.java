@@ -3,6 +3,9 @@ package oracle.saas.logan.view.rule;
 import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 import oracle.jbo.domain.Number;
 
+import oracle.saas.logan.util.LoganLibUiUtil;
+import oracle.saas.logan.util.UiUtil;
+
 public class LoganRuleBean {
     public LoganRuleBean() {
         super();
@@ -148,4 +151,15 @@ public class LoganRuleBean {
     public boolean isIsSystem() {
         return isSystem;
     }
+    public String validateLogRuleName(String ruleName){
+        String errMsg = null;
+        if (ruleName == null || ruleName.trim().length() == 0){
+            errMsg = UiUtil.getUiString("RULE_NAME_BLANK_ERR");
+        }
+//        else if (!LoganLibUiUtil.isValidRuleName(ruleName)){
+//            errMsg = UiUtil.getUiString("RULE_NAME_INUSE_ERR");
+//        }
+        return errMsg;
+    }
+    
 }

@@ -19,7 +19,7 @@ public interface LoganSourceSessionBean {
     
     List<EmLoganSource> getEmLoganSourceFindAll();
     
-    List<EmLoganSource> getEmLoganSourceFindByPK(String srcIname, String targetType, String logType);
+    List<EmLoganSource> getFilteredSourceList(String targetType, String logType, String dname, String desc);
 
     List<Object[]> getEmLoganSourceFindSources();
 }

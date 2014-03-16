@@ -17,8 +17,16 @@
                             <f:facet name="top">
                             </f:facet>
                             <f:facet name="center">
+                                
                                 <af:panelGroupLayout>
-                                    <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
+                                            <af:button text="#{coreloganalyticsuiBundle.FINISH}" id="b1"
+                                                       action="#{viewScope.core_loganalytics_ui_logRuleViewBean.handleInsertOperation}"
+                                                       rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"/>
+                                            <af:spacer width="10" id="s0"/>
+                                            <af:button text="#{coreloganalyticsuiBundle.CANCEL}" id="b11"
+                                                       action="return_to-logan-lib"/>
+                                            <af:spacer height="10" id="s11"/>
+                                            <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
                                                                            disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}"
                                                                            shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_DETAILS}">
                                         
@@ -31,19 +39,20 @@
                                             </af:panelGroupLayout>
                                             <af:spacer height="2" id="sq1"/>
                                             <af:panelFormLayout id="pfl1">
-                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.dname}" 
+                                                <!--<af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.dname}" 
                                                               label="#{coreloganalyticsuiBundle.RULE}"
                                                               rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
                                                               shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it1"
                                                               columns="65" readOnly="true">
-                                                </af:inputText>
-                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.iname}" 
-                                                              rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                </af:inputText>-->
+                                                
+                                                <af:inputText id="it2" value="#{viewScope.core_loganalytics_ui_logRuleViewBean.dname}"
+                                                              maximumLength="128"
                                                               label="#{coreloganalyticsuiBundle.RULE}"
-                                                              shortDesc="#{coreloganalyticsuiBundle.RULE}" id="it2"
-                                                              validator="#{viewScope.core_loganalytics_ui_logRuleViewBean.validateRuleName}"
-                                                              columns="65" required="true" autoTab="true">
-                                                </af:inputText>
+                                                              required="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              readOnly="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
+                                                              validator="#{viewScope.core_loganalytics_ui_logRuleViewBean.logRuleNameValidator}"/>
+                                               
                                                 <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.author}" label="#{coreloganalyticsuiBundle.AUTHOR}"
                                                               columns="65"
                                                               maximumLength="#{bindings.ruleAuthor.hints.precision}"
@@ -64,19 +73,19 @@
                                                   <f:selectItems value="#{viewScope.core_loganalytics_ui_logRuleViewBean.ruleSeverityList}"
                                                                  id="si1214"/>
                                                 </af:selectOneChoice>
-                                                <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.logTypeDisplayName}"
+                                                <!--<af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.logTypeDisplayName}"
                                                               label="#{coreloganalyticsuiBundle.LOG_TYPE}"
                                                               rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
-                                                              id="ot349" readOnly="true"/>
+                                                              id="ot349" readOnly="true"/>-->
                                                 <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_logRuleViewBean.logType}"
                                                                     label="#{coreloganalyticsuiBundle.LOG_TYPE}"
                                                                     rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readEditMode}"
                                                                     shortDesc="#{coreloganalyticsuiBundle.LOG_TYPE}"
-                                                                    id="soc59"
+                                                                    id="soc529"
                                                                     valueChangeListener="#{viewScope.core_loganalytics_ui_logRuleViewBean.logTypeValueChanged}"
                                                                     required="true">
                                                   <f:selectItems value="#{viewScope.core_loganalytics_ui_logRuleViewBean.ruleLogTypesList}"
-                                                                 id="si12149"/>
+                                                                 id="si121349"/>
                                                 </af:selectOneChoice>
                                                 
                                                 <af:inputText value="#{viewScope.core_loganalytics_ui_logRuleViewBean.targetTypeDisplayName}"
@@ -108,11 +117,12 @@
                                             </af:panelFormLayout>
                                         </af:group>
                                      </af:showDetail>
+                                     <af:spacer height="10" id="s13"/>
                                      <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}"
                                                                            disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}"
                                                                            shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_SOURCES}">
                                         <af:group id="g2">
-                                              <af:spacer height="4" id="s11"/>
+                                              <af:spacer height="4" id="s111"/>
                                               <af:panelGroupLayout id="pgl11" layout="horizontal">
                                                 <af:spacer width="10" id="s12"/>
                                                 <af:outputText value="#{coreloganalyticsuiBundle.LOG_RULE_WIZ_SOURCES_DESC}"
@@ -126,7 +136,7 @@
                                                                             featuresOff="detach viewMenu">
                                                           <f:facet name="toolbar">
                                                                 <af:toolbar id="t6"
-                                                                            rendered="#{viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}">
+                                                                            rendered="#{!viewScope.core_loganalytics_ui_logRuleViewBean.readOnlyMode}">
                                                                   <af:commandToolbarButton text="#{coreloganalyticsuiBundle.INCLUDE_EXISTING_SOURCE}"
                                                                                            icon="/images/add_ena.png"
                                                                                            id="ctb3"
@@ -178,6 +188,7 @@
                                               </af:panelGroupLayout>
                                         </af:group>
                                      </af:showDetail>
+                                     <af:spacer height="10" id="s14"/>
                                      <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_CONDITIONS}"
                                                                            disclosedText="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_CONDITIONS}"
                                                                            shortDesc="#{coreloganalyticsuiBundle.TITLE_CREATE_RULE_CONDITIONS}">
@@ -195,7 +206,7 @@
                                                  resize="on" type="none" contentWidth="400" contentHeight="260">
                                         <af:panelStretchLayout id="srnd" styleClass="AFStretchWidth">
                                           <f:facet name="center">
-                                            <!--<af:panelGroupLayout id="pgl3" layout="vertical">
+                                            <af:panelGroupLayout id="pgl3" layout="vertical">
                                               <af:outputText value="#{coreloganalyticsuiBundle.SELECT_ONE_OR_MORE_LOG_SOURCES}"
                                                              id="ot1"/>
                                               <af:spacer height="10" id="s3"/>
@@ -204,11 +215,11 @@
                                                                   maxColumns="2">
                                                 <af:inputText styleClass="AFDataText"
                                                               label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
-                                                              value="#{viewScope.sourcesView.targetTypeDisplayName}"
+                                                              value="#{viewScope.core_loganalytics_ui_logRuleViewBean.targetTypeDisplayName}"
                                                               readOnly="true" id="itsTType"/>
                                                 <af:inputText styleClass="AFDataText"
                                                               label="#{coreloganalyticsuiBundle.LOG_TYPE}"
-                                                              value="#{viewScope.sourcesView.logTypeDisplayName}"
+                                                              value="#{viewScope.core_loganalytics_ui_logRuleViewBean.logTypeDisplayName}"
                                                               readOnly="true" id="itsEType"/>
                                                 <af:inputText label="#{coreloganalyticsuiBundle.SOURCE}"
                                                               id="sourceName4Search"/>
@@ -219,13 +230,13 @@
                                                                        layout="vertical">
                                                     <af:commandButton text="#{coreloganalyticsuiBundle.SEARCH}"
                                                                       id="comb18"
-                                                                      actionListener="#{viewScope.sourcesView.handleLogSourceSearch}"
+                                                                      actionListener="#{viewScope.core_loganalytics_ui_logRuleViewBean.handleLogSourceSearch}"
                                                                       partialSubmit="true"/>
                                                     <af:spacer height="5" id="spa3"/>
                                                   </af:panelGroupLayout>
                                                 </f:facet>
                                               </af:panelFormLayout>
-                                              <af:table value="#{viewScope.sourcesView.filteredSourceList}"
+                                              <af:table value="#{viewScope.core_loganalytics_ui_logRuleViewBean.filteredSourceList}"
                                                         var="rowfileter"
                                                         emptyText="#{coreloganalyticsuiBundle.NO_DATA_TO_DISPLAY}"
                                                         rowBandingInterval="1"
@@ -242,7 +253,7 @@
                                                 <af:column sortProperty="name" sortable="true" rowHeader="unstyled" 
                                                            headerText="#{coreloganalyticsuiBundle.SOURCE_NAME}"
                                                            id="c89" width="25%">
-                                                  <af:outputText value="#{rowfileter.name}" id="ot149"/>
+                                                  <af:outputText value="#{rowfileter.sourceDname}" id="ot149"/>
                                                 </af:column>
                                                 <af:column sortProperty="inclFilePatternsCount"
                                                            headerText="#{coreloganalyticsuiBundle.FILE_PATTERNS}"
@@ -253,11 +264,11 @@
                                                 <af:column sortProperty="description"
                                                            headerText="#{coreloganalyticsuiBundle.DESCRIPTION}"
                                                            id="c49" width="60%">
-                                                  <af:outputText value="#{rowfileter.description}"
+                                                  <af:outputText value="#{rowfileter.sourceDescription}"
                                                                  id="ot159"/>
                                                 </af:column>
                                               </af:table>
-                                            </af:panelGroupLayout>-->
+                                            </af:panelGroupLayout>
                                           </f:facet>
                                         </af:panelStretchLayout>
                                         <f:facet name="buttonBar">

@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:emfunc="http://xmlns.oracle.com/emfunc/adf/faces"  
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+   <c:set var="coreloganalyticsuiBundle"
+         value="#{adfBundle['oracle.saas.logan.view.SaasLoganUiBundle']}"/>
+   <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+   <f:view>
+        <af:document id="d1" title="#{coreloganalyticsuiBundle.RULE_TARGET_ASSOC_TITLE}">
+        <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:popup id="p1" contentDelivery="lazyUncached"
+                              childCreation="deferred"
+                              popupFetchListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.setTargetParameterOverrLaunched}">
+                       <af:dialog id="d3"
+                                  title="#{coreloganalyticsuiBundle.OVERRIDE_SOURCE_PARAMETERS_VAL}"
+                                  resize="on" stretchChildren="first"
+                                  contentWidth="810" contentHeight="200">
+                          <af:panelStretchLayout id="psl2" topHeight="auto">
+                             <f:facet name="top">
+                                <af:panelGroupLayout id="pgl3"
+                                                     styleClass="AFStretchWidth"
+                                                     layout="vertical">
+                                   <af:outputText value="#{coreloganalyticsuiBundle.PARAMETERS_OVERRIDE_INSTR_TEXT}" id="ot4"/>
+                                   <af:spacer height="10" id="s1"/>
+                                </af:panelGroupLayout>
+                             </f:facet>
+                             <f:facet name="center">
+                                <af:table var="rowpa" rowBandingInterval="1" id="t1"
+                                          rowSelection="single"
+                                          columnStretching="multiple"
+                                          emptyText="#{coreloganalyticsuiBundle.NO_DATA_TO_DISPLAY}"
+                                          summary="#{coreloganalyticsuiBundle.OVERRIDE_SOURCE_PARAMETERS_VAL}"
+                                          shortDesc="#{coreloganalyticsuiBundle.PARAMETERS_OVERRIDE_INSTR_TEXT}"
+                                          value="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.paramsOverrideForTarget}">
+                                   <af:column id="c9" rowHeader="true" width="5"/>
+                                   <af:column sortable="false"
+                                              headerText="#{coreloganalyticsuiBundle.PARAMETER_NAME}"
+                                              id="c5" width="15%" rowHeader="unstyled">
+                                      <af:panelGroupLayout id="pgl4"
+                                                           layout="horizontal">
+                                         <af:image source="#{rowpa.builtInParam ? '/images/auto_mode.png' : '/images/false.gif'}"
+                                                   shortDesc="#{rowpa.builtInParam ? coreloganalyticsuiBundle.BUILTIN_PARAMETER : coreloganalyticsuiBundle.USER_DEFINED_PARAMETER}"
+                                                   id="i1"/>
+                                         <af:spacer width="5" id="s2"/>
+                                         <af:outputText value="#{rowpa.paramName}"
+                                                        id="ot8"/>
+                                      </af:panelGroupLayout>
+                                   </af:column>
+                                   <af:column id="c6"
+                                              headerText="#{coreloganalyticsuiBundle.PARAMETER_VALUE}"
+                                              width="45%">
+                                      <af:outputText value="#{rowpa.paramValue}" id="ot5"/>
+                                   </af:column>
+                                   <af:column sortable="false"
+                                              headerText="#{coreloganalyticsuiBundle.OVERRIDE_VALUE}"
+                                              id="c4" width="40%">
+                                      <af:inputText value="#{rowpa.paramOverrideValue}" id="it9"
+                                                    simple="true"
+                                                    label="#{coreloganalyticsuiBundle.OVERRIDE_VALUE}"
+                                                    shortDesc="#{coreloganalyticsuiBundle.OVERRIDE_VALUE}"/>
+                                   </af:column>
+                                </af:table>
+                             </f:facet>
+                          </af:panelStretchLayout>
+                       </af:dialog>
+                    </af:popup>
+                    
+                    <af:popup id="popupAssocError" contentDelivery="lazyUncached">
+                        <af:dialog id="d8"
+                                       title="#{coreloganalyticsuiBundle.ERRORS}">
+                              <af:outputText id="f5"
+                                             value="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.selectedTxndetais}"/>
+                        </af:dialog>
+                    </af:popup>
+                    <af:popup id="popupDeleteAssoc" contentDelivery="lazyUncached">
+                        <af:dialog id="d2"
+                                       title="#{coreloganalyticsuiBundle.CONFIRM_REMOVE_TITLE}"
+                                       dialogListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.removeTarget}">
+                              <af:outputText id="ff5"
+                                             value="#{coreloganalyticsuiBundle.DELETE_CONFIRM}"/>
+                        </af:dialog>
+                    </af:popup>   
+                 <af:popup id="confDialog" contentDelivery="lazyUncached">
+                    <af:dialog id="d4" closeIconVisible="false"
+                               title="#{false ? coreloganalyticsuiBundle.KEEP_EXISTING_ASSOC_CONFIG : coreloganalyticsuiBundle.SAVE_ASSOCIATION}"
+                               contentWidth="300" contentHeight="50"
+                               type="cancel" resize="on">
+                       <af:outputText id="ff2s"
+                                      value="#{coreloganalyticsuiBundle.EDIT_ASSOC_CONFFIRM}"/>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout id="pgl1">
+                          <af:commandButton text="#{coreloganalyticsuiBundle.CONTINUE}"
+                                            action="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.finalConfirmOK}"
+                                            id="saveconfirmbtn">
+                          </af:commandButton>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                 </af:popup>   
+                 <af:pageTemplate viewId="/core/loganalytics/templateDef.jspx"
+                             value="#{bindings.pageTemplateBinding}" id="emT">  
+                       <f:attribute name="functionHeaderText" value="#{coreloganalyticsuiBundle.RULE_TARGET_ASSOC_TITLE}"/>  
+                       <f:facet name="emContent">
+                          <af:group id="g2">
+                             <af:panelStretchLayout id="psl1" topHeight="auto"
+                                                    styleClass="AFStretchWidth">
+                                <f:facet name="top">
+                                   <af:panelGroupLayout id="pgas" layout="vertical">
+                                      <af:panelGroupLayout layout="horizontal"
+                                                           styleClass="AFStretchWidth"
+                                                           id="hpgl">
+                                         <af:panelGroupLayout layout="horizontal"
+                                                              valign="top" halign="left"
+                                                              id="pglh">
+                                            <af:panelHeader text="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.targetAssocHeader}"
+                                                            id="ph1"/>
+                                         </af:panelGroupLayout>
+                                         <af:panelGroupLayout layout="horizontal"
+                                                              valign="top"
+                                                              halign="right"
+                                                              id="cstarget01">
+                                            <af:panelGroupLayout layout="horizontal"
+                                                                 valign="top"
+                                                                 halign="end"
+                                                                 id="cstarget03">
+                                                <af:commandButton text="#{coreloganalyticsuiBundle.OK_BTN_TEXT}"
+                                                                 partialSubmit="true"
+                                                                 id="okbtn">
+                                                        <af:showPopupBehavior popupId="::confDialog"/>
+                                                   </af:commandButton>
+                                                   <af:spacer width="10" id="cstarget04"/>
+                                                   <!-- changing the action listener for cancel button -->
+                                                   <af:commandButton text="#{coreloganalyticsuiBundle.CANCEL_BTN_TEXT}"
+                                                                     partialSubmit="true"
+                                                                     immediate="true"
+                                                                     action="return-to-logan-lib"
+                                                                     id="cancelbtn"/>
+                                            </af:panelGroupLayout>
+                                         </af:panelGroupLayout>
+                                      </af:panelGroupLayout>
+                                      <af:spacer height="5" id="ss5"/>
+                                      <af:outputText value="#{coreloganalyticsuiBundle.MESSAGE_RULE_TARGET_ASSOC}"
+                                                             id="otrta"/>
+                                      <af:spacer height="5" id="sp5"/>
+                                   </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="center">
+                                   <af:panelGroupLayout layout="scroll"
+                                                        xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                        id="pgl2">
+                                      <af:panelCollection id="pc"
+                                                          styleClass="AFStretchWidth"
+                                                          featuresOff="detach viewMenu">
+                                         <f:facet name="toolbar">
+                                            <af:toolbar id="ftbar" visible="true"
+                                                        inlineStyle="width:inherit;"
+                                                        flex="1">
+                                               <af:group id="g5">
+                                                  <af:commandToolbarButton shortDesc="#{coreloganalyticsuiBundle.ADD}"
+                                                                           text="#{coreloganalyticsuiBundle.ADD}"
+                                                                           id="addTlbBtn"
+                                                                           icon="/images/add_ena.png"
+                                                                           partialSubmit="true"
+                                                                           useWindow="true"
+                                                                           windowWidth="475"
+                                                                           windowHeight="500"
+                                                                           actionListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.prepareTargetSelector}"
+                                                                           returnListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.returnFromTargetSelector}"
+                                                                           action="dialog:launchTargetSelector"/>
+                                                  <af:commandToolbarButton text="#{coreloganalyticsuiBundle.SET_PARAMETER_OVERRIDES}"
+                                                                           shortDesc="#{coreloganalyticsuiBundle.SET_PARAMETER_OVERRIDES}"
+                                                                           id="ctb1"
+                                                                           disabled="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.removeDisabled}"
+                                                                           icon="/images/edit_ena.png"
+                                                                           disabledIcon="/images/update_dis.png">
+                                                     <af:showPopupBehavior popupId=":::p1"/>
+                                                  </af:commandToolbarButton>
+                                                  <af:commandToolbarButton shortDesc="#{coreloganalyticsuiBundle.REMOVE}"
+                                                                           text="#{coreloganalyticsuiBundle.REMOVE}"
+                                                                           id="rmvTlbBtn"
+                                                                           icon="/images/delete_ena.png"
+                                                                           disabledIcon="/images/delete_dis.png"
+                                                                           disabled="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.removeDisabled}">
+                                                     <af:showPopupBehavior popupId=":::popupDeleteAssoc"/>
+                                                  </af:commandToolbarButton>
+                                                  <af:commandToolbarButton shortDesc="#{coreloganalyticsuiBundle.ENABLE}"
+                                                                           text="#{coreloganalyticsuiBundle.ENABLE}"
+                                                                           id="bulkEnableTblBtn"
+                                                                           icon="/images/enable_active.png"
+                                                                           disabledIcon="/images/enable_inactive.png"
+                                                                           partialSubmit="true"
+                                                                           disabled="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.bulkApplyOptionsEnabled}"
+                                                                           actionListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.handleEnable}"/>
+                                                  <af:commandToolbarButton shortDesc="#{coreloganalyticsuiBundle.DISABLE}"
+                                                                           text="#{coreloganalyticsuiBundle.DISABLE}"
+                                                                           id="bulkDisableTblBtn"
+                                                                           icon="/images/Disable_active.png"
+                                                                           disabledIcon="/images/Disable_inactive.png"
+                                                                           partialSubmit="true"
+                                                                           disabled="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.bulkApplyOptionsDisabled}"
+                                                                           actionListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.handleDisable}"/>
+                                               </af:group>
+                                               <af:group id="g1">
+                                                  <af:commandToolbarButton shortDesc="#{coreloganalyticsuiBundle.STARTCOLL}"
+                                                                           text="#{coreloganalyticsuiBundle.STARTCOLL}"
+                                                                           id="startcoll"
+                                                                           icon="/images/startperformance_ena.png"
+                                                                           disabledIcon="/images/startperformance_dis.png"
+                                                                           partialSubmit="true"
+                                                                           disabled="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.collStarted}"
+                                                                           actionListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.handleStartColl}"/>
+                                                  <af:commandToolbarButton shortDesc="#{coreloganalyticsuiBundle.STOPCOLL}"
+                                                                           text="#{coreloganalyticsuiBundle.STOPCOLL}"
+                                                                           id="stopcoll"
+                                                                           icon="/images/stopperformance_ena.png"
+                                                                           disabledIcon="/images/stopperformance_dis.png"
+                                                                           partialSubmit="true"
+                                                                           disabled="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.collStopped}"
+                                                                           actionListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.handleStopColl}"/>
+                                               </af:group>
+                                            </af:toolbar>
+                                         </f:facet>
+                                         <f:facet name="statusbar">
+                                            <af:toolbar id="tb1">
+                                               <af:outputText value="#{coreloganalyticsuiBundle.TOTAL_ROWS}: "
+                                                              id="ot37"/>
+                                               <af:spacer width="5" id="s5"/>
+                                               <af:outputText id="totalText"
+                                                              value="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.totalRows}"/>
+                                            </af:toolbar>
+                                         </f:facet>
+                                         <af:table value="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.targetsCur}"
+                                                       var="rowtarget"
+                                                       emptyText="#{coreloganalyticsuiBundle.NO_DATA_TO_DISPLAY}"
+                                                       rowBandingInterval="1"
+                                                       styleClass="AFStretchWidth"
+                                                       rowSelection="multiple" id="hosttbl"
+                                                       columnStretching="last"
+                                                       contentDelivery="immediate"
+                                                       partialTriggers="::addTlbBtn"
+                                                       summary="#{coreloganalyticsuiBundle.LIST_OF_LOG_SOURCES_RULE}"
+                                                       shortDesc="#{coreloganalyticsuiBundle.LIST_OF_LOG_SOURCES_RULE}"
+                                                       selectionListener="#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.targetSelected}">
+                                                <f:attribute name="EM_dontPersistSession"
+                                                             value="selectedRowKeys"/>
+                                                <af:column rowHeader="true" width="10"
+                                                           id="rowsel"/>
+                                                <af:column sortProperty="targetName"
+                                                           sortable="true" width="400"
+                                                           headerText="#{coreloganalyticsuiBundle.TARGET_NAME}"
+                                                           id="c2" rowHeader="unstyled">
+                                                   <af:outputText value="#{rowtarget.targetName}"
+                                                                  id="ot1"/>
+                                                </af:column>
+                                                <af:column sortProperty="isEnabled"
+                                                           sortable="true" width="150"
+                                                           headerText="#{coreloganalyticsuiBundle.EVALUATION_STATUS}"
+                                                           id="c11">
+                                                   <af:outputText value="#{rowtarget.evaluationStatusText}"
+                                                                  id="ot31"/>
+                                                </af:column>
+                                                <af:column sortProperty="status"
+                                                           sortable="true" width="150"
+                                                           headerText="#{coreloganalyticsuiBundle.TRANSFER_STATUS}"
+                                                           id="c1">
+                                                  <af:outputText value="#{rowtarget.transferStatusText}"
+                                                                id="ot3" rendered="#{rowtarget.txfdetails==null}"/>
+                                                 <af:commandLink text="#{rowtarget.transferStatusText}" 
+                                                                   id="cl1" rendered="#{rowtarget.txfdetails!=null }">
+                                                       <af:showPopupBehavior popupId=":popupAssocError" />
+                                                    </af:commandLink>
+                                                </af:column>
+                                                <af:column sortProperty="mestatus"
+                                                           sortable="true" width="150"
+                                                           headerText="#{coreloganalyticsuiBundle.METRIC_STATUS}"
+                                                           id="c3">
+                                                   <af:outputText value="#{rowtarget.metricStatusText}"
+                                                                  id="ot2"/>
+                                                </af:column>
+                                             </af:table>
+                                        </af:panelCollection>
+                                    </af:panelGroupLayout>
+                                 </f:facet>
+                             </af:panelStretchLayout>
+                          </af:group>
+                       </f:facet>
+                    </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

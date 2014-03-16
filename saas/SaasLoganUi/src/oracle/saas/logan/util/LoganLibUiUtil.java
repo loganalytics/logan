@@ -13,6 +13,7 @@ import java.util.logging.Level;
 
 import java.util.logging.Logger;
 
+import javax.faces.component.UIComponent;
 import javax.faces.model.SelectItem;
 
 import javax.naming.CommunicationException;
@@ -22,6 +23,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import oracle.adf.view.rich.component.rich.data.RichTable;
+
+import oracle.jbo.Row;
+import oracle.jbo.domain.Number;
 
 import oracle.saas.logan.model.client.LoganSessionBeanProxy;
 import oracle.saas.logan.model.persistance.EmLoganMetaSourceType;
@@ -37,8 +41,10 @@ import oracle.saas.logan.model.session.util.LoganMetaSourceTypeSession;
 
 import oracle.saas.logan.view.BaseDataPersistenceHandler;
 
+import oracle.saas.logan.view.rule.LoganRuleTargetAssoc;
 import oracle.saas.logan.view.source.LoganLibSourcePojo;
 
+import org.apache.myfaces.trinidad.context.RequestContext;
 import org.apache.myfaces.trinidad.model.RowKeySet;
 
 
@@ -471,30 +477,62 @@ public class LoganLibUiUtil {
                                                                              String name,
                                                                              String desc){
         List<LoganLibSourcePojo> sourceList = new ArrayList<LoganLibSourcePojo>();
-        List<String> typeDisplayNames = new ArrayList<String>();
-//        List<EmLoganSource> pojos = getLogSourcesSessionFacadeEJB().();
-
-//        Map<String, String> typDispToType = new HashMap<String, String>();
-//
-//        if (includeAll) {
-//            sourceTypeList.add(new SelectItem("ALL", LoganUiModelUtil.getUiString("ALL")));
-//        }
-//
-//        for (EmLoganMetaSourceType pojo : pojos) {
-//
-//            String stype = pojo.getSrctypeIname();
-//            //TODO use sdk provided nls handling
-//            //String tdisplaytype = TargetMetricUtil.getLocalizedTargetTypeLabel(ttype);
-//            String sdisplaytype = pojo.getSrctypeDname();
-//            typeDisplayNames.add(sdisplaytype);
-//            typDispToType.put(sdisplaytype, stype);
-//        }
-//
-//        Collections.sort(typeDisplayNames);
-//        for (String sdname : typeDisplayNames) {
-//            sourceTypeList.add(new SelectItem(typDispToType.get(sdname), sdname));
-//        }
-        return sourceList;
         
+        List<EmLoganSource> pojos = getLogSourcesSessionFacadeEJB().getFilteredSourceList(targetType, logType, (name==null?"" : name), (desc==null?"":desc));
+
+        for(EmLoganSource pojo : pojos){
+            LoganLibSourcePojo source = new LoganLibSourcePojo();
+            source.setSourceId(pojo.getSourceId());
+            source.setSourceDname(pojo.getSourceDname());
+            source.setSourceIsSystem(pojo.getSourceIsSystem());
+            source.setSourceDescription(pojo.getSourceDescription());
+            source.setSourceAuthor(pojo.getSourceAuthor());
+            source.setSourceLastUpdatedDate(pojo.getSourceLastUpdatedDate());
+            
+            sourceList.add(source);
+        }
+        return sourceList;
+    }
+    
+    /**
+      * Adds the partial target for a UI Element.
+      * TODO: consider moving this to UiUtil.java
+      * @param id
+      *            the id of the UI element
+      */
+    public static void addPPR(String id){
+        UIComponent component = AdfUtil.findComponent(id);;
+        if (component != null){
+            RequestContext.getCurrentInstance().addPartialTarget(component);
+        }
+    }
+    
+    /**
+      * Get the List of Logan Rule Target Assocs (LoganRuleTargetAssoc)
+      * associated with the given ruleId from the EmLoganRuleTargetAssocVO.
+      * 
+      * @param ruleId
+      *            the rule id
+      * @return List of Logan Rule Target Assocs (LoganRuleTargetAssoc)
+      */
+    public static List<LoganRuleTargetAssoc> loadLogRuleTargets(Number ruleId){
+        if (ruleId == null)
+            return null;
+        List<LoganRuleTargetAssoc> targets =
+            new ArrayList<LoganRuleTargetAssoc>();
+        
+        return targets;
+    }
+    
+    /**
+      * Gets the row selected from ui table.
+      * 
+      * @param tableId
+      *            the table id like "emT:pgl1:t1"
+      * @return the row selected from ui table
+      */
+    public static List getRowSelectedFromUiTable(String tableId){
+        RichTable iT = (RichTable) AdfUtil.findComponent(tableId);
+        return getRowSelectedFromUiTable(iT);
     }
 }
