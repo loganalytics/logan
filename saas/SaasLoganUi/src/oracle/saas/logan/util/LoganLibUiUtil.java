@@ -7,16 +7,13 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import java.util.logging.Level;
-
 import java.util.logging.Logger;
 
 import javax.faces.model.SelectItem;
 
 import javax.naming.CommunicationException;
 import javax.naming.Context;
-
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -24,7 +21,6 @@ import oracle.adf.view.rich.component.rich.data.RichTable;
 
 import oracle.saas.logan.model.client.LoganSessionBeanProxy;
 import oracle.saas.logan.model.persistance.EmTargetTypes;
-
 import oracle.saas.logan.model.session.rule.LoganRuleSession;
 
 import org.apache.myfaces.trinidad.model.RowKeySet;
@@ -55,6 +51,14 @@ public class LoganLibUiUtil {
         return getTargetTypesList(true);
     }
 
+    
+    public static List<SelectItem> getRefreshedTargetTypesList(boolean includeAll) 
+    {
+        targetTypeList = null;
+        return getTargetTypesList(includeAll);
+    }
+        
+    private static List<SelectItem> targetTypeList = null;
     /**
      * List of Target Types as SelectItems with value = target type and label =
      * type Display Name NLSed. If includeAll then add one more SelectItem
@@ -66,30 +70,33 @@ public class LoganLibUiUtil {
      * @return List of Target Types as SelectItems
      */
     public static List<SelectItem> getTargetTypesList(boolean includeAll) {
-        List<SelectItem> targetTypeList = new ArrayList<SelectItem>();
-        List<String> typeDisplayNames = new ArrayList<String>();
-        List<EmTargetTypes> pojos = LoganSessionBeanProxy.getEmTargetTypesFindAll();
+        if(targetTypeList == null)
+        {
+            targetTypeList = new ArrayList<SelectItem>();
+            List<String> typeDisplayNames = new ArrayList<String>();
+            List<EmTargetTypes> pojos = LoganSessionBeanProxy.getEmTargetTypesFindAll();
 
-        Map<String, String> typDispToType = new HashMap<String, String>();
+            Map<String, String> typDispToType = new HashMap<String, String>();
 
-        if (includeAll) {
-            targetTypeList.add(new SelectItem("ALL", LoganUiModelUtil.getUiString("ALL")));
+            if (includeAll) {
+                targetTypeList.add(new SelectItem("ALL", LoganUiModelUtil.getUiString("ALL")));
+            }
+
+            for (EmTargetTypes pojo : pojos) {
+                String ttype = pojo.getTargetType();
+                //TODO use sdk provided nls handling
+                //String tdisplaytype = TargetMetricUtil.getLocalizedTargetTypeLabel(ttype);
+                String tdisplaytype = pojo.getTypeDisplayName();
+                typeDisplayNames.add(tdisplaytype);
+                typDispToType.put(tdisplaytype, ttype);
+            }
+
+            Collections.sort(typeDisplayNames);
+            for (String tdname : typeDisplayNames) {
+                targetTypeList.add(new SelectItem(typDispToType.get(tdname), tdname));
+            }
         }
 
-        for (EmTargetTypes pojo : pojos) {
-
-            String ttype = pojo.getTargetType();
-            //TODO use sdk provided nls handling
-            //String tdisplaytype = TargetMetricUtil.getLocalizedTargetTypeLabel(ttype);
-            String tdisplaytype = pojo.getTypeDisplayName();
-            typeDisplayNames.add(tdisplaytype);
-            typDispToType.put(tdisplaytype, ttype);
-        }
-
-        Collections.sort(typeDisplayNames);
-        for (String tdname : typeDisplayNames) {
-            targetTypeList.add(new SelectItem(typDispToType.get(tdname), tdname));
-        }
         return targetTypeList;
     }
 

@@ -121,11 +121,7 @@ public class LoganLibSourcesBean {
     
     public List<SelectItem> getTargetTypesList()
     {
-        //cache the select list
-        if (targetTypesList == null)
-        {
-            targetTypesList = LoganLibUiUtil.getTargetTypesList();
-        }
+        targetTypesList = LoganLibUiUtil.getTargetTypesList();
         return targetTypesList;
     }
     
@@ -224,6 +220,15 @@ public class LoganLibSourcesBean {
     }   
     
     
+    public int getEstimatedRowCount()
+    {
+        if(sources == null)
+        {
+           return 0; 
+        } else{
+            return sources.size();
+        }
+    }
 
     /**
      * Get the handle to the Main data table on the tab

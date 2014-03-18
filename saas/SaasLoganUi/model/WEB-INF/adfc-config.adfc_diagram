@@ -58,7 +58,7 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">273.74707</property>
+         name="y">273.39648</property>
       <property
          name="x">-219.5</property>
    </View>
@@ -70,7 +70,7 @@
       <property
          name="fromOutcome">goto_core-logan-rule-view</property>
       <property
-         name="sdm:polyPoints">R46,-323.31738,62.5459,-67.64844,-17.655273,L50</property>
+         name="sdm:polyPoints">R42,-323.31738,59.0459,-67.64844,-17.655273,L50</property>
    </ControlFlowCase>
    <View
       id="View12">
@@ -89,12 +89,22 @@
    </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase14"
+      id="ControlFlowCase31"
       from="View10"
       to="View12">
       <property
          name="fromOutcome">goto_core-log-source-details</property>
       <property
-         name="sdm:polyPoints">R54,-323.31738,69.5459,-59.5,90.99414,L50</property>
+         name="sdm:polyPoints">R50,-323.0333,66.0459,-59.5,87.49414,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase35"
+      from="View12"
+      to="View10">
+      <property
+         name="fromOutcome">return-to-logan-lib-home</property>
+      <property
+         name="sdm:polyPoints">L54,-59.784233,94.49414,-323.31738,73.0459,R58</property>
    </ControlFlowCase>
 </SDM>

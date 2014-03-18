@@ -4,13 +4,13 @@
     <c:set var="coreloganalyticsuiBundle" value="#{adfBundle['oracle.saas.logan.view.SaasLoganUiBundle']}"/>
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
-        <af:document title="log-analytics-library.jspx" id="d1">
+        <af:document title="#{coreloganalyticsuiBundle.LOG_MONITORING_LIBRARY}" id="d1">
             <af:pageTemplate viewId="/core/loganalytics/templateDef.jspx" value="#{bindings.pageTemplateBinding}"
                              id="emT">
                 <f:facet name="emContent">
                     <af:form id="f1">
                         <af:panelGridLayout id="pgl1">
-                            <af:gridRow height="100%" id="gr1">
+                            <af:gridRow height="100%" id="gr1"> 
                                 <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
                                     <!-- Content -->
                                     <af:panelStretchLayout bottomHeight="0" topHeight="auto" inlineStyle="overflow:auto"
@@ -475,6 +475,16 @@
                                                                                 </f:facet>
                                                                             </af:dialog>
                                                                         </af:popup>
+                                                                    </af:toolbar>
+                                                                </f:facet>
+                                                                <f:facet name="statusbar">
+                                                                    <af:toolbar id="t3">
+                                                                        <af:outputText value="#{coreloganalyticsuiBundle.TOTAL_ROWS}: "
+                                                                                       id="ot3a"/>
+                                                                        <af:spacer width="5" id="s5a"/>
+                                                                        <af:outputText value="#{viewScope.libSourcesBean.estimatedRowCount}"
+                                                                                       id="ot4a"
+                                                                                       partialTriggers="srcs"/>
                                                                     </af:toolbar>
                                                                 </f:facet>
                                                             </af:panelCollection>
