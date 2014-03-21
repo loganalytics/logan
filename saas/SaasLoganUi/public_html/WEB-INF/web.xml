@@ -115,6 +115,12 @@
     <filter-name>adfBindings</filter-name>
     <filter-class>oracle.adf.model.servlet.ADFBindingFilter</filter-class>
   </filter>
+  use this filter
+    <filter>
+    <filter-name>ServletADFFilter</filter-name>
+    <filter-class>oracle.adf.share.http.ServletADFFilter</filter-class>
+  </filter>
+  
   -->
   <filter-mapping>
     <filter-name>trinidad</filter-name>
@@ -130,6 +136,14 @@
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  
+      <filter-mapping>
+    <filter-name>ServletADFFilter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  
   -->
     <filter-mapping>
     <filter-name>ServletADFFilter</filter-name>
@@ -151,4 +165,12 @@
   <listener>
     <listener-class>oracle.adf.mbean.share.config.ADFConfigLifeCycleCallBack</listener-class>
   </listener>
+  
+    <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsff</url-pattern>
+      <is-xml>true</is-xml>
+    </jsp-property-group>
+  </jsp-config>
+  
 </web-app>

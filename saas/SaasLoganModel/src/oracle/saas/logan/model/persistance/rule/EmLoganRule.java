@@ -4,20 +4,31 @@ import java.io.Serializable;
 
 import java.util.Date;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import oracle.saas.logan.model.persistance.EmLoganRuleSourceMap;
+import oracle.saas.logan.model.persistance.EmLoganSource;
+
 @Entity
 @NamedQueries({ 
         @NamedQuery(name = "EmLoganRule.findAll", query = "select o from EmLoganRule o"),
-        @NamedQuery(name = "EmLoganRule.findByRuleId",  query = "select o from EmLoganRule o where o.ruleId = :ruleId")})
+        @NamedQuery(name = "EmLoganRule.findByRuleId",  query = "select o from EmLoganRule o where o.ruleId = :ruleId"),
+        @NamedQuery(name = "EmLoganRule.getMaxId", query="select max(o.ruleId) from EmLoganRule o")})
 @Table(name = "EM_LOGAN_RULE")
 @IdClass(EmLoganRulePK.class)
 public class EmLoganRule implements Serializable {
@@ -74,7 +85,7 @@ public class EmLoganRule implements Serializable {
     @Id
     @Column(name = "RULE_TARGET_TYPE", nullable = false, length = 64)
     private String ruleTargetType;
-
+    
     public EmLoganRule() {
     }
 

@@ -28,9 +28,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">-17.304688</property>
+         name="y">-76.00586</property>
       <property
-         name="x">-26.648438</property>
+         name="x">-289.64844</property>
    </View>
    <View
       id="View10">
@@ -43,9 +43,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">66.396484</property>
+         name="y">76.69531</property>
       <property
-         name="x">-364.31738</property>
+         name="x">-290.31738</property>
    </View>
    <View
       id="View11">
@@ -58,7 +58,7 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">273.39648</property>
+         name="y">273.74707</property>
       <property
          name="x">-219.5</property>
    </View>
@@ -70,7 +70,7 @@
       <property
          name="fromOutcome">goto_core-logan-rule-view</property>
       <property
-         name="sdm:polyPoints">R42,-323.31738,59.0459,-67.64844,-17.655273,L50</property>
+         name="sdm:polyPoints">T44,-293.81738,22.292322,-293.14844,-22.356445,B44</property>
    </ControlFlowCase>
    <View
       id="View12">
@@ -83,28 +83,86 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">91.34473</property>
+         name="y">75.94238</property>
       <property
-         name="x">-18.5</property>
+         name="x">-519.5</property>
    </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase31"
+      id="ControlFlowCase14"
       from="View10"
       to="View12">
       <property
          name="fromOutcome">goto_core-log-source-details</property>
       <property
-         name="sdm:polyPoints">R50,-323.0333,66.0459,-59.5,87.49414,L46</property>
+         name="sdm:polyPoints">L50,-331.31738,76.34473,-478.5,75.5918,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase35"
-      from="View12"
+      id="ControlFlowCase9"
+      from="View9"
       to="View10">
       <property
-         name="fromOutcome">return-to-logan-lib-home</property>
+         name="fromOutcome">return_to-logan-lib</property>
       <property
-         name="sdm:polyPoints">L54,-59.784233,94.49414,-323.31738,73.0459,R58</property>
+         name="sdm:polyPoints">B56,-286.14844,-22.304071,-286.81738,22.344727,T56</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall10">
+      <property
+         name="activityId">refreshLoganTransferStatus</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>refreshLoganTransferStatus&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">72.79297</property>
+      <property
+         name="x">9.0</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="View10"
+      to="MethodCall10">
+      <property
+         name="fromOutcome">goto_core-logan-rule-target-assoc2</property>
+      <property
+         name="sdm:polyPoints">R46,-249.31738,72.84473,-32.0,72.44238,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View13">
+      <property
+         name="activityId">log-rule-target-assoc</property>
+      <property
+         name="page">/core/loganalytics/logrule/log-rule-target-assoc.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>log-rule-target-assoc&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">262.6953</property>
+      <property
+         name="x">9.022461</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="MethodCall10"
+      to="View13">
+      <property
+         name="fromOutcome">goto_core-log-rule-target_assoc3</property>
+      <property
+         name="sdm:polyPoints">B50,9.0,126.44238,9.022461,208.34473,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase16"
+      from="View13"
+      to="View10">
+      <property
+         name="fromOutcome">return-to-logan-lib</property>
+      <property
+         name="sdm:polyPoints">L50,-31.97754,262.34473,-249.31738,79.84473,R54</property>
    </ControlFlowCase>
 </SDM>

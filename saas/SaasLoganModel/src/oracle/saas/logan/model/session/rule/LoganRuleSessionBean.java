@@ -52,16 +52,16 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
 
     public EmLoganRule persistEmLoganRule(EmLoganRule emLoganRule) {
         
-        emLoganRule.setRuleIname(emLoganRule.getRuleDname());
-        emLoganRule.setRuleId(10005);
-        emLoganRule.setRuleIsSystem(0);
-        emLoganRule.setRuleActionCentralized(0);
-        emLoganRule.setRuleActionEvent(1);
-        emLoganRule.setRuleActionEventBundle(1);
-        emLoganRule.setRuleActionEventBundletime(10);
-        emLoganRule.setRuleActionObservation(1);
-        emLoganRule.setRuleActionRulemetric(1);
-        emLoganRule.setRuleEditVersion(0);
+//        emLoganRule.setRuleIname(emLoganRule.getRuleDname());
+//        emLoganRule.setRuleId(10005);
+//        emLoganRule.setRuleIsSystem(0);
+//        emLoganRule.setRuleActionCentralized(0);
+//        emLoganRule.setRuleActionEvent(1);
+//        emLoganRule.setRuleActionEventBundle(1);
+//        emLoganRule.setRuleActionEventBundletime(10);
+//        emLoganRule.setRuleActionObservation(1);
+//        emLoganRule.setRuleActionRulemetric(1);
+//        emLoganRule.setRuleEditVersion(0);
         
         
         em.persist(emLoganRule);
@@ -88,10 +88,14 @@ public class LoganRuleSessionBean implements LoganRuleSession, LoganRuleSessionL
     
     /** <code>select o from EmLoganRule o where o.ruleId = :rule</code> */
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    public List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId)
-    {
+    public List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId){
         return em.createNamedQuery("EmLoganRule.findByRuleId", EmLoganRule.class).setParameter("ruleId",
                                                                                                      ruleId).getResultList();
     }
 
+    @Override
+    public Integer getNextRuleId() {
+        // TODO Implement this method
+        return ((Integer)em.createNamedQuery("EmLoganRule.getMaxId", Integer.class).getSingleResult()) + 1;
+    }
 }

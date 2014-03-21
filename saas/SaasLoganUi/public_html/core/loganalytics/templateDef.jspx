@@ -17,7 +17,7 @@
         </attribute>
       </component>
     </af:xmlContent>
-    <af:panelStretchLayout id="outerPanel" topHeight="2.5em" bottomHeight="0px">
+    <af:panelStretchLayout id="outerPanel" topHeight="2.5em" bottomHeight="0px"> 
       <f:facet name="top">
         <af:panelGroupLayout theme="dark" layout="vertical" styleClass="AFBrandingBar"
                    id="menuBar_toolbar_panelGroup">

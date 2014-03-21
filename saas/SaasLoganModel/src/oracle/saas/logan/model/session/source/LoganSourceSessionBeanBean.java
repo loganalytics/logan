@@ -1,5 +1,6 @@
 package oracle.saas.logan.model.session.source;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import oracle.saas.logan.model.persistance.EmLoganSource;
+import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 
 @Stateless(name = "LoganSourceSessionBean", mappedName = "saas-SaasLoganModel-LoganSourceSessionBean")
 public class LoganSourceSessionBeanBean implements LoganSourceSessionBean, LoganSourceSessionBeanLocal {
@@ -63,5 +65,28 @@ public class LoganSourceSessionBeanBean implements LoganSourceSessionBean, Logan
     public List<Object[]> getEmLoganSourceFindSources() {
         return em.createNamedQuery("EmLoganSource.findSources", Object[].class).getResultList();
     }
-        
+
+    @Override
+    public List<EmLoganSource> getEmLoganSourceFindBySourceId(Integer sourceId) {
+        // TODO Implement this method
+//        return Collections.emptyList();
+        return em.createNamedQuery("EmLoganSource.findBySourceId", EmLoganSource.class).setParameter("sourceId",
+                                                                                                sourceId).getResultList();
+    }
+    
+//    /** <code>select o from EmLoganRule o where o.ruleId = :rule</code> */
+//    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+//    public List<EmLoganRule> getEmLoganRuleFindByRuleId(Integer ruleId){
+//        return em.createNamedQuery("EmLoganRule.findByRuleId", EmLoganRule.class).setParameter("ruleId",
+//                                                                                                     ruleId).getResultList();
+//    }
+    @Override
+    public List<EmLoganSource> getFilteredSourceList(String targetType, String logType, String dname, String desc) {
+        // TODO Implement this method
+        return em.createNamedQuery("EmLoganSource.filteredSourceList", EmLoganSource.class)
+            .setParameter("srcType",logType)
+            .setParameter("targetType", targetType)
+            .setParameter("name", "%"+dname+"%")
+            .setParameter("desc", "%"+desc+"%").getResultList();
+    }
 }

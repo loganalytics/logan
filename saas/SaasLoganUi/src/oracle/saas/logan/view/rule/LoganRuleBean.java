@@ -1,6 +1,10 @@
 package oracle.saas.logan.view.rule;
 
 import oracle.saas.logan.model.persistance.rule.EmLoganRule;
+import oracle.jbo.domain.Number;
+
+import oracle.saas.logan.util.LoganLibUiUtil;
+import oracle.saas.logan.util.UiUtil;
 
 public class LoganRuleBean {
     public LoganRuleBean() {
@@ -55,13 +59,13 @@ public class LoganRuleBean {
     
     private void initialize(EmLoganRule pRow){
         if(pRow != null){
-            this.ruleId = pRow.getRuleId();
+            this.ruleId = new Number(new Long(pRow.getRuleId()));
             this.iname = pRow.getRuleIname();
             this.dname = pRow.getRuleDname();
             this.author = pRow.getRuleAuthor();
             this.logType = pRow.getRuleSrctypeIname();
             this.targetType = pRow.getRuleTargetType();
-            this.severity = pRow.getRuleSeverity();
+            this.severity = new Number(new Long(pRow.getRuleSeverity()));
             this.description = pRow.getRuleDescription();
             this.rationale = pRow.getRuleRationale();
         }
@@ -147,4 +151,15 @@ public class LoganRuleBean {
     public boolean isIsSystem() {
         return isSystem;
     }
+    public String validateLogRuleName(String ruleName){
+        String errMsg = null;
+        if (ruleName == null || ruleName.trim().length() == 0){
+            errMsg = UiUtil.getUiString("RULE_NAME_BLANK_ERR");
+        }
+//        else if (!LoganLibUiUtil.isValidRuleName(ruleName)){
+//            errMsg = UiUtil.getUiString("RULE_NAME_INUSE_ERR");
+//        }
+        return errMsg;
+    }
+    
 }
