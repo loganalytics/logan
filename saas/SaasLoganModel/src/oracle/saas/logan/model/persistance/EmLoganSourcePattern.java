@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "EmLoganSourcePattern.findAll", query = "select o from EmLoganSourcePattern o") })
+@NamedQueries({ @NamedQuery(name = "EmLoganSourcePattern.findAll", query = "select o from EmLoganSourcePattern o")  })
 @Table(name = "EM_LOGAN_SOURCE_PATTERN")
 @IdClass(EmLoganSourcePatternPK.class)
 public class EmLoganSourcePattern implements Serializable {

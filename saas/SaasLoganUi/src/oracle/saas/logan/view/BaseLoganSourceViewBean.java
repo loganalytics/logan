@@ -104,38 +104,39 @@ public abstract class BaseLoganSourceViewBean implements ILoganSourceViewBean {
     {
         
         //TODO JPA
-//        boolean commitSuccess = false;
-//        boolean validationSuccess = true;
-//        validationSuccess = validateViewBeanData();
-//        if (validationSuccess)
-//        {
-//            ILoganSourceDataBean sourceDataBean = getSourceDataBean();
-//            boolean beforeProcessSubmitSuccess = false;
-//            try
-//            {
-//                sourceDataBean.beforeProcessSubmit(modeBean);
-//                beforeProcessSubmitSuccess =true;
-//            }
-//            catch(Exception ew)
-//            {
-//                beforeProcessSubmitSuccess = false;
-//                s_log.warning("Error at beforeProcessSubmit step: ", ew);
-//            }
-//                
-//            if(beforeProcessSubmitSuccess)
-//            {
-//                boolean processSubmitStepsSuccess = false;
-//                try
-//                {
-//                     sourceDataBean.processSubmit(refData, modeBean);
-//                     processSubmitStepsSuccess = true;
-//                }
-//                catch(Exception ew)
-//                {
-//                    processSubmitStepsSuccess = false;
-//                    s_log.warning("Error at processSubmit step: ", ew);
-//                }
-//    
+        boolean commitSuccess = false;
+        boolean validationSuccess = true;
+        validationSuccess = validateViewBeanData();
+        if (validationSuccess)
+        {
+            ILoganSourceDataBean sourceDataBean = getSourceDataBean();
+            boolean beforeProcessSubmitSuccess = false;
+            try
+            {
+                sourceDataBean.beforeProcessSubmit(modeBean);
+                beforeProcessSubmitSuccess =true;
+            }
+            catch(Exception ew)
+            {
+                beforeProcessSubmitSuccess = false;
+                s_log.warning("Error at beforeProcessSubmit step: ", ew);
+            }
+                
+            if(beforeProcessSubmitSuccess)
+            {
+                boolean processSubmitStepsSuccess = false;
+                try
+                {
+                     sourceDataBean.processSubmit(refData, modeBean);
+                     processSubmitStepsSuccess = true;
+                }
+                catch(Exception ew)
+                {
+                    processSubmitStepsSuccess = false;
+                    s_log.warning("Error at processSubmit step: ", ew);
+                }
+    
+//               TODO JPA commit succcess process is different with jdbc 
 //                if(processSubmitStepsSuccess)
 //                {
 //                    try
@@ -152,10 +153,9 @@ public abstract class BaseLoganSourceViewBean implements ILoganSourceViewBean {
 //                        LoganLibUiUtil.getAppModule().getTransaction().rollback();
 //                    }
 //                }
-//            }
-//        }
-//        return commitSuccess;
-        return false;
+            }
+        }
+        return commitSuccess;
     }
     
     /**

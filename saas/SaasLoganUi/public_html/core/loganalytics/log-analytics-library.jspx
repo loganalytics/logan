@@ -10,7 +10,7 @@
                 <f:facet name="emContent">
                     <af:form id="f1">
                         <af:panelGridLayout id="pgl1">
-                            <af:gridRow height="100%" id="gr1"> 
+                            <af:gridRow height="100%" id="gr1">
                                 <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
                                     <!-- Content -->
                                     <af:panelStretchLayout bottomHeight="0" topHeight="auto" inlineStyle="overflow:auto"
@@ -25,133 +25,159 @@
                                                     <af:commandNavigationItem text="#{coreloganalyticsuiBundle.LIBRARY}"
                                                                               id="cni2"/>
                                                 </af:breadCrumbs>
+                                                <af:popup id="dp1" contentDelivery="lazyUncached"
+                                                          popupFetchListener="#{viewScope.libSourcesBean.deletePopupFetchListener}">
+                                                    <af:dialog id="d2" title="#{coreloganalyticsuiBundle.REMOVE}"
+                                                               dialogListener="#{viewScope.libSourcesBean.handleSourceDelete}">
+                                                        <af:panelFormLayout id="dpfl3">
+                                                            <af:switcher id="swi1"
+                                                                         facetName="#{viewScope.libSourcesBean.selectedSourceIsSystem}">
+                                                                <f:facet name="false">
+                                                                    <af:outputText value="#{af:format(coreloganalyticsuiBundle.ARE_YOU_SURE_YOU_WANT_TO_DELET, viewScope.libSourcesBean.selectedSourceName)}"
+                                                                                   id="uot6"/>
+                                                                </f:facet>
+                                                                <f:facet name="true">
+                                                                    <af:outputText value="#{coreloganalyticsuiBundle.CANNOT_DELETE_SYSTEM_DEFINED_S}"
+                                                                                   id="uot7"/>
+                                                                </f:facet>
+                                                            </af:switcher>
+                                                        </af:panelFormLayout>
+                                                    </af:dialog>
+                                                </af:popup>
                                             </af:panelGroupLayout>
                                         </f:facet>
                                         <f:facet name="center">
-                                            <af:panelTabbed id="pt2" styleClass="AFStretchWidth">
-                                                <af:showDetailItem text="#{coreloganalyticsuiBundle.LOG_MONITORING_RULES}" id="sdi1" 
-                                                               styleClass="AFStretchWidth" stretchChildren="first"
-                                                                   disclosed="true">
-                                                <af:panelStretchLayout id="ps1l3" topHeight="auto" bottomHeight="0">
-                                                    <f:facet name="top">
-                                                        <af:panelGroupLayout>
-                                                            <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.SEARCH}"
-                                                                           disclosedText="#{coreloganalyticsuiBundle.SEARCH}"
-                                                                           shortDesc="#{coreloganalyticsuiBundle.SEARCH}">
-                                                                <af:panelFormLayout id="pfol0">
-                                                                <af:spacer height="5" id="spacer0"/>
-                                                                <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.MATCH}"
-                                                                                         for="sor12" id="palam11">
-                                                                    <af:selectOneRadio value="ALL" id="sor12" layout="horizontal"
-                                                                                       valueChangeListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.matchRadioValueChanged}">
-                                                                        <af:selectItem label="#{coreloganalyticsuiBundle.ALL}"
-                                                                                       value="ALL" id="si111"/>
-                                                                        <af:selectItem label="#{coreloganalyticsuiBundle.ANY}"
-                                                                                       value="ANY" id="si112"/>
-                                                                    </af:selectOneRadio>
-                                                                </af:panelLabelAndMessage>
-                                                                <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.RULE}"
-                                                                                         for="it121" id="palam12">
-                                                                    <af:inputText id="it121"/>
-                                                                </af:panelLabelAndMessage>
-                                                                <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.DESCRIPTION}"
-                                                                                         for="it122" id="palam13">
-                                                                    <af:inputText id="it122"/>
-                                                                </af:panelLabelAndMessage>
-                                                                <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
-                                                                                         id="palam114">
-                                                                    <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType eq '' ? coreloganalyticsuiBundle.ALL  : viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType}"
-                                                                                        shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
-                                                                                        id="soc13"
-                                                                                        valueChangeListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypeValueChanged}">
-                                                                        <f:selectItems value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypesList}"
-                                                                                       id="si1121"/>
-                                                                    </af:selectOneChoice>
-                                                                </af:panelLabelAndMessage>
-                                                                <af:spacer height="5" id="spa12"/>
-                                                                <f:facet name="footer">
-                                                                    <af:panelGroupLayout id="panelGroupLayout12" layout="vertical">
-                                                                        <af:commandButton text="#{coreloganalyticsuiBundle.SEARCH}"
-                                                                                          id="comb11"
-                                                                                          actionListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.handleSearch}"/>
-                                                                        <af:spacer height="5" id="spa13"/>
-                                                                    </af:panelGroupLayout>
-                                                                </f:facet>
-                                                                <af:spacer height="5" id="spa112"/>
-                                                            </af:panelFormLayout>
-                                                            </af:showDetail>
-                                                        </af:panelGroupLayout>
-                                                    </f:facet>
-                                                    <f:facet name="center">
-                                                        <af:panelCollection id="pc1" styleClass="AFStretchWidth"
-                                                                featuresOff="detach viewMenu">
-                                                            <af:table value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.loganRuleList}" 
-                                                                      var="row" rowBandingInterval="0" id="t1"
-                                                                      rowSelection="single"
-                                                                      columnStretching="multiple"
-                                                                      styleClass="AFStretchWidth"
-                                                                      selectionListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.logRuleRowSelected}">>
-                                                                <af:column id="c0" width="10" rowHeader="true"/>
-                                                                <af:column sortProperty="ruleDname" sortable="true"  rowHeader="unstyled"
-                                                                           headerText="#{coreloganalyticsuiBundle.RULE}"
-                                                                           id="c1" width="20%">
-                                                                  <af:outputText value="#{row.dname}" id="ot1"/>
-                                                                </af:column>
-                                                                <af:column sortProperty="ruleDescription"
-                                                                           sortable="true"
-                                                                           headerText="#{coreloganalyticsuiBundle.DESCRIPTION}"
-                                                                           id="c2" width="35%">
-                                                                  <af:outputText value="#{row.description}"
-                                                                                 id="ot2"/>
-                                                                </af:column>
-                                                                <af:column sortProperty="ruleTargetType"
-                                                                           sortable="true"
-                                                                           headerText="#{coreloganalyticsuiBundle.APPLICABLE_TO}"
-                                                                           id="c3" width="10%">
-                                                                  <af:outputText value="#{row.targetType}"
-                                                                                 id="ot3"/>
-                                                                </af:column>
-                                                                <af:column sortProperty="ruleAuthor" sortable="true"
-                                                                           headerText="#{coreloganalyticsuiBundle.AUTHOR}"
-                                                                           id="c4" width="10%">
-                                                                  <af:outputText value="#{row.author}" id="ot4"/>
-                                                                </af:column>
-                                                                <af:column 
-                                                                           sortable="true"
-                                                                           headerText="#{coreloganalyticsuiBundle.ASSOCIATION_COUNT}"
-                                                                           id="c5" width="10%">
-                                                                  <af:outputText value=""
-                                                                                 id="ot5"/>
-                                                                </af:column>
-                                                                <af:column sortProperty="ruleLastUpdatedDate"
-                                                                           sortable="true"
-                                                                           headerText="#{coreloganalyticsuiBundle.LAST_UPDATED_DATE}"
-                                                                           id="c6" width="15%">
-                                                                  <af:outputText value=""
-                                                                                 id="ot6">
-                                                                    <af:convertDateTime type="both" dateStyle="medium"
-                                                                                        timeStyle="medium"/>
-                                                                  </af:outputText>
-                                                                </af:column>
-                                                            </af:table>
-                                                            <f:facet name="toolbar">
-                                                                <af:toolbar id="t2">
-                                                                    <af:commandToolbarButton text="Create"
-                                                                                           icon="/images/new_ena.png"
-                                                                                           id="ctb1"
-                                                                                           action="goto_core-logan-rule-view">
-                                                                            <af:setPropertyListener from="CREATE" type="action"
+                                            <af:panelTabbed id="pt2" styleClass="AFStretchWidth"
+                                                            childCreation="immediate">
+                                                <af:showDetailItem text="#{coreloganalyticsuiBundle.LOG_MONITORING_RULES}"
+                                                                   id="sdi1" styleClass="AFStretchWidth"
+                                                                   stretchChildren="first" disclosed="true">
+                                                    <af:panelStretchLayout id="ps1l3" topHeight="auto" bottomHeight="0">
+                                                        <f:facet name="top">
+                                                            <af:panelGroupLayout>
+                                                                <af:showDetail undisclosedText="#{coreloganalyticsuiBundle.SEARCH}"
+                                                                               disclosedText="#{coreloganalyticsuiBundle.SEARCH}"
+                                                                               shortDesc="#{coreloganalyticsuiBundle.SEARCH}">
+                                                                    <af:panelFormLayout id="pfol0">
+                                                                        <af:spacer height="5" id="spacer0"/>
+                                                                        <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.MATCH}"
+                                                                                                 for="sor12"
+                                                                                                 id="palam11">
+                                                                            <af:selectOneRadio value="ALL" id="sor12"
+                                                                                               layout="horizontal"
+                                                                                               valueChangeListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.matchRadioValueChanged}">
+                                                                                <af:selectItem label="#{coreloganalyticsuiBundle.ALL}"
+                                                                                               value="ALL" id="si111"/>
+                                                                                <af:selectItem label="#{coreloganalyticsuiBundle.ANY}"
+                                                                                               value="ANY" id="si112"/>
+                                                                            </af:selectOneRadio>
+                                                                        </af:panelLabelAndMessage>
+                                                                        <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.RULE}"
+                                                                                                 for="it121"
+                                                                                                 id="palam12">
+                                                                            <af:inputText id="it121"/>
+                                                                        </af:panelLabelAndMessage>
+                                                                        <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.DESCRIPTION}"
+                                                                                                 for="it122"
+                                                                                                 id="palam13">
+                                                                            <af:inputText id="it122"/>
+                                                                        </af:panelLabelAndMessage>
+                                                                        <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                                                                 id="palam114">
+                                                                            <af:selectOneChoice value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType eq '' ? coreloganalyticsuiBundle.ALL  : viewScope.core_loganalytics_ui_loganLibRuleBean.selectedtargetType}"
+                                                                                                shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
+                                                                                                id="soc13"
+                                                                                                valueChangeListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypeValueChanged}">
+                                                                                <f:selectItems value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.targetTypesList}"
+                                                                                               id="si1121"/>
+                                                                            </af:selectOneChoice>
+                                                                        </af:panelLabelAndMessage>
+                                                                        <af:spacer height="5" id="spa12"/>
+                                                                        <f:facet name="footer">
+                                                                            <af:panelGroupLayout id="panelGroupLayout12"
+                                                                                                 layout="vertical">
+                                                                                <af:commandButton text="#{coreloganalyticsuiBundle.SEARCH}"
+                                                                                                  id="comb11"
+                                                                                                  actionListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.handleSearch}"/>
+                                                                                <af:spacer height="5" id="spa13"/>
+                                                                            </af:panelGroupLayout>
+                                                                        </f:facet>
+                                                                        <af:spacer height="5" id="spa112"/>
+                                                                    </af:panelFormLayout>
+                                                                </af:showDetail>
+                                                            </af:panelGroupLayout>
+                                                        </f:facet>
+                                                        <f:facet name="center">
+                                                            <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                                                                featuresOff="detach viewMenu">
+                                                                <af:table value="#{viewScope.core_loganalytics_ui_loganLibRuleBean.loganRuleList}"
+                                                                          var="row" rowBandingInterval="0" id="t1"
+                                                                          rowSelection="single"
+                                                                          columnStretching="multiple"
+                                                                          styleClass="AFStretchWidth"
+                                                                          selectionListener="#{viewScope.core_loganalytics_ui_loganLibRuleBean.logRuleRowSelected}">
+                                                                    &gt;
+                                                                    <af:column id="c0" width="10" rowHeader="true"/>
+                                                                    <af:column sortProperty="ruleDname" sortable="true"
+                                                                               rowHeader="unstyled"
+                                                                               headerText="#{coreloganalyticsuiBundle.RULE}"
+                                                                               id="c1" width="20%">
+                                                                        <af:outputText value="#{row.dname}" id="ot1"/>
+                                                                    </af:column>
+                                                                    <af:column sortProperty="ruleDescription"
+                                                                               sortable="true"
+                                                                               headerText="#{coreloganalyticsuiBundle.DESCRIPTION}"
+                                                                               id="c2" width="35%">
+                                                                        <af:outputText value="#{row.description}"
+                                                                                       id="ot2"/>
+                                                                    </af:column>
+                                                                    <af:column sortProperty="ruleTargetType"
+                                                                               sortable="true"
+                                                                               headerText="#{coreloganalyticsuiBundle.APPLICABLE_TO}"
+                                                                               id="c3" width="10%">
+                                                                        <af:outputText value="#{row.targetType}"
+                                                                                       id="ot3"/>
+                                                                    </af:column>
+                                                                    <af:column sortProperty="ruleAuthor" sortable="true"
+                                                                               headerText="#{coreloganalyticsuiBundle.AUTHOR}"
+                                                                               id="c4" width="10%">
+                                                                        <af:outputText value="#{row.author}" id="ot4"/>
+                                                                    </af:column>
+                                                                    <af:column sortable="true"
+                                                                               headerText="#{coreloganalyticsuiBundle.ASSOCIATION_COUNT}"
+                                                                               id="c5" width="10%">
+                                                                        <af:outputText value="" id="ot5"/>
+                                                                    </af:column>
+                                                                    <af:column sortProperty="ruleLastUpdatedDate"
+                                                                               sortable="true"
+                                                                               headerText="#{coreloganalyticsuiBundle.LAST_UPDATED_DATE}"
+                                                                               id="c6" width="15%">
+                                                                        <af:outputText value="" id="ot6">
+                                                                            <af:convertDateTime type="both"
+                                                                                                dateStyle="medium"
+                                                                                                timeStyle="medium"/>
+                                                                        </af:outputText>
+                                                                    </af:column>
+                                                                </af:table>
+                                                                <f:facet name="toolbar">
+                                                                    <af:toolbar id="t2">
+                                                                        <af:commandToolbarButton text="Create"
+                                                                                                 icon="/images/new_ena.png"
+                                                                                                 id="ctb1"
+                                                                                                 action="goto_core-logan-rule-view">
+                                                                            <af:setPropertyListener from="CREATE"
+                                                                                                    type="action"
                                                                                                     to="#{sdk_ipmbean.params.mode}"/>
-                                                                  </af:commandToolbarButton>
-                                                                  <af:commandToolbarButton text="Create Like"
-                                                                                           icon="/images/createlike_ena.png"
-                                                                                           disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.createLikeDisabled}"
-                                                                                           disabledIcon="/images/createlike_dis.png"
-                                                                                           id="ctb2"
-                                                                                           action="goto_core-logan-rule-view">
-                                                                    <!--<af:showPopupBehavior popupId="p8"/>-->
-                                                                  </af:commandToolbarButton>
-                                                                  <!--<af:commandToolbarButtmangon text="Show Details"
+                                                                        </af:commandToolbarButton>
+                                                                        <af:commandToolbarButton text="Create Like"
+                                                                                                 icon="/images/createlike_ena.png"
+                                                                                                 disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.createLikeDisabled}"
+                                                                                                 disabledIcon="/images/createlike_dis.png"
+                                                                                                 id="ctb2"
+                                                                                                 action="goto_core-logan-rule-view">
+                                                                            <!--<af:showPopupBehavior popupId="p8"/>-->
+                                                                        </af:commandToolbarButton>
+                                                                        <!--<af:commandToolbarButtmangon text="Show Details"
                                                                                            icon="/images/view_ena.png"
                                                                                            disabled="#{viewScope.core_loganalytics_ui_loganLibRulesBean.showDetailsDisabled}"
                                                                                            disabledIcon="/images/view_dis.png"
@@ -229,8 +255,10 @@
                                                                         <af:spacer height="5" id="spacer1"/>
                                                                         <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.MATCH}"
                                                                                                  for="sor2" id="palam1">
-                                                                            <af:selectOneRadio value="ALL" id="sor2"
+                                                                            <af:selectOneRadio value="#{viewScope.libSourcesBean.matchRadioSelectValue}"
+                                                                                               id="sor2"
                                                                                                layout="horizontal"
+                                                                                               autoSubmit="true"
                                                                                                valueChangeListener="#{viewScope.libSourcesBean.matchRadioValueChanged}">
                                                                                 <af:selectItem label="#{coreloganalyticsuiBundle.ALL}"
                                                                                                value="ALL" id="si11"/>
@@ -240,17 +268,22 @@
                                                                         </af:panelLabelAndMessage>
                                                                         <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.SOURCE}"
                                                                                                  for="it21" id="palam2">
-                                                                            <af:inputText id="it21"/>
+                                                                            <af:inputText id="it21"
+                                                                                          value="#{viewScope.libSourcesBean.p_source}"
+                                                                                          autoSubmit="true"/>
                                                                         </af:panelLabelAndMessage>
                                                                         <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.DESCRIPTION}"
                                                                                                  for="it22" id="palam3">
-                                                                            <af:inputText id="it22"/>
+                                                                            <af:inputText id="it22"
+                                                                                          value="#{viewScope.libSourcesBean.p_desc}"
+                                                                                          autoSubmit="true"/>
                                                                         </af:panelLabelAndMessage>
                                                                         <af:panelLabelAndMessage label="#{coreloganalyticsuiBundle.TARGET_TYPE}"
                                                                                                  id="palam4">
                                                                             <af:selectOneChoice value="#{viewScope.libSourcesBean.selectedtargetType eq '' ? coreloganalyticsuiBundle.ALL  : viewScope.libSourcesBean.selectedtargetType}"
                                                                                                 shortDesc="#{coreloganalyticsuiBundle.TARGET_TYPE}"
                                                                                                 id="soc3"
+                                                                                                autoSubmit="true"
                                                                                                 valueChangeListener="#{viewScope.libSourcesBean.targetTypeValueChanged}">
                                                                                 <f:selectItems value="#{viewScope.libSourcesBean.targetTypesList}"
                                                                                                id="si121"/>
@@ -262,7 +295,7 @@
                                                                                                  layout="vertical">
                                                                                 <af:commandButton text="#{coreloganalyticsuiBundle.SEARCH}"
                                                                                                   id="comb1"
-                                                                                                  actionListener="#{viewScope.libSourcesBean.handleSearch}"/>
+                                                                                                  actionListener="#{viewScope.libSourcesBean.handleFilterSearch}"/>
                                                                                 <af:spacer height="5" id="spa3"/>
                                                                             </af:panelGroupLayout>
                                                                         </f:facet>
@@ -276,6 +309,7 @@
                                                         </f:facet>
                                                         <f:facet name="center">
                                                             <af:panelCollection id="pan1" styleClass="AFStretchWidth"
+                                                                                partialTriggers="::comb1"
                                                                                 featuresOff="detach viewMenu">
                                                                 <af:table value="#{viewScope.libSourcesBean.sources}"
                                                                           var="rowsr"
@@ -366,24 +400,27 @@
                                                                 </af:table>
                                                                 <f:facet name="toolbar">
                                                                     <af:toolbar id="toolbar1">
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.CREATE}"
+                                                                        <af:button text="#{coreloganalyticsuiBundle.CREATE}"
                                                                                                  icon="/images/new_ena.png"
                                                                                                  id="ctbu1"
                                                                                                  action="goto_core-log-source-details">
                                                                             <af:setPropertyListener from="CREATE"
                                                                                                     type="action"
                                                                                                     to="#{sdk_ipmbean.params.mode}"/>
-                                                                        </af:commandToolbarButton>
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.CREATE_LIKE}"
+                                                                        </af:button>
+                                                                        <af:button text="#{coreloganalyticsuiBundle.CREATE_LIKE}"
                                                                                                  id="ctbu2"
+                                                                                                 partialTriggers="srcs"
                                                                                                  icon="/images/createlike_ena.png"
                                                                                                  disabled="#{viewScope.libSourcesBean.createLikeDisabled}"
                                                                                                  disabledIcon="/images/createlike_dis.png"
                                                                                                  action="goto_core-log-source-details">
                                                                             <af:showPopupBehavior popupId="sp4"/>
-                                                                        </af:commandToolbarButton>
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.SHOW_DETAILS}"
+                                                                        </af:button>
+                                                            
+                                                                        <af:button text="#{coreloganalyticsuiBundle.SHOW_DETAILS}"
                                                                                                  id="ctbu3"
+                                                                                                 partialTriggers="srcs"
                                                                                                  icon="/images/view_ena.png"
                                                                                                  disabled="#{viewScope.libSourcesBean.showDetailsDisabled}"
                                                                                                  disabledIcon="/images/view_dis.png"
@@ -394,10 +431,14 @@
                                                                             <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
                                                                                                     type="action"
                                                                                                     to="#{sdk_ipmbean.params.sourceId}"/>
-                                                                        </af:commandToolbarButton>
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.EDIT}"
+                                                                             <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceEntityPojo}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourcePojo}"/>
+                                                                        </af:button>
+                                                                        <af:button text="#{coreloganalyticsuiBundle.EDIT}"
                                                                                                  disabled="#{viewScope.libSourcesBean.editDisabled}"
                                                                                                  id="ctbu4"
+                                                                                                 partialTriggers="srcs"
                                                                                                  icon="/images/edit_ena.png"
                                                                                                  disabledIcon="/images/update_dis.png"
                                                                                                  action="goto_core-log-source-details">
@@ -407,15 +448,22 @@
                                                                             <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
                                                                                                     type="action"
                                                                                                     to="#{sdk_ipmbean.params.sourceId}"/>
-                                                                        </af:commandToolbarButton>
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.REMOVE}"
+                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceEntityPojo}"
+                                                                                                    type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourcePojo}"/>
+                                                                        </af:button>
+                                                                        <af:button text="#{coreloganalyticsuiBundle.REMOVE}"
                                                                                                  disabled="#{viewScope.libSourcesBean.deleteDisabled}"
                                                                                                  id="ctbu5"
+                                                                                                 partialTriggers="srcs"
                                                                                                  icon="/images/delete_ena.png"
-                                                                                                 disabledIcon="/images/delete_dis.png"></af:commandToolbarButton>
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.EXTENDED_FIELDS}"
+                                                                                                 disabledIcon="/images/delete_dis.png">
+                                                                            <af:showPopupBehavior popupId="::dp1"/>
+                                                                        </af:button>
+                                                                        <af:button text="#{coreloganalyticsuiBundle.EXTENDED_FIELDS}"
                                                                                                  disabled="#{viewScope.libSourcesBean.editDisabled}"
                                                                                                  id="ctbu6"
+                                                                                                 partialTriggers="srcs"
                                                                                                  icon="/core/loganalytics/images/mapping.directToField.png"
                                                                                                  disabledIcon="/core/loganalytics/images/mapping.directToField_dis.png"
                                                                                                  action="goto_core-log-source-field-setting">
@@ -425,10 +473,11 @@
                                                                             <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
                                                                                                     type="action"
                                                                                                     to="#{sdk_ipmbean.params.sourceId}"/>
-                                                                        </af:commandToolbarButton>
-                                                                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.FIELD_REFERENCES}"
+                                                                        </af:button>
+                                                                        <af:button text="#{coreloganalyticsuiBundle.FIELD_REFERENCES}"
                                                                                                  disabled="#{viewScope.libSourcesBean.editDisabled}"
                                                                                                  id="ctbu7"
+                                                                                                 partialTriggers="srcs"
                                                                                                  icon="/core/loganalytics/images/keyflexfield_ena.png"
                                                                                                  disabledIcon="/core/loganalytics/images/keyflexfield_dis.png"
                                                                                                  action="goto_core-log-source-field-ref">
@@ -438,7 +487,7 @@
                                                                             <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceId}"
                                                                                                     type="action"
                                                                                                     to="#{sdk_ipmbean.params.sourceId}"/>
-                                                                        </af:commandToolbarButton>
+                                                                        </af:button>
                                                                         <af:popup id="sp4"
                                                                                   contentDelivery="lazyUncached"
                                                                                   popupFetchListener="#{viewScope.libSourcesBean.createLikePopupFetchListener}">
@@ -468,6 +517,9 @@
                                                                                             <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceName}"
                                                                                                                     type="action"
                                                                                                                     to="#{sdk_ipmbean.params.create_like_logan_source_name}"/>
+                                                                                            <af:setPropertyListener from="#{viewScope.libSourcesBean.selectedSourceEntityPojo}"
+                                                                                                             type="action"
+                                                                                                    to="#{sdk_ipmbean.params.sourcePojo}"/>
                                                                                         </af:commandButton>
                                                                                     </af:panelGroupLayout>
                                                                                 </f:facet>

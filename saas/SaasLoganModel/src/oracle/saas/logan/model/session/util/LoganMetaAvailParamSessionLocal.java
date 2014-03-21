@@ -15,4 +15,7 @@ public interface LoganMetaAvailParamSessionLocal {
     void removeEmLoganMetaAvailParam(EmLoganMetaAvailParam emLoganMetaAvailParam);
 
     List<EmLoganMetaAvailParam> getEmLoganMetaAvailParamFindAll();
+
+
+    List<EmLoganMetaAvailParam> getEmLoganMetaAvailParamFindAllByTargetType(String targetType);
 }

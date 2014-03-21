@@ -14,6 +14,7 @@ All rights reserved.*/
     <other useful comments, qualificationsf, etc.>
    
     MODIFIED    (MM/DD/YY)
+    minglei     03/20/14 - JPA version
     vivsharm    01/04/13 - log Analytics
  */
 
@@ -51,7 +52,8 @@ public class LoganSourceDetailsBean extends BaseLoganSourceDataBean
 
     public LoganSourceDetailsBean()
     {
-        this.mainDetails = new LoganSourceDetailsMain(null);
+        Row row = null;
+        this.mainDetails = new LoganSourceDetailsMain(row);
         TargetPropertyFilterBean targetProperties = new TargetPropertyFilterBean();
         List<LoganSourceDetailsParameter> parameters = new ArrayList<LoganSourceDetailsParameter>();
         List<LoganSourceFilePattern> inclPatts = new ArrayList<LoganSourceFilePattern>();
@@ -61,11 +63,30 @@ public class LoganSourceDetailsBean extends BaseLoganSourceDataBean
         mainDetails.setInclPatts(inclPatts);
         mainDetails.setExclPatts(exclPatts);
     }
+    
 
     public LoganSourceDetailsBean(Row detailsContextRow)
     {
         initFromVORow(detailsContextRow);
     }
+    
+    
+    public LoganSourceDetailsBean(LoganLibSourcePojo sourcePojo)
+    {
+        this.mainDetails = new LoganSourceDetailsMain(sourcePojo);
+        this.sourceId = this.mainDetails.getSourceId();
+        List<LoganSourceFilePattern> inclPatts = LoganLibUiUtil.filteredSourcePatternsInclude(sourceId);
+        List<LoganSourceFilePattern> exclPatts = LoganLibUiUtil.filteredSourcePatternsExclude(sourceId);
+        List<LoganSourceDetailsParameter> parameters = LoganLibUiUtil.loadLogSourceParameters(sourceId);
+        //TODO: add code to get this data
+        TargetPropertyFilterBean targetProperties = new TargetPropertyFilterBean();
+        mainDetails.setTargetProperties(targetProperties);
+        mainDetails.setParameters(parameters);
+        mainDetails.setInclPatts(inclPatts);
+        mainDetails.setExclPatts(exclPatts);
+    }
+    
+
 
     private void initFromVORow(Row detailsContextRow)
     {
@@ -123,6 +144,91 @@ public class LoganSourceDetailsBean extends BaseLoganSourceDataBean
     public void processSubmit(ILoganSourceDataBean refData, 
                               LaunchContextModeBean modeBean)
     {
+        if(s_log.isFinestEnabled())
+        {
+            s_log.finest("processSubmit of MAIN BEAN got called");
+        }
+        boolean readOnlyMode = modeBean.isReadOnlyMode(); 
+        if (readOnlyMode) // SHOW DETAILS
+        {
+            return;
+        }
+        LoganSourceDetailsBean sourceDetailsBeanRef = (LoganSourceDetailsBean)refData;   
+        boolean editMode = modeBean.isEditMode(); 
+        LoganSourceDetailsMain mainRef = sourceDetailsBeanRef.getMainDetails();
+        Number sourceIdOld = new Number(-1);
+        if (mainRef.getSourceId() != null)
+        {
+            sourceIdOld = mainRef.getSourceId();
+        }
+        if(s_log.isFinestEnabled())
+        {
+            s_log.finest("OLD SOURCE ID = " + sourceIdOld.intValue());
+        }
+        LoganSourceDetailsMain mainCurr = this.getMainDetails();
+        if (mainCurr == null || mainRef == null)
+            return;        
+        List<IPersistDataOpsHandler> rList = new ArrayList<IPersistDataOpsHandler>();
+        rList.add(mainRef);        
+        List<IPersistDataOpsHandler> cList = new ArrayList<IPersistDataOpsHandler>();
+        cList.add(mainCurr);
+                
+        //JPA persist data   
+        LoganLibUiUtil.persistChildObjectData(rList, cList,readOnlyMode, editMode);
+        
+        
+        if(s_log.isFinestEnabled())
+        {
+            s_log.finest("Source : Persist Data done");
+        }
+        
+        //TODO patterns        
+
+        Number sourceIdNew = mainCurr.getSourceId();
+        if(s_log.isFinestEnabled())
+        {
+             s_log.finest("NEW SOURCE ID =  " + sourceIdNew.intValue());     
+        }      
+            this.sourceId = sourceIdNew;
+        //TODO: process Target Prop Filters
+        
+        //        // process Includes patterns
+                List<LoganSourceFilePattern> iPRef = sourceDetailsBeanRef.getInclFilePatterns();
+                List<LoganSourceFilePattern> iPCurr = this.getInclFilePatterns();
+                rList = LoganLibUiUtil.getIPersistList(iPRef);
+                cList = LoganLibUiUtil.getIPersistList(iPCurr);
+                LoganLibUiUtil.persistChildObjectData(rList, cList, readOnlyMode, editMode);
+                if(s_log.isFinestEnabled())
+                {
+                    s_log.finest("Include Patterns : Persist Data done");
+                }
+        
+               // process Excludes patterns
+                List<LoganSourceFilePattern> ePRef =
+                    sourceDetailsBeanRef.getExclFilePatterns();
+                List<LoganSourceFilePattern> ePCurr = this.getExclFilePatterns();
+                rList = LoganLibUiUtil.getIPersistList(ePRef);
+                cList = LoganLibUiUtil.getIPersistList(ePCurr);
+                LoganLibUiUtil.persistChildObjectData(rList, cList, readOnlyMode, editMode);
+                if(s_log.isFinestEnabled())
+                    s_log.finest("EXCLUDe Patterns : Persist Data done");
+        
+        //        // process Parameters
+                List<LoganSourceDetailsParameter> paramRef =
+                    sourceDetailsBeanRef.getParameters();
+                List<LoganSourceDetailsParameter> paramCurr = this.getParameters();
+                rList = LoganLibUiUtil.getIPersistList(paramRef);
+                cList = LoganLibUiUtil.getIPersistList(paramCurr);
+                LoganLibUiUtil.persistChildObjectData(rList, cList,  readOnlyMode, editMode);
+                if(s_log.isFinestEnabled())
+                {
+                    s_log.finest("process Parameters is done");
+                }
+                    
+
+        
+                    
+            
         //TODO JPA
 //        if(s_log.isFinestEnabled())
 //            s_log.finest("processSubmit of MAIN BEAN got called");

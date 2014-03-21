@@ -26,17 +26,21 @@ All rights reserved.*/
 
 package oracle.saas.logan.view.source;
 
+import java.math.BigDecimal;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import oracle.jbo.Key;
-import oracle.jbo.NameValuePairs;
 import oracle.jbo.Row;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
 import oracle.jbo.domain.Timestamp;
 import oracle.jbo.server.ViewObjectImpl;
 
+import oracle.saas.logan.model.client.LoganSessionBeanProxy;
+import oracle.saas.logan.model.persistance.EmLoganSource;
+import oracle.saas.logan.model.session.source.LoganSourceSessionBean;
 import oracle.saas.logan.util.EMExecutionContext;
 import oracle.saas.logan.util.LoganLibUiUtil;
 import oracle.saas.logan.util.Logger;
@@ -124,6 +128,35 @@ public class LoganSourceDetailsMain extends BaseDataPersistenceHandler
         this.sourceEditVer = sourceEditVer;
         this.sourceCriticalEditVer = sourceCriticalEditVer;
     }
+    
+
+    public LoganSourceDetailsMain(LoganLibSourcePojo entity)
+    {
+        if (entity != null)
+        {
+            sourceId = new Number(entity.getSourceId().intValue());
+            Integer isSys = entity.getSourceIsSystem();
+            if (isSys != null && isSys.intValue() == 1)
+            {
+                isSystemDefinedSource = true;
+            }
+            name = entity.getSourceDname();
+            internalName = entity.getSourceIname();
+            sourceTypeIname = entity.getSrctypeIname();
+            sourceTypeDname = entity.getSrctypeDname();
+            author = entity.getSourceAuthor();
+            targetType = entity.getSrcTargetType();
+            description = entity.getSourceDescription();
+            Integer isSec = entity.getSourceIsSecureContent();
+            if (isSec != null && isSec.intValue() == 1)
+            {
+                isSecureContent = true;
+            }
+            sourceEditVer = new Number(entity.getSourceEditVersion().intValue());
+            sourceCriticalEditVer = new Number(entity.getSourceCriticalEditVersion().intValue());
+        }
+    }
+    
 
     public LoganSourceDetailsMain(Row dRow)
     {
@@ -199,44 +232,84 @@ public class LoganSourceDetailsMain extends BaseDataPersistenceHandler
     }
 
     public void handleInsertOperation()
-    {
-        ViewObjectImpl srcVO = getViewObjectImpl();
-        NameValuePairs nvpmm = new NameValuePairs();
-        sourceId = LoganLibUiUtil.getNextSequenceId("EM_LOGAN_SOURCE_SEQ");
-        nvpmm.setAttribute(SourceId, sourceId);
-        nvpmm.setAttribute(SourceIname, internalName);
-        nvpmm.setAttribute(SourceSrctypeIname, sourceTypeIname);
-        nvpmm.setAttribute(SourceTargetType, targetType);
-        nvpmm.setAttribute(SourceIsSystem, new Number(0));
-        nvpmm.setAttribute(SourceDname, name);
-        nvpmm.setAttribute(SourceDescription, description);
-        String emUser =
-            EMExecutionContext.getExecutionContext().getEMUser();
+    { 
+        LoganSourceSessionBean sourceFacade = LoganSessionBeanProxy.getEmLoganSourceFacade();
+        String sourceNextSeqSql = LoganLibUiUtil.getNextSequenceIdSql("EM_LOGAN_SOURCE_SEQ");
+        BigDecimal nextId = LoganSessionBeanProxy.getNextSeqBySql(sourceNextSeqSql);
+        if(nextId == null)
+        {
+            nextId = new BigDecimal(10000);//initial id if no record in repository
+        }
+        sourceId = new Number(nextId.longValue());
+        EmLoganSource sourceEntity = new EmLoganSource();
+//        setEntityValue and persist
+        sourceEntity.setSourceId(sourceId.intValue());
+        sourceEntity.setSourceIname(internalName);
+        sourceEntity.setSourceSrctypeIname(sourceTypeIname);
+        sourceEntity.setSourceTargetType(targetType);
+        sourceEntity.setSourceIsSystem(0);
+        sourceEntity.setSourceDname(name);
+        sourceEntity.setSourceDescription(description);
+        String emUser = EMExecutionContext.getExecutionContext().getEMUser();
         author = emUser;
-        nvpmm.setAttribute(SourceAuthor, author);
-        nvpmm.setAttribute(SourceOwner, emUser);
-        nvpmm.setAttribute(SourceIsSecureContent,
-                           (isSecureContent? new Number(1):
-                            new Number(0)));
-        nvpmm.setAttribute(SourceEditVersion, new Number(1));
-        nvpmm.setAttribute(SourceCriticalEditVersion, new Number(1));
-        nvpmm.setAttribute(SourceLastUpdatedBy, emUser);
-        nvpmm.setAttribute(SourceLastUpdatedDate,
-                           new Timestamp(new Date(Date.getCurrentDate())));
-        nvpmm.setAttribute(TargetType, targetType);
+        sourceEntity.setSourceAuthor(author);
+        sourceEntity.setSourceOwner(emUser);
+        sourceEntity.setSourceIsSecureContent(isSecureContent? 1: 0);
+        sourceEntity.setSourceEditVersion(1);
+        sourceEntity.setSourceCriticalEditVersion(1);
+        sourceEntity.setSourceLastUpdatedBy(emUser);
+        sourceEntity.setSourceLastUpdatedDate(new java.util.Date());
+//        nvpmm.setAttribute(TargetType, targetType);
+        sourceFacade.persistEntity(sourceEntity);
 
-        Row iRow = srcVO.createAndInitRow(nvpmm);
-        srcVO.insertRow(iRow);
-        
         if(s_log.isFinestEnabled())
         {
             StringBuilder  sb = new StringBuilder();
-            sb.append("LOG SOURCE main BEAN  created a row to INSERT: ");
+            sb.append("LOG SOURCE main BEAN  created a entity to INSERT: ");
             sb.append("internalName ").append(internalName);
             sb.append(", Desc = ").append(description);
             sb.append(", sourceId = ").append(sourceId);
             s_log.finest(sb.toString());
         }
+        
+        //old version
+//        ViewObjectImpl srcVO = getViewObjectImpl();
+//        NameValuePairs nvpmm = new NameValuePairs();
+//        sourceId = LoganLibUiUtil.getNextSequenceId("EM_LOGAN_SOURCE_SEQ");
+//        nvpmm.setAttribute(SourceId, sourceId);
+//        nvpmm.setAttribute(SourceIname, internalName);
+//        nvpmm.setAttribute(SourceSrctypeIname, sourceTypeIname);
+//        nvpmm.setAttribute(SourceTargetType, targetType);
+//        nvpmm.setAttribute(SourceIsSystem, new Number(0));
+//        nvpmm.setAttribute(SourceDname, name);
+//        nvpmm.setAttribute(SourceDescription, description);
+//        String emUser =
+//            EMExecutionContext.getExecutionContext().getEMUser();
+//        author = emUser;
+//        nvpmm.setAttribute(SourceAuthor, author);
+//        nvpmm.setAttribute(SourceOwner, emUser);
+//        nvpmm.setAttribute(SourceIsSecureContent,
+//                           (isSecureContent? new Number(1):
+//                            new Number(0)));
+//        nvpmm.setAttribute(SourceEditVersion, new Number(1));
+//        nvpmm.setAttribute(SourceCriticalEditVersion, new Number(1));
+//        nvpmm.setAttribute(SourceLastUpdatedBy, emUser);
+//        nvpmm.setAttribute(SourceLastUpdatedDate,
+//                           new Timestamp(new Date(Date.getCurrentDate())));
+//        nvpmm.setAttribute(TargetType, targetType);
+//
+//        Row iRow = srcVO.createAndInitRow(nvpmm);
+//        srcVO.insertRow(iRow);
+//        
+//        if(s_log.isFinestEnabled())
+//        {
+//            StringBuilder  sb = new StringBuilder();
+//            sb.append("LOG SOURCE main BEAN  created a row to INSERT: ");
+//            sb.append("internalName ").append(internalName);
+//            sb.append(", Desc = ").append(description);
+//            sb.append(", sourceId = ").append(sourceId);
+//            s_log.finest(sb.toString());
+//        }
     }
 
     public void handleUpdateOperation()

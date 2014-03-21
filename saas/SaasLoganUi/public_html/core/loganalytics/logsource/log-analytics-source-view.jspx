@@ -1,18 +1,92 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
-          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <f:view>
-        <af:document title="log-analytics-source-view.jspx" id="d1">
-            <af:form id="f1">
-                <af:panelGridLayout id="pgl1">
-                    <af:gridRow height="100%" id="gr1">
-                        <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
-                            <!-- Content -->
-                        </af:gridCell>
-                    </af:gridRow>
-                </af:panelGridLayout>
-            </af:form>
-        </af:document>
-    </f:view>
+<!--
+ Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
+
+   DESCRIPTION
+    log-analytics-source-view.jspx 
+    
+   NOTES
+     Log Analytics Sources page
+
+   MODIFIED    (MM/DD/YY)
+    vivsharm    01/04/13 - creation
+ -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="coreloganalyticsuiBundle" value="#{adfBundle['oracle.saas.logan.view.SaasLoganUiBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 title="#{coreloganalyticsuiBundle.LOG_MONITORING_SOURCES}">
+      <af:form id="f1">
+        <af:pageTemplate viewId="/core/loganalytics/templateDef.jspx"
+                         functionHeaderText="#{coreloganalyticsuiBundle.LOG_SOURCE_WIZ_TITLE} : #{coreloganalyticsuiBundle.DETAILS}"
+                         value="#{bindings.pageTemplateBinding}" id="emT">
+          <f:attribute name="headerText"
+                       value="#{coreloganalyticsuiBundle.LOG_SOURCES}"/>
+          <f:attribute name="renderPanelGroupLayout" value="hide"/>
+          <f:facet name="emContent">
+            <af:panelStretchLayout id="psl1" topHeight="auto"
+                                   bottomHeight="auto">
+              <f:facet name="top">
+                <af:group id="g1">
+                  <af:panelBorderLayout id="pbl0">
+                    <f:facet name="end">
+                      <af:toolbar id="t0">
+                        <af:commandToolbarButton text="#{coreloganalyticsuiBundle.OK}"
+                                                 id="ctb1"
+                                                 action="return-to-logan-lib"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:panelGroupLayout id="pgl0">
+                      <af:outputText value="#{coreloganalyticsuiBundle.A_LOG_SOURCE_DEFINES_THE_LOCAT}"
+                               id="ot1"/>
+                    </af:panelGroupLayout>
+                  </af:panelBorderLayout>
+                
+                  <af:panelHeader text="#{coreloganalyticsuiBundle.SOURCE}: #{viewScope.libSourcesBean.selectedSourceName}"
+                                  id="ph1">
+                   </af:panelHeader>
+                  <af:separator id="s1"/>
+                  <af:panelFormLayout id="pfl1" maxColumns="2" labelWidth="140">
+                  </af:panelFormLayout>
+                </af:group>
+              </f:facet>
+              <f:facet name="center">                 
+                  <af:panelTabbed id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem text="#{coreloganalyticsuiBundle.DETAILS}"
+                                       id="sdi1" styleClass="AFStretchWidth"
+                                       stretchChildren="first">
+                    <f:subview id="sbv1">
+                      <jsp:include page="/core/loganalytics/logsource/log-analytics-source-details.jsff"/>
+                    </f:subview>
+                  </af:showDetailItem>
+                     
+                    <af:showDetailItem text="#{coreloganalyticsuiBundle.EXTENDED_FIELDS}"
+                                       id="sdi2" styleClass="AFStretchWidth"
+                                       stretchChildren="first"
+                                       disclosureListener="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.switchSourceDetailsTab}">
+                    <!--<f:subview id="sbv2">
+                      <jsp:include page="/core/loganalytics/logsource/logan-source-extfields.jsff"/>
+                    </f:subview>-->
+                  </af:showDetailItem>
+                    <af:showDetailItem text="#{coreloganalyticsuiBundle.FIELD_REFERENCES}"
+                                       id="sdi3" styleClass="AFStretchWidth"
+                                       stretchChildren="first"
+                                       disclosureListener="#{viewScope.core_loganalytics_ui_loganLibSourcesBean.switchSourceDetailsTab}">
+                    <!--<f:subview id="sbv3">
+                      <jsp:include page="/core/loganalytics/logsource/logan-source-fieldrefs.jsff"/>
+                    </f:subview>-->
+                  </af:showDetailItem>              
+                  </af:panelTabbed>               
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
 </jsp:root>

@@ -15,6 +15,10 @@
   <view id="log-source-details">
       <page>/core/loganalytics/logsource/log-source-details.jspx</page>
   </view>
+   <view id="log-analytics-source-view">
+    <page id="__119">/core/loganalytics/logsource/log-analytics-source-view.jspx</page>
+    <bookmark id="__186"/>
+  </view>
   <method-call id="refreshLoganTransferStatus">
     <method>#{viewScope.core_loganalytics_ui_logRuleTargetAssocBean.forceRefresh}</method>
     <outcome>
@@ -37,6 +41,10 @@
     <control-flow-case id="__11">
       <from-outcome>goto_core-logan-rule-target-assoc2</from-outcome>
       <to-activity-id>refreshLoganTransferStatus</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__18">
+      <from-outcome>goto_core-logan-source-view</from-outcome>
+      <to-activity-id>log-analytics-source-view</to-activity-id>
     </control-flow-case>
   </control-flow-rule>
   <control-flow-rule id="__4">
@@ -67,6 +75,13 @@
       <to-activity-id>log-analytics-library</to-activity-id>
       </control-flow-case>
    </control-flow-rule>
+  <control-flow-rule id="__23">
+    <from-activity-id>log-analytics-source-view</from-activity-id>
+    <control-flow-case id="__24">
+      <from-outcome>return-to-logan-lib</from-outcome>
+      <to-activity-id>log-analytics-library</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
   <managed-bean id="__1">
     <managed-bean-name>ParserListBean</managed-bean-name>
     <managed-bean-class>oracle.saas.logan.view.parser.ParserListBean</managed-bean-class>
@@ -77,9 +92,9 @@
     <managed-bean-class>oracle.saas.logan.view.source.LoganLibSourcesBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
-    <managed-bean id="__4">
+    <managed-bean id="__41">
     <managed-bean-name>core_loganalytics_ui_logSourceDetailsViewBean</managed-bean-name>
-    <managed-bean-class>oracle.saas.logan.view.source.LoganLibSourcesBean</managed-bean-class>
+    <managed-bean-class>oracle.saas.logan.view.source.LoganSourceDetailsViewBean</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
   <managed-bean id="__5">

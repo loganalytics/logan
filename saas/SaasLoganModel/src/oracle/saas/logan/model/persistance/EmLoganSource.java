@@ -4,20 +4,15 @@ import java.io.Serializable;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import oracle.saas.logan.model.persistance.rule.EmLoganRule;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "EmLoganSource.findAll", query = "select o from EmLoganSource o"),
@@ -29,7 +24,9 @@ import oracle.saas.logan.model.persistance.rule.EmLoganRule;
                                                                             "		    and     o.sourceDname like :name" + 
                                                                             "		    and     o.sourceDescription like :desc"),
                 @NamedQuery(name = "EmLoganSource.findSources", query = "select o,t,m  from EmLoganSource o join EmLoganMetaSourceType t on o.sourceSrctypeIname =t.srctypeIname join  EmTargetTypes m  on o.sourceTargetType=m.targetType"),
-                @NamedQuery(name = "EmLoganSource.findBySourceId",  query = "select o from EmLoganSource o where o.sourceId = :sourceId")})
+                @NamedQuery(name = "EmLoganSource.findBySourceId",  query = "select o from EmLoganSource o where o.sourceId = :sourceId") ,
+                @NamedQuery(name = "EmLoganSource.findBySourceName",  query = "select o from EmLoganSource o where o.sourceIname = :sourceName") 
+                })
 @Table(name = "EM_LOGAN_SOURCE")
 @IdClass(EmLoganSourcePK.class)
 public class EmLoganSource implements Serializable {
@@ -60,7 +57,7 @@ public class EmLoganSource implements Serializable {
     private Integer sourceIsSystem;
     @Column(name = "SOURCE_LAST_UPDATED_BY", length = 128)
     private String sourceLastUpdatedBy;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "SOURCE_LAST_UPDATED_DATE")
     private Date sourceLastUpdatedDate;
     @Column(name = "SOURCE_OWNER", length = 128)

@@ -17,4 +17,6 @@ public interface LoganSourcePatternSessionLocal {
     List<EmLoganSourcePattern1> getEmLoganSourcePattern1FindAll();
 
     List<Object[]> getEmLoganSourcePatternFindAllBySourceId(Integer isIncl, Integer sourceId);
+    
+    List<EmLoganSourcePattern1> getEmLoganSourcePatternFindAllBySourceId( Integer sourceId);
 }

@@ -5,21 +5,32 @@ import java.util.List;
 
 import oracle.saas.logan.model.persistance.EmLoganSourcePattern;
 
-
+/**
+ * Logan source pojo to interact with table row data
+ * @author minglei
+ * */
 public class LoganLibSourcePojo {
     public LoganLibSourcePojo() {
         super();
     }
-    
+
     private Integer SourceIsSystem;
     private Integer SourceId;
     private String SourceDname;
+    private String SourceIname;
     private String SrctypeDname;
+    private String SrctypeIname;
     private Integer RulesUsing;
     private String SourceDescription;
     private String SrcTargetTypeDisplayNls;
+    private String SrcTargetType;
+    private Integer SourceIsSecureContent;
     private String SourceAuthor;
     private Date SourceLastUpdatedDate;
+    private Integer sourceCriticalEditVersion;
+    private Integer sourceEditVersion;
+
+
     
     private List<EmLoganSourcePattern> inclPatts;
 
@@ -99,6 +110,54 @@ public class LoganLibSourcePojo {
     public int getInclFilePatternsCount(){
         return this.inclPatts == null? 0: this.inclPatts.size();
     } 
+    
+    public void setSrcTargetType(String SrcTargetType) {
+        this.SrcTargetType = SrcTargetType;
+    }
+
+    public String getSrcTargetType() {
+        return SrcTargetType;
+    }
+    
+    public void setSourceIname(String SourceIname) {
+        this.SourceIname = SourceIname;
+    }
+
+    public String getSourceIname() {
+        return SourceIname;
+    }
+
+    public void setSrctypeIname(String SrctypeIname) {
+        this.SrctypeIname = SrctypeIname;
+    }
+
+    public String getSrctypeIname() {
+        return SrctypeIname;
+    }
+
+    public void setSourceIsSecureContent(Integer SourceIsSecureContent) {
+        this.SourceIsSecureContent = SourceIsSecureContent;
+    }
+
+    public Integer getSourceIsSecureContent() {
+        return SourceIsSecureContent;
+    }
+
+    public void setSourceCriticalEditVersion(Integer sourceCriticalEditVersion) {
+        this.sourceCriticalEditVersion = sourceCriticalEditVersion;
+    }
+
+    public Integer getSourceCriticalEditVersion() {
+        return sourceCriticalEditVersion;
+    }
+
+    public void setSourceEditVersion(Integer sourceEditVersion) {
+        this.sourceEditVersion = sourceEditVersion;
+    }
+
+    public Integer getSourceEditVersion() {
+        return sourceEditVersion;
+    }
 
 
 }

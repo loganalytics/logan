@@ -27,17 +27,22 @@ All rights reserved.*/
 
 package oracle.saas.logan.view.source;
 
+import java.math.BigDecimal;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import oracle.jbo.Key;
-import oracle.jbo.NameValuePairs;
 import oracle.jbo.Row;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.ViewObjectImpl;
 
+import oracle.saas.logan.model.client.LoganSessionBeanProxy;
+import oracle.saas.logan.model.persistance.EmLoganSourcePattern1;
+import oracle.saas.logan.model.session.source.LoganSourcePatternSession;
+import oracle.saas.logan.util.EMExecutionContext;
 import oracle.saas.logan.util.LoganLibUiUtil;
 import oracle.saas.logan.util.Logger;
 import oracle.saas.logan.view.BaseDataPersistenceHandler;
@@ -304,25 +309,34 @@ public class LoganSourceFilePattern extends BaseDataPersistenceHandler
         sb.append(this.fileName).append("_");
         return sb.toString();
     }
-
+    
+    //new JPA implementation
     public void handleInsertOperation()
     {
-        ViewObjectImpl patVO = getViewObjectImpl();
-        NameValuePairs nvpmm = new NameValuePairs();
-        // Note the patternId is generated only when we create a new row
-        this.patternId = LoganLibUiUtil.getNextSequenceId("EM_LOGAN_SOURCE_PATTERN_SEQ");
-        nvpmm.setAttribute(PatternId, patternId);
-        nvpmm.setAttribute(PatternSourceId, sourceId);
-        nvpmm.setAttribute(PatternText, fileName);
-        nvpmm.setAttribute(PatternDescription, fileDesc);
-
+        LoganSourcePatternSession patternFacade = LoganSessionBeanProxy.getEmLoganSourcePatternFacade();
+        EmLoganSourcePattern1 entity = new EmLoganSourcePattern1();
+        String nextSql = LoganLibUiUtil.getNextSequenceIdSql("EM_LOGAN_SOURCE_PATTERN_SEQ");
+        BigDecimal nextId = LoganSessionBeanProxy.getNextSeqBySql(nextSql);
+        if(nextId == null)
+        {
+            nextId = new BigDecimal(10000);//initial id if no record in repository
+        }
+        patternId = new Number(nextId.longValue());
+        entity.setPatternId(patternId.intValue());
+        entity.setPatternSourceId(sourceId.intValue());
+        entity.setPatternText(fileName);
+        entity.setPatternDescription(fileDesc);
         if (fileParserIName != null)
-            nvpmm.setAttribute(PatternParserIname, fileParserIName);
-        nvpmm.setAttribute(PatternAuthor, author);
-        nvpmm.setAttribute(PatternIsInclude,
-                           (includePattern? new Number(1): new Number(0)));
-        Row iRow = patVO.createAndInitRow(nvpmm);
-        patVO.insertRow(iRow);
+        {
+            entity.setPatternParserIname(fileParserIName);
+        }
+        String emUser = EMExecutionContext.getExecutionContext().getEMUser();
+        author = emUser;
+        entity.setPatternAuthor(author);
+        entity.setPatternIsInclude((includePattern? 1: 0));
+        patternFacade.persistEmLoganSourcePattern1(entity);
+        
+
         if(s_log.isFinestEnabled())
         {
             StringBuilder  sb = new StringBuilder();
@@ -335,6 +349,36 @@ public class LoganSourceFilePattern extends BaseDataPersistenceHandler
             sb.append("]");
             s_log.finest(sb.toString());
         }
+        
+        
+//        ViewObjectImpl patVO = getViewObjectImpl();
+//        NameValuePairs nvpmm = new NameValuePairs();
+//        // Note the patternId is generated only when we create a new row
+//        this.patternId = LoganLibUiUtil.getNextSequenceId("EM_LOGAN_SOURCE_PATTERN_SEQ");
+//        nvpmm.setAttribute(PatternId, patternId);
+//        nvpmm.setAttribute(PatternSourceId, sourceId);
+//        nvpmm.setAttribute(PatternText, fileName);
+//        nvpmm.setAttribute(PatternDescription, fileDesc);
+//
+//        if (fileParserIName != null)
+//            nvpmm.setAttribute(PatternParserIname, fileParserIName);
+//        nvpmm.setAttribute(PatternAuthor, author);
+//        nvpmm.setAttribute(PatternIsInclude,
+//                           (includePattern? new Number(1): new Number(0)));
+//        Row iRow = patVO.createAndInitRow(nvpmm);
+//        patVO.insertRow(iRow);
+//        if(s_log.isFinestEnabled())
+//        {
+//            StringBuilder  sb = new StringBuilder();
+//            sb.append("LOG PATT BEAN  created a row to INSERT for pattText ");
+//            sb.append(fileName);
+//            sb.append(", PatternParserIname = ");
+//            sb.append(fileParserIName);
+//            sb.append(", patternId = ");
+//            sb.append(patternId);
+//            sb.append("]");
+//            s_log.finest(sb.toString());
+//        }
     }
 
     public void handleUpdateOperation()

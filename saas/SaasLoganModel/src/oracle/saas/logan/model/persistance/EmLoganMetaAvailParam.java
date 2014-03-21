@@ -10,8 +10,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Entity
-@NamedQueries({ @NamedQuery(name = "EmLoganMetaAvailParam.findAll", query = "select o from EmLoganMetaAvailParam o") })
+@NamedQueries({ @NamedQuery(name = "EmLoganMetaAvailParam.findAll", query = "select o from EmLoganMetaAvailParam o where o.apTargetType = '*'  and o.apPluginId='*' and  o.apPluginVersion='.*' "),
+                @NamedQuery(name = "EmLoganMetaAvailParam.findAllByTargetType", query = "select o from EmLoganMetaAvailParam o where o.apTargetType=:targetType order by o.apName ")
+                })
 @Table(name = "EM_LOGAN_META_AVAIL_PARAM")
 @IdClass(EmLoganMetaAvailParamPK.class)
 public class EmLoganMetaAvailParam implements Serializable {

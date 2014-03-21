@@ -77,6 +77,10 @@
          <url path="src/oracle/saas/logan/model/client/LoganParserSessionBeanClient.java"/>
          <url path="src/oracle/saas/logan/model/client/LoganSourceSessionBeanClient.java"/>
          <url path="src/oracle/saas/logan/model/client/LoganRuleSourceMapSessionBeanClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganMetaAvailParamSessionClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/LoganSourcePatternSessionClient.java"/>
+         <url path="src/oracle/saas/logan/model/EmLoganSourceParameterSessionClient.java"/>
+         <url path="src/oracle/saas/logan/model/client/EmLoganSourceParameterSessionClient.java"/>
       </list>
       <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>

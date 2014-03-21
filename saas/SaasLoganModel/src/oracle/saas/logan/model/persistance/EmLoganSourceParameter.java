@@ -12,7 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-              @NamedQuery(name = "EmLoganSourceParameter.findAll", query = "select o from EmLoganSourceParameter o") })
+              @NamedQuery(name = "EmLoganSourceParameter.findAll", query = "select o from EmLoganSourceParameter o"),
+              @NamedQuery(name = "EmLoganSourceParameter.findAllBySourceId", query = " select o from EmLoganSourceParameter o  join EmLoganSource s on o.paramSourceId=s.sourceId where o.paramSourceId=:sourceId")})
 @Table(name = "EM_LOGAN_SOURCE_PARAMETER")
 @IdClass(EmLoganSourceParameterPK.class)
 public class EmLoganSourceParameter implements Serializable {

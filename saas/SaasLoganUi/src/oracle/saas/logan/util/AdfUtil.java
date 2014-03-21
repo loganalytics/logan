@@ -1,6 +1,7 @@
 package oracle.saas.logan.util;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -136,6 +137,56 @@ public class AdfUtil {
 
         return component;
     }
+    
+    /**
+     * Locate an UIComponent in view root with its component id. Use a recursive way to achieve this.
+     * @param id UIComponent id
+     * @return UIComponent object
+     */
+    public static UIComponent findComponentInRoot(String id)
+    {
+        UIComponent component = null;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        if (facesContext != null)
+        {
+            UIComponent root = facesContext.getViewRoot();
+            component = findComponent(root, id);
+        }
+        return component;
+    }
+    
+    /**
+     * Locate an UIComponent from its root component.
+     * Taken from http://www.jroller.com/page/mert?entry=how_to_find_a_uicomponent
+     * @param base root Component (parent)
+     * @param id UIComponent id
+     * @return UIComponent object
+     */
+    public static UIComponent findComponent(UIComponent base, String id)
+    {
+        if (id.equals(base.getId()))
+            return base;
+
+        UIComponent children = null;
+        UIComponent result = null;
+        Iterator childrens = base.getFacetsAndChildren();
+        while (childrens.hasNext() && (result == null))
+        {
+            children = (UIComponent) childrens.next();
+            if (id.equals(children.getId()))
+            {
+                result = children;
+                break;
+            }
+            result = findComponent(children, id);
+            if (result != null)
+            {
+                break;
+            }
+        }
+        return result;
+    }
+
 
     /**
      * Get the current instance of the view root.

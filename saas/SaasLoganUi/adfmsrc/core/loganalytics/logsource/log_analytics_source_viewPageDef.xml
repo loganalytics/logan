@@ -2,8 +2,9 @@
 <pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
                 id="log_analytics_source_viewPageDef" Package="core.loganalytics.logsource">
   <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-  </executables>
+    <executables>
+        <variableIterator id="variables"/>
+        <page path="sdk.core.uifwk.template.templateDefPageDef" id="pageTemplateBinding" Refresh="ifNeeded"/>
+    </executables>
   <bindings/>
 </pageDefinition>

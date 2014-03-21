@@ -12,9 +12,12 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "EmLoganSourcePattern1.findAll", query = "select o from EmLoganSourcePattern1 o") ,
-                @NamedQuery(name = "EmLoganSourcePattern.findAllBySourceId",
-                          query = "select p,s,r from EmLoganSourcePattern p join EmLoganSource s on p.patternSourceId = s.sourceId join EmLoganParser r " +
-                                  " on p.patternParserIname = r.parserIname where p.patternIsInclude = :isIncl and p.patternSourceId=:sourceId")})
+                @NamedQuery(name = "EmLoganSourcePattern1.findAllBySourceId",
+                          query = "select p,s,r from EmLoganSourcePattern1 p join EmLoganSource s on p.patternSourceId = s.sourceId join EmLoganParser r " +
+                                  " on p.patternParserIname = r.parserIname where p.patternIsInclude = :isIncl and p.patternSourceId=:sourceId"),
+                @NamedQuery(name = "EmLoganSourcePattern1.findAllPatternsBySourceId",
+                            query = "select p from EmLoganSourcePattern p where  p.patternSourceId=:sourceId")
+                })
 @Table(name = "EM_LOGAN_SOURCE_PATTERN")
 @IdClass(EmLoganSourcePattern1PK.class)
 public class EmLoganSourcePattern1 implements Serializable {

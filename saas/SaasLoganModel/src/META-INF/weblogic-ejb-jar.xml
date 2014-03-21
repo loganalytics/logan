@@ -30,4 +30,16 @@
     <ejb-name>LoganMetaSourceTypeSession</ejb-name>
     <stateless-session-descriptor/>
   </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>LoganMetaAvailParamSession</ejb-name>
+    <stateless-session-descriptor/>
+  </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>LoganSourcePatternSession</ejb-name>
+    <stateless-session-descriptor/>
+  </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>EmLoganSourceParameterSession</ejb-name>
+    <stateless-session-descriptor/>
+  </weblogic-enterprise-bean>
 </weblogic-ejb-jar>
